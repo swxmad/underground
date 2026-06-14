@@ -1,0 +1,97 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: var(--color-surface-modal);
+  padding: calc(25 * var(--r));
+  border-radius: calc(12 * var(--r));
+  width: calc(380 * var(--r));
+  max-width: 95vw;
+  color: var(--color-text);
+  border: calc(2 * var(--r)) solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.title {
+  font-family: "Geologica";
+  font-size: calc(24 * var(--r));
+  text-align: center;
+  margin-bottom: calc(15 * var(--r));
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--r));
+}
+
+.form input,
+.form textarea,
+.form select {
+  padding: calc(10 * var(--r));
+  border-radius: calc(6 * var(--r));
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-input);
+  color: var(--color-text);
+  font-family: "Geologica";
+  font-size: calc(14 * var(--r));
+}
+
+textarea {
+  resize: none;
+  height: calc(70 * var(--r));
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--r));
+  font-family: "Geologica";
+  font-size: calc(16 * var(--r));
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(10 * var(--r));
+}
+
+.saveBtn {
+  background: var(--color-primary);
+  padding: calc(10 * var(--r)) calc(15 * var(--r));
+  border: none;
+  color: #fff;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-family: "Geologica";
+  font-size: calc(14 * var(--r));
+}
+
+.cancelBtn {
+  background: var(--color-cancel);
+  padding: calc(10 * var(--r)) calc(15 * var(--r));
+  border: none;
+  color: #fff;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-family: "Geologica";
+  font-size: calc(14 * var(--r));
+}
+
+.form input[type="file"] {
+  width: 100%;
+  display: block;
+  margin-top: calc(5 * var(--r));
+  margin-bottom: calc(10 * var(--r));
+  font-size: calc(13 * var(--r));
+}

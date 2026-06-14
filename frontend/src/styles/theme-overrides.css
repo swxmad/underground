@@ -1,0 +1,18 @@
+/* Общие переопределения для светлой темы */
+
+[data-theme="light"] input,
+[data-theme="light"] textarea,
+[data-theme="light"] select {
+  color-scheme: light;
+}
+
+[data-theme="dark"] select,
+:root select {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] select option,
+:root select option {
+  background-color: var(--color-surface-input);
+  color: var(--color-text);
+}

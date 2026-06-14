@@ -1,0 +1,96 @@
+h2 {
+  font-family: "Jomolhari";
+  font-size: calc(24 * var(--r));
+}
+
+.notAuth {
+  font-size: calc(20 * var(--r));
+  text-align: center;
+  padding: calc(40 * var(--r));
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: calc(15 * var(--r));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(10 * var(--r));
+  border-radius: calc(8 * var(--r));
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+  margin-top: calc(10 * var(--r));
+}
+
+.buttons button,
+.save,
+.cancel,
+.delete,
+.addBtn {
+  background-color: var(--color-primary);
+  font-family: "Geologica";
+  border: none;
+  padding: calc(6 * var(--r)) calc(12 * var(--r));
+  height: calc(40 * var(--r));
+  color: white;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--r));
+  margin-top: calc(10 * var(--r));
+}
+
+.mode {
+  margin-bottom: calc(15 * var(--r));
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--r));
+  font-family: "Geologica";
+  font-size: calc(16 * var(--r));
+}
+
+.mode select {
+  padding: calc(8 * var(--r)) calc(12 * var(--r));
+  background: var(--color-surface-input);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: calc(6 * var(--r));
+  outline: none;
+  font-family: "Geologica";
+  font-size: calc(14 * var(--r));
+}
+
+.addRow {
+  margin-bottom: calc(10 * var(--r));
+}
+
+.fio {
+  font-size: calc(14 * var(--r));
+  padding-top: calc(5 * var(--r));
+}
+
+.fullname {
+  font-size: calc(18 * var(--r));
+  font-weight: bold;
+  padding-bottom: calc(5 * var(--r));
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

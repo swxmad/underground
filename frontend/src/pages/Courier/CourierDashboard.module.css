@@ -1,0 +1,227 @@
+.page {
+
+  background-image: var(--bg-page);
+
+  background-attachment: fixed;
+
+  background-size: cover;
+
+  background-repeat: no-repeat;
+
+  height: 100%;
+
+  color: var(--color-text);
+
+  font-family: "Geologica";
+
+}
+
+
+
+.notAuth {
+
+  font-size: calc(20 * var(--r));
+
+  text-align: center;
+
+  margin-top: calc(40 * var(--r));
+
+}
+
+
+
+.main {
+
+  max-width: calc(900 * var(--r));
+
+  margin: calc(40 * var(--r)) auto;
+
+  padding: 0 calc(20 * var(--r));
+
+}
+
+
+
+.title {
+
+  font-size: calc(32 * var(--r));
+
+  margin-bottom: calc(30 * var(--r));
+
+  text-align: center;
+
+}
+
+
+
+.tabs {
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: calc(20 * var(--r));
+
+  margin-bottom: calc(30 * var(--r));
+
+}
+
+
+
+.tabs button {
+
+  background: transparent;
+
+  border: none;
+
+  color: var(--color-text-muted);
+
+  font-size: calc(18 * var(--r));
+
+  padding: calc(10 * var(--r)) calc(20 * var(--r));
+
+  cursor: pointer;
+
+  border-bottom: calc(2 * var(--r)) solid transparent;
+
+}
+
+
+
+.tabs button:hover {
+
+  color: var(--color-text);
+
+}
+
+
+
+.active {
+
+  color: var(--color-text) !important;
+
+  border-bottom: calc(2 * var(--r)) solid #b30000 !important;
+
+}
+
+
+
+.content {
+
+  background: var(--color-content);
+
+  padding: calc(25 * var(--r));
+
+  border-radius: calc(12 * var(--r));
+
+  border: 1px solid var(--color-border-accent);
+
+}
+
+
+
+@media (max-width: 768px) {
+
+  .page {
+
+    min-height: 100dvh;
+
+    display: flex;
+
+    flex-direction: column;
+
+  }
+
+
+
+  .page > header {
+
+    flex-shrink: 0;
+
+  }
+
+
+
+  .page > :last-child {
+
+    flex-shrink: 0;
+
+    margin-top: 0;
+
+  }
+
+
+
+  .main {
+
+    flex: 1 1 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    gap: calc(16 * var(--r));
+
+    min-height: 0;
+
+    width: 100%;
+
+    max-width: calc(1000 * var(--r));
+
+    margin: 0 auto;
+
+    padding: calc(16 * var(--r));
+
+    box-sizing: border-box;
+
+  }
+
+
+
+  .title {
+
+    flex-shrink: 0;
+
+    margin: 0;
+
+    font-size: calc(26 * var(--r));
+
+  }
+
+
+
+  .tabs {
+
+    flex-shrink: 0;
+
+    margin: 0;
+
+    gap: calc(8 * var(--r));
+
+  }
+
+
+
+  .tabs button {
+
+    font-size: calc(13 * var(--r));
+
+    padding: calc(8 * var(--r)) calc(10 * var(--r));
+
+  }
+
+
+
+  .content {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+

@@ -1,0 +1,258 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Register.module.css";
+import Header from "../../../components/Header/Header";
+import Footer from "../../../components/Footer/Footer";
+import PasswordInput from "../../../components/Password/PasswordInput";
+
+const API_URL = "http://localhost:5000/api/auth";
+
+const Register = () => {
+  const [form, setForm] = useState({
+    fullname: "",
+    phone: "",
+    email: "",
+    birthdate: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [message, setMessage] = useState("");
+  const [passwordStrength, setPasswordStrength] = useState("");
+
+  // -----------------------------
+  // Маски и обработка ввода
+  // -----------------------------
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    // Маска телефона
+    if (name === "phone") {
+      let cleaned = value.replace(/\D/g, "");
+      if (!cleaned.startsWith("7")) cleaned = "7" + cleaned; // всегда +7
+      if (cleaned.length > 11) cleaned = cleaned.slice(0, 11);
+
+      let formatted = "+7";
+      if (cleaned.length > 1) formatted += `(${cleaned.slice(1, 4)}`;
+      if (cleaned.length >= 4) formatted += `) ${cleaned.slice(4, 7)}`;
+      if (cleaned.length >= 7) formatted += `-${cleaned.slice(7, 9)}`;
+      if (cleaned.length >= 9) formatted += `-${cleaned.slice(9, 11)}`;
+
+      setForm({ ...form, phone: formatted });
+      return;
+    }
+
+    // Маска даты рождения
+    if (name === "birthdate") {
+      let cleaned = value.replace(/\D/g, "");
+      if (cleaned.length > 8) cleaned = cleaned.slice(0, 8);
+
+      let formatted = "";
+      if (cleaned.length > 0) formatted += cleaned.slice(0, 2);
+      if (cleaned.length >= 3) formatted += "." + cleaned.slice(2, 4);
+      if (cleaned.length >= 5) formatted += "." + cleaned.slice(4, 8);
+
+      setForm({ ...form, birthdate: formatted });
+      return;
+    }
+
+    // Проверка силы пароля
+    if (name === "password") {
+      setPasswordStrength(checkPasswordStrength(value));
+    }
+
+    setForm({ ...form, [name]: value });
+  };
+
+  // -----------------------------
+  // Проверка силы пароля
+  // -----------------------------
+  const checkPasswordStrength = (password) => {
+    let score = 0;
+
+    if (password.length >= 8) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^A-Za-z0-9]/.test(password)) score++;
+
+    if (score <= 2) return "Слабый";
+    if (score === 3) return "Средний";
+    return "Сильный";
+  };
+
+  // -----------------------------
+  // Проверка возраста
+  // -----------------------------
+  const validateAge = (birthdate) => {
+    const [day, month, year] = birthdate.split(".").map(Number);
+    const birth = new Date(year, month - 1, day);
+    const today = new Date();
+
+    const age =
+      today.getFullYear() -
+      birth.getFullYear() -
+      (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate()) ? 1 : 0);
+
+    return age >= 18 && age <= 100;
+  };
+
+  // -----------------------------
+  // Полная валидация формы
+  // -----------------------------
+  const validateForm = () => {
+    if (!/^[А-Яа-яЁё\s]{1,100}$/.test(form.fullname))
+      return "ФИО должно содержать только русские буквы и быть не длиннее 100 символов";
+
+    if (!/^\+7\(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(form.phone))
+      return "Телефон должен быть в формате +7(XXX) XXX-XX-XX";
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      return "Некорректный email";
+
+    if (form.email.length > 30)
+      return "Email должен быть не длиннее 30 символов";
+
+    if (!/^\d{2}\.\d{2}\.\d{4}$/.test(form.birthdate))
+      return "Дата рождения должна быть в формате ДД.ММ.ГГГГ";
+
+    if (!validateAge(form.birthdate))
+      return "Возраст должен быть от 18 до 100 лет";
+
+    if (!/^[A-Za-z0-9!@#$%^&*()_\-=+{}[\]:;'"<>,.?/`~|\\]{8,20}$/.test(form.password))
+      return "Пароль должен быть 8–20 символов, только английские буквы, цифры и символы";
+
+    if (/[А-Яа-яЁё]/.test(form.password))
+      return "Пароль не должен содержать русские буквы";
+
+    if (form.password !== form.confirmPassword)
+      return "Пароли не совпадают";
+
+    return null;
+  };
+
+  // -----------------------------
+  // Отправка формы
+  // -----------------------------
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setMessage("");
+
+    const error = validateForm();
+    if (error) {
+      setMessage(error);
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_URL}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setMessage(data.message || "Ошибка регистрации");
+        return;
+      }
+
+      setMessage("Регистрация успешна. Теперь можно войти.");
+      setForm({
+        fullname: "",
+        phone: "",
+        email: "",
+        birthdate: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (err) {
+      setMessage("Ошибка соединения с сервером");
+    }
+  };
+
+  // -----------------------------
+  // Рендер
+  // -----------------------------
+  return (
+    <div className={styles.page}>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Регистрация</h1>
+
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <input
+              name="fullname"
+              placeholder="ФИО"
+              value={form.fullname}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              name="phone"
+              placeholder="+7(XXX) XXX-XX-XX"
+              value={form.phone}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              name="email"
+              placeholder="E-mail"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
+
+            <input
+              name="birthdate"
+              placeholder="Дата рождения (ДД.ММ.ГГГГ)"
+              value={form.birthdate}
+              onChange={handleChange}
+              required
+            />
+
+            <PasswordInput
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              placeholder="Пароль"
+            />
+
+            {form.password && (
+              <p className={styles.strength}>
+                Надёжность пароля: {passwordStrength}
+              </p>
+            )}
+
+            <PasswordInput
+              name="confirmPassword"
+              value={form.confirmPassword}
+              onChange={handleChange}
+              placeholder="Повторите пароль"
+            />
+
+            <button type="submit" className={styles.submit}>
+              Зарегистрироваться
+            </button>
+          </form>
+
+          {message && <p className={styles.message}>{message}</p>}
+
+          <p className={styles.redirect}>
+            Уже есть аккаунт?{" "}
+            <Link to="/login" className={styles.link}>
+              Войти
+            </Link>
+          </p>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Register;

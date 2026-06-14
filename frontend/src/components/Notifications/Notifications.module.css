@@ -1,0 +1,39 @@
+.container {
+  position: fixed;
+  top: calc(10 * var(--r));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+}
+
+.notification {
+  padding: calc(12 * var(--r)) calc(18 * var(--r));
+  border-radius: calc(8 * var(--r));
+  font-family: "Geologica";
+  font-size: calc(15 * var(--r));
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: none;
+  box-shadow: 0 calc(4 * var(--r)) calc(16 * var(--r)) rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+.success {
+  background: var(--color-notification-success);
+}
+
+.error {
+  background: var(--color-notification-error);
+}
+
+.warning {
+  background: var(--color-notification-warning);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(calc(-10 * var(--r))); }
+  to { opacity: 1; transform: translateY(0); }
+}

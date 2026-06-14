@@ -1,0 +1,348 @@
+.home {
+  background-image: var(--bg-home);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.container {
+  width: calc(1000 * var(--r));
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.aboutSection {
+  padding-top: calc(60 * var(--r));
+  padding-bottom: calc(60 * var(--r));
+}
+
+.about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.text {
+  height: calc(250 * var(--r));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.barTitle {
+  font-family: 'Geologica';
+  font-size: calc(40 * var(--r));
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.barTitleNew {
+  font-family: 'Geologica';
+  font-size: calc(40 * var(--r));
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: center;
+}
+
+.description {
+  font-family: 'Open Sans';
+  font-size: calc(22 * var(--r));
+  color: var(--color-text);
+  font-weight: lighter;
+  width: calc(530 * var(--r));
+  line-height: calc(26 * var(--r));
+  text-shadow: var(--text-shadow-home);
+}
+
+.imgContainer {
+  position: relative;
+  width: calc(450 * var(--r));
+  height: calc(300 * var(--r));
+  flex-shrink: 0;
+}
+
+.img {
+  border-radius: calc(20 * var(--r));
+  width: calc(450 * var(--r));
+  height: calc(300 * var(--r));
+  box-shadow:
+    calc(20 * var(--r)) calc(20 * var(--r)) calc(25 * var(--r)) calc(-1 * var(--r)) #000000,
+    calc(-20 * var(--r)) calc(-20 * var(--r)) calc(25 * var(--r)) calc(-1 * var(--r)) #000000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.active {
+  opacity: 1;
+}
+
+.waitingSection {
+  margin-top: calc(20 * var(--r));
+}
+
+.waitingCards {
+  margin-top: calc(20 * var(--r));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card {
+  transition: all 0.3s ease;
+}
+
+.cardImg {
+  width: calc(235 * var(--r));
+  height: calc(157 * var(--r));
+  border-radius: calc(15 * var(--r));
+  box-shadow:
+    calc(-10 * var(--r)) calc(10 * var(--r)) calc(15 * var(--r)) calc(-1 * var(--r)) #000000,
+    calc(10 * var(--r)) calc(10 * var(--r)) calc(15 * var(--r)) calc(-1 * var(--r)) #000000;
+}
+
+.cardText {
+  width: calc(235 * var(--r));
+  font-family: 'JonoIhari';
+  font-size: calc(25 * var(--r));
+  color: var(--color-text);
+  font-weight: lighter;
+  text-align: center;
+  margin-top: calc(5 * var(--r));
+  text-shadow: var(--text-shadow-home);
+}
+
+.sliderContainer {
+  width: 100%;
+  margin-top: calc(50 * var(--r));
+  position: relative;
+}
+
+.mainSlide {
+  width: 100%;
+  height: calc(526 * var(--r));
+  overflow: hidden;
+  position: relative;
+}
+
+.mainSlide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.6s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mainSlideImg {
+  opacity: 0;
+}
+
+.controls {
+  position: absolute;
+  top: 95.5%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.controls button {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  padding: calc(10 * var(--r)) calc(15 * var(--r));
+  width: calc(50 * var(--r));
+  height: calc(50 * var(--r));
+  border: none;
+  cursor: pointer;
+  font-size: calc(30 * var(--r));
+  z-index: 10;
+}
+
+.thumbnailContainer {
+  overflow: hidden;
+}
+
+.thumbnailSlider {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail {
+  width: calc(200 * var(--r));
+  height: calc(105 * var(--r));
+  border: calc(3 * var(--r)) solid black;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3);
+  transition: filter 0.3s ease;
+}
+
+.activeThumb img {
+  filter: brightness(1);
+}
+
+.activeThumb::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(15 * var(--r));
+  background-color: black;
+  z-index: 1;
+}
+
+.weekSection {
+  margin-top: calc(50 * var(--r));
+}
+
+.weekSection .container {
+  width: calc(1000 * var(--r));
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.fakeEvent {
+  color: var(--color-text);
+  text-align: center;
+  font-size: calc(20 * var(--r));
+  padding: calc(15 * var(--r)) calc(17 * var(--r));
+  font-family: "Geologica";
+}
+
+.eventItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: calc(970 * var(--r));
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+.eventImg {
+  width: calc(200 * var(--r));
+  height: calc(200 * var(--r));
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.INfo {
+  width: calc(558 * var(--r));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.INfo p {
+  font-family: "JonoIhari";
+  font-size: calc(40 * var(--r));
+  line-height: calc(55 * var(--r));
+  color: var(--color-text);
+  text-shadow: var(--text-shadow-home);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.eventItem h3 {
+  width: calc(332 * var(--r));
+  font-family: "JonoIhari";
+  font-size: calc(30 * var(--r));
+  line-height: calc(40 * var(--r));
+  color: var(--color-text);
+  text-shadow: var(--text-shadow-home);
+  text-align: center;
+  margin: auto;
+  flex-shrink: 0;
+}
+
+.line {
+  border: 0;
+  width: calc(5 * var(--r));
+  height: calc(150 * var(--r));
+  background-color: var(--color-surface);
+  margin: calc(25 * var(--r)) 0;
+  flex-shrink: 0;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 0 calc(412 * var(--r));
+  min-width: calc(412 * var(--r));
+}
+
+.eventActions {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+  flex-shrink: 0;
+}
+
+.eventActions button {
+  min-width: calc(150 * var(--r));
+}
+
+.eventActions button,
+.addBtn {
+  background-color: #4e0505;
+  font-family: "Geologica";
+  border: none;
+  padding: calc(6 * var(--r)) calc(12 * var(--r));
+  height: calc(40 * var(--r));
+  min-height: calc(40 * var(--r));
+  color: #ffffff;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.eventActions button:hover,
+.addBtn:hover {
+  background-color: #500d0d;
+}
+
+.addBtn {
+  display: block;
+  margin: 0 auto calc(20 * var(--r));
+  min-width: calc(180 * var(--r));
+}
+
+.sliderContainer,
+.mainSlide,
+.mainSlide img {
+  z-index: 1;
+}
+
+.weekList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(30 * var(--r));
+}

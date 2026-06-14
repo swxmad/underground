@@ -1,0 +1,64 @@
+.item {
+  padding: calc(14 * var(--r)) calc(16 * var(--r));
+  background: var(--color-chat-item);
+  border-radius: calc(12 * var(--r));
+  margin-bottom: calc(10 * var(--r));
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: 1px solid var(--color-chat-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.item:hover {
+  background: var(--color-chat-item-hover);
+  border-color: var(--color-border-subtle);
+}
+
+.active {
+  background: var(--color-chat-item-active);
+  border-color: var(--color-border-subtle);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: calc(16 * var(--r));
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.preview {
+  margin-top: calc(6 * var(--r));
+  font-size: calc(14 * var(--r));
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer {
+  margin-top: calc(8 * var(--r));
+  display: flex;
+  justify-content: space-between;
+  font-size: calc(12 * var(--r));
+  color: var(--color-text-muted);
+}
+
+.time {
+  font-size: calc(12 * var(--r));
+  color: var(--color-text-muted);
+}
+
+.unread {
+  background: var(--color-primary);
+  padding: calc(2 * var(--r)) calc(8 * var(--r));
+  border-radius: calc(20 * var(--r));
+  font-size: calc(12 * var(--r));
+  color: #fff;
+  font-weight: 600;
+}

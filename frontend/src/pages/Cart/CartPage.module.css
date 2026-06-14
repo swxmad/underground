@@ -1,0 +1,278 @@
+.page {
+  background-image: var(--bg-page);
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--color-text);
+}
+
+.container {
+  width: calc(1000 * var(--r));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: calc(50 * var(--r)) calc(20 * var(--r)) calc(60 * var(--r));
+  box-sizing: border-box;
+}
+
+.checkoutContainer {
+  display: flex;
+  flex-direction: row;
+  gap: calc(40 * var(--r));
+  align-items: flex-start;
+}
+
+.orderSummary {
+  flex: 1 1 calc(580 * var(--r));
+  min-width: calc(580 * var(--r));
+}
+
+.card {
+  background: var(--color-panel);
+  padding: calc(15 * var(--r));
+  border-radius: calc(15 * var(--r));
+  margin-bottom: calc(20 * var(--r));
+  position: relative;
+  display: grid;
+  grid-template-columns: calc(90 * var(--r)) 1fr auto;
+  grid-template-rows: repeat(3, auto);
+  column-gap: calc(15 * var(--r));
+  row-gap: calc(3 * var(--r));
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.card img {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  width: calc(90 * var(--r));
+  height: calc(70 * var(--r));
+  object-fit: cover;
+  border-radius: calc(10 * var(--r));
+  flex-shrink: 0;
+}
+
+.card h3 {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: calc(20 * var(--r));
+  line-height: calc(26 * var(--r));
+  margin: 0;
+  font-family: "Geologica";
+  text-align: left;
+  justify-self: start;
+  align-self: start;
+}
+
+.card p {
+  grid-column: 2;
+  margin: 0;
+  opacity: 0.8;
+  font-size: calc(14 * var(--r));
+  line-height: calc(20 * var(--r));
+  font-family: "Geologica";
+  text-align: left;
+  justify-self: start;
+  align-self: start;
+}
+
+.card p:nth-of-type(1) {
+  grid-row: 2;
+}
+
+.card p:nth-of-type(2) {
+  grid-row: 3;
+}
+
+.quantityControlsInline {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+  display: flex;
+  align-items: center;
+  gap: calc(10 * var(--r));
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.removeItemBtn {
+  position: absolute;
+  top: calc(8 * var(--r));
+  right: calc(12 * var(--r));
+  background: transparent;
+  border: none;
+  color: #ff4d4d;
+  font-size: calc(22 * var(--r));
+  cursor: pointer;
+  z-index: 1;
+}
+
+.quantityBtn {
+  width: calc(32 * var(--r));
+  height: calc(32 * var(--r));
+  background: var(--color-accent);
+  border: none;
+  border-radius: calc(8 * var(--r));
+  color: white;
+  font-size: calc(20 * var(--r));
+  cursor: pointer;
+}
+
+.quantityDisplay {
+  font-size: calc(18 * var(--r));
+  font-weight: bold;
+}
+
+.orderTotal {
+  margin-top: calc(20 * var(--r));
+  font-size: calc(22 * var(--r));
+  font-weight: bold;
+}
+
+.orderTotal span {
+  color: #550606;
+}
+
+.emptyCart {
+  color: var(--color-text);
+  font-size: calc(18 * var(--r));
+  margin-top: calc(10 * var(--r));
+}
+
+.noCards {
+  color: var(--color-text-muted);
+  font-size: calc(16 * var(--r));
+}
+
+.deliveryForm {
+  width: calc(380 * var(--r));
+  max-width: 100%;
+  flex-shrink: 0;
+  background: var(--color-panel-form);
+  padding: calc(25 * var(--r));
+  border-radius: calc(15 * var(--r));
+  box-sizing: border-box;
+}
+
+.formBlock {
+  margin-bottom: calc(25 * var(--r));
+}
+
+.formBlock h3 {
+  font-size: calc(22 * var(--r));
+  margin-bottom: calc(12 * var(--r));
+}
+
+.deliveryForm input {
+  width: 100%;
+  padding: calc(12 * var(--r));
+  margin-bottom: calc(12 * var(--r));
+  background: var(--color-panel-input);
+  border: 1px solid var(--color-panel-input-border);
+  border-radius: calc(10 * var(--r));
+  color: var(--color-text);
+  font-size: calc(16 * var(--r));
+  box-sizing: border-box;
+}
+
+.deliveryForm input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.cardSelect {
+  display: block;
+  width: 100%;
+  padding: calc(12 * var(--r));
+  margin-bottom: calc(12 * var(--r));
+  background: var(--color-panel-input);
+  border: 1px solid var(--color-panel-input-border);
+  border-radius: calc(10 * var(--r));
+  color: var(--color-text);
+  font-size: calc(16 * var(--r));
+  line-height: 1.4;
+  font-family: "Geologica";
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.cardSelect:invalid {
+  color: var(--color-text-muted);
+}
+
+.cardSelect option {
+  background-color: var(--color-surface-input);
+  color: var(--color-text);
+  font-size: calc(16 * var(--r));
+  font-family: "Geologica";
+}
+
+.cardSelect option[value=""] {
+  color: var(--color-text-muted);
+}
+
+.utensilsControl {
+  display: flex;
+  align-items: center;
+  gap: calc(15 * var(--r));
+}
+
+.utensilsControl button {
+  width: calc(32 * var(--r));
+  height: calc(32 * var(--r));
+  background: var(--color-accent);
+  border: none;
+  border-radius: calc(8 * var(--r));
+  color: white;
+  font-size: calc(20 * var(--r));
+  cursor: pointer;
+}
+
+.utensilsControl span {
+  font-size: calc(18 * var(--r));
+  font-weight: bold;
+}
+
+.btnConfirm {
+  width: 100%;
+  padding: calc(14 * var(--r));
+  background: var(--color-primary);
+  border: none;
+  border-radius: calc(12 * var(--r));
+  color: white;
+  font-size: calc(18 * var(--r));
+  font-family: "Geologica";
+  cursor: pointer;
+  margin-top: calc(10 * var(--r));
+  transition: 0.2s;
+}
+
+.btnConfirm:disabled {
+  background: var(--color-cancel);
+  cursor: not-allowed;
+}
+
+.btnConfirm:not(:disabled):hover {
+  background: var(--color-primary-hover);
+}
+
+@media (max-width: 768px) {
+  .checkoutContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: calc(20 * var(--r));
+  }
+
+  .orderSummary {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    order: 1;
+  }
+
+  .deliveryForm {
+    width: 100%;
+    max-width: 100%;
+    order: 2;
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,43 @@
+.buttons button {
+  background-color: var(--color-primary);
+  font-family: "Geologica";
+  border: none;
+  padding: calc(6 * var(--r)) calc(12 * var(--r));
+  height: calc(40 * var(--r));
+  color: white;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+}
+
+h2 {
+  font-family: "Jomolhari";
+  font-size: calc(24 * var(--r));
+}
+
+.userInfo p {
+  font-family: "Geologica";
+  font-size: calc(16 * var(--r));
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+  margin-top: calc(20 * var(--r));
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--r));
+  margin-top: calc(20 * var(--r));
+}
+
+.loading {
+  font-size: calc(20 * var(--r));
+  text-align: center;
+  margin-top: calc(40 * var(--r));
+}
+

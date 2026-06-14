@@ -1,0 +1,87 @@
+.container {
+  width: 100%;
+  background-color: var(--color-footer-bg);
+  margin-top: calc(50 * var(--r));
+  padding-bottom: calc(10 * var(--r));
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  width: calc(1000 * var(--r));
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.logo {
+  height: calc(70 * var(--r));
+  width: auto;
+  margin-top: calc(10 * var(--r));
+}
+
+.vsee {
+  height: calc(150 * var(--r));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: calc(30 * var(--r));
+}
+
+.dan {
+  font-family: 'Geologica';
+  font-size: calc(15 * var(--r));
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.hoursLabel {
+  font-size: calc(13 * var(--r));
+}
+
+.seti {
+  margin-left: calc(480 * var(--r));
+  margin-top: calc(-40 * var(--r));
+}
+
+.ceti {
+  width: calc(50 * var(--r));
+  height: calc(50 * var(--r));
+  transition: 0.3s ease;
+}
+
+.ceti:hover {
+  background-color: #840404;
+  border-radius: 100%;
+}
+
+.mapWrapper {
+  margin-top: calc(20 * var(--r));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(8 * var(--r));
+}
+
+.map {
+  border-radius: calc(10 * var(--r));
+  width: calc(400 * var(--r));
+  height: calc(250 * var(--r));
+  border: 0;
+  display: block;
+}
+
+.mapLink {
+  font-family: "Geologica";
+  font-size: calc(13 * var(--r));
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mapLink:hover {
+  color: var(--color-text);
+}
+
+.info {
+  margin-left: calc(50 * var(--r));
+}

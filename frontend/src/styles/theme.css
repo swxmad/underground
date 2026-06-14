@@ -1,0 +1,175 @@
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-page: url(/images/фоно.png);
+  --bg-home: url(/images/фон.png);
+
+  --color-text: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-muted: #777777;
+
+  --color-surface: #000000;
+  --color-surface-elevated: #111111;
+  --color-surface-card: #1c1c1c;
+  --color-payment-card: #310606;
+  --color-surface-input: #1a1a1a;
+  --color-surface-modal: #000000;
+  --color-content: #000000;
+  --color-content-translucent: rgba(0, 0, 0, 0.7);
+
+  --color-border: rgb(68, 9, 9);
+  --color-border-subtle: #333333;
+  --color-border-accent: #581515;
+  --color-border-card: #840404;
+
+  --color-primary: #4e0505;
+  --color-primary-hover: #6a0707;
+  --color-accent: #840404;
+  --color-accent-soft: rgba(80, 0, 0, 0.92);
+
+  --color-menu-bg: rgba(0, 0, 0, 0.6);
+  --color-header-text: #ffffff;
+  --color-burger: #ffffff;
+  --color-footer-bg: #000000;
+  --color-overlay: rgba(0, 0, 0, 0.7);
+  --color-search-bg: rgba(217, 217, 217, 0.5);
+  --color-search-text: #000000;
+  --color-placeholder: #333333;
+  --color-cancel: #333333;
+  --color-panel: rgba(217, 217, 217, 0.1);
+  --color-panel-form: rgba(217, 217, 217, 0.08);
+  --color-panel-input: rgba(255, 255, 255, 0.08);
+  --color-panel-input-border: rgba(255, 255, 255, 0.15);
+  --color-category-btn: #666666;
+  --color-category-btn-hover: #474747;
+  --color-category-text: #370000;
+  --text-shadow-home: -25px 25px 10px #000000;
+  --text-shadow-default: none;
+
+  --shadow-menu: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 0 20px rgba(0, 0, 0, 0.6);
+
+  --color-chat-bg: #141414;
+  --color-chat-header: #181818;
+  --color-chat-border: #2a2a2a;
+  --color-chat-item: #1c1c1c;
+  --color-chat-item-hover: #222222;
+  --color-chat-item-active: #262626;
+  --color-chat-their-msg: #1f1f1f;
+  --color-chat-their-text: #dddddd;
+  --color-chat-input-bg: #222222;
+  --color-chat-scrollbar-track: #1a1a1a;
+  --color-chat-scrollbar-thumb: #333333;
+
+  --status-new-bg: #840404;
+  --status-new-color: #ffffff;
+  --status-new-border: #840404;
+  --status-accepted-bg: #c28a00;
+  --status-accepted-color: #ffffff;
+  --status-accepted-border: #c28a00;
+  --status-delivered-bg: #0a8a0a;
+  --status-delivered-color: #ffffff;
+  --status-delivered-border: #0a8a0a;
+  --status-approved-bg: #005bbb;
+  --status-approved-color: #ffffff;
+  --status-approved-border: #005bbb;
+  --status-on-way-bg: #b8860b;
+  --status-on-way-color: #ffffff;
+  --status-on-way-border: #b8860b;
+  --status-courier-bg: transparent;
+  --status-courier-color: var(--color-text-secondary);
+  --status-courier-border: var(--color-border-subtle);
+
+  --color-notification-success: #0f7a2f;
+  --color-notification-error: #500000;
+  --color-notification-warning: #b8860b;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* frontend/public/images/фонСветлый.png */
+  --bg-page: url("/images/фонСетлый.png");
+  --bg-home: url("/images/фонСетлый.png");
+
+  --color-text: #000000;
+  --color-text-secondary: #1a1a1a;
+  --color-text-muted: #333333;
+
+  --color-surface: #f0eaea;
+  --color-surface-elevated: #ebe4e4;
+  --color-surface-card: #f2eded;
+  --color-surface-input: #f2eded;
+  --color-surface-modal: #f2eded;
+  --color-payment-card: #e8d8d8;
+  --color-content: rgba(242, 237, 237, 0.94);
+  --color-content-translucent: rgba(242, 237, 237, 0.88);
+
+  --color-border: #d9caca;
+  --color-border-subtle: #e5d8d8;
+  --color-border-accent: #840404;
+  --color-border-card: #c49090;
+
+  --color-primary: #6e0808;
+  --color-primary-hover: #840404;
+  --color-accent: #840404;
+  --color-accent-soft: rgba(132, 4, 4, 0.12);
+
+  --color-menu-bg: rgba(242, 237, 237, 0.95);
+  --color-header-text: #000000;
+  --color-burger: #000000;
+  --color-footer-bg: #ebe4e4;
+  --color-overlay: rgba(0, 0, 0, 0.45);
+  --color-search-bg: rgba(242, 237, 237, 0.88);
+  --color-search-text: #000000;
+  --color-placeholder: #7a6060;
+  --color-cancel: #b8a8a8;
+  --color-panel: rgba(242, 237, 237, 0.82);
+  --color-panel-form: rgba(242, 237, 237, 0.9);
+  --color-panel-input: #f2eded;
+  --color-panel-input-border: #e5d8d8;
+  --color-category-btn: #e8dcdc;
+  --color-category-btn-hover: #d9caca;
+  --color-category-text: #4e0505;
+  --text-shadow-home: none;
+  --text-shadow-default: none;
+
+  --shadow-menu: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+  --color-chat-bg: #f2eded;
+  --color-chat-header: #f2eded;
+  --color-chat-border: #e5d8d8;
+  --color-chat-item: #f2eded;
+  --color-chat-item-hover: #ebe4e4;
+  --color-chat-item-active: #e5d8d8;
+  --color-chat-their-msg: #f2eded;
+  --color-chat-their-text: #000000;
+  --color-chat-input-bg: #f2eded;
+  --color-chat-scrollbar-track: #f0e8e8;
+  --color-chat-scrollbar-thumb: #d9caca;
+
+  --status-new-bg: transparent;
+  --status-new-color: #bd0101;
+  --status-new-border: #840404;
+  --status-accepted-bg: transparent;
+  --status-accepted-color: #bdaa01;
+  --status-accepted-border: #9c8d00;
+  --status-delivered-bg: transparent;
+  --status-delivered-color: #009400;
+  --status-delivered-border: #007700;
+  --status-approved-bg: transparent;
+  --status-approved-color: #0123b8;
+  --status-approved-border: #005bbb;
+  --status-on-way-bg: transparent;
+  --status-on-way-color: #0123b8;
+  --status-on-way-border: rgb(1, 73, 168);
+  --status-courier-bg: transparent;
+  --status-courier-color: var(--color-text-secondary);
+  --status-courier-border: var(--color-border-subtle);
+
+  --color-notification-success: #0a6b28;
+  --color-notification-error: #840404;
+  --color-notification-warning: #9a7209;
+}

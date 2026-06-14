@@ -1,0 +1,71 @@
+.block {
+  color: var(--color-text);
+  font-family: "Geologica";
+}
+
+.subtitle {
+  font-size: calc(22 * var(--r));
+  margin-bottom: calc(15 * var(--r));
+  font-family: "Jomolhari";
+}
+
+.empty {
+  margin-top: calc(20 * var(--r));
+  font-size: calc(16 * var(--r));
+  opacity: 0.7;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(15 * var(--r));
+}
+
+.card {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-subtle);
+  padding: calc(18 * var(--r));
+  border-radius: calc(8 * var(--r));
+}
+
+.card p {
+  margin: calc(4 * var(--r)) 0;
+  font-size: calc(16 * var(--r));
+}
+
+.buttons {
+  margin-top: calc(12 * var(--r));
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--r));
+}
+
+.onWay {
+  background: #840e0e;
+  padding: calc(10 * var(--r)) calc(16 * var(--r));
+  border-radius: calc(6 * var(--r));
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: calc(16 * var(--r));
+}
+
+.onWay:hover {
+  background: #a31212;
+}
+
+.delivered {
+  background: #0a6b1e;
+  padding: calc(10 * var(--r)) calc(16 * var(--r));
+  border-radius: calc(6 * var(--r));
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: calc(16 * var(--r));
+}
+
+.delivered:hover {
+  background: #0f8c2a;
+}

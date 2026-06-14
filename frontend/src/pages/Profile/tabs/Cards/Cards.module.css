@@ -1,0 +1,111 @@
+h2 {
+  font-family: "Jomolhari";
+  font-size: calc(24 * var(--r));
+}
+
+.add {
+  background-color: var(--color-primary);
+  font-family: "Geologica";
+  border: none;
+  padding: calc(6 * var(--r)) calc(12 * var(--r));
+  height: calc(40 * var(--r));
+  color: white;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  margin-top: calc(10 * var(--r));
+  font-size: calc(16 * var(--r));
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: calc(20 * var(--r));
+  margin-top: calc(20 * var(--r));
+}
+
+.card {
+  background-color: var(--color-payment-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-card);
+  width: calc(250 * var(--r));
+  max-width: 100%;
+  border-radius: calc(10 * var(--r));
+  padding: calc(20 * var(--r));
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+  font-size: calc(16 * var(--r));
+}
+
+.delete {
+  background: none;
+  font-family: "Geologica";
+  border: none;
+  color: rgb(167, 0, 0);
+  cursor: pointer;
+  margin-top: calc(30 * var(--r));
+  font-size: calc(16 * var(--r));
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-overlay);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: var(--color-surface-modal);
+  color: var(--color-text);
+  border: 1px solid var(--color-border-accent);
+  padding: calc(24 * var(--r)) calc(20 * var(--r));
+  border-radius: calc(12 * var(--r));
+  width: calc(320 * var(--r));
+  max-width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.modalText {
+  font-size: calc(18 * var(--r));
+  margin-bottom: calc(20 * var(--r));
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(10 * var(--r));
+}
+
+.modalYes {
+  background: #840404;
+  color: #fff;
+  border: none;
+  padding: calc(8 * var(--r)) calc(18 * var(--r));
+  border-radius: calc(8 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+}
+
+.modalNo {
+  background: #aaaaaa;
+  color: #fff;
+  border: none;
+  padding: calc(8 * var(--r)) calc(18 * var(--r));
+  border-radius: calc(8 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}

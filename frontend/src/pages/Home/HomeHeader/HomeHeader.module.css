@@ -1,0 +1,191 @@
+.header {
+  width: 100%;
+  background-image: url(/images/шапка.png);
+  background-position: center center;
+  background-size: cover;
+  padding-top: calc(60 * var(--r));
+}
+
+.container {
+  width: calc(1000 * var(--r));
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.verh {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.logo {
+  height: calc(90 * var(--r));
+  width: calc(135 * var(--r));
+  display: block;
+}
+
+.n {
+  width: calc(302 * var(--r));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.naz {
+  width: calc(284 * var(--r));
+  height: calc(84 * var(--r));
+}
+
+.na {
+  font-family: 'JonoIhari';
+  font-size: calc(55 * var(--r));
+  color: var(--color-header-text);
+}
+
+.adres {
+  font-family: 'JonoIhari';
+  font-size: calc(30 * var(--r));
+  color: rgba(255, 255, 255, 0);
+  text-align: center;
+  padding-bottom: calc(40 * var(--r));
+  margin-top: calc(330 * var(--r));
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.themeToggle {
+  margin-top: calc(30 * var(--r));
+  font-size: calc(13 * var(--r)) !important;
+  padding: calc(8 * var(--r)) calc(14 * var(--r)) !important;
+  border-radius: calc(20 * var(--r)) !important;
+}
+
+.menuWrap {
+  position: relative;
+  margin-top: calc(30 * var(--r));
+  margin-left: calc(12 * var(--r));
+}
+
+.burgerIcon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: calc(35 * var(--r));
+  height: calc(40 * var(--r));
+  position: relative;
+  z-index: 2;
+}
+
+.burgerIcon span {
+  display: block;
+  width: 100%;
+  height: calc(3 * var(--r));
+  background-color: var(--color-burger);
+  border-radius: calc(2 * var(--r));
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.activeLine1 {
+  transform: translateY(calc(9 * var(--r))) rotate(45deg);
+}
+
+.activeLine2 {
+  opacity: 0;
+}
+
+.activeLine3 {
+  transform: translateY(calc(-9 * var(--r))) rotate(-45deg);
+}
+
+.menu {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 8 * var(--r));
+  right: 0;
+  width: calc(250 * var(--r));
+  height: auto;
+  border-radius: calc(30 * var(--r));
+  background-color: var(--color-menu-bg);
+  display: none;
+  text-align: left;
+  padding-top: calc(16 * var(--r));
+  padding-bottom: calc(12 * var(--r));
+  z-index: 1;
+  box-shadow: var(--shadow-menu);
+}
+
+.menu.active {
+  display: block;
+}
+
+.menu li {
+  font-family: 'Geologica';
+  font-size: calc(20 * var(--r));
+  font-weight: bold;
+  color: var(--color-header-text);
+  padding: calc(10 * var(--r)) 0 calc(10 * var(--r)) calc(30 * var(--r));
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--color-header-text);
+  display: inline-block;
+  min-width: calc(64 * var(--r));
+  max-width: calc(130 * var(--r));
+  text-align: center;
+  border-radius: calc(8 * var(--r));
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu a:hover {
+  background-color: rgba(132, 14, 14, 0.9);
+  color: white;
+  transform: translateY(calc(-2 * var(--r)));
+  box-shadow: 0 calc(4 * var(--r)) calc(12 * var(--r)) rgba(0, 0, 0, 0.3);
+}
+
+.hoursLabel {
+  font-size: calc(15 * var(--r));
+}
+
+.active {
+  display: block;
+}
+
+.menuActive {
+  display: block;
+}
+
+.badge {
+  position: absolute;
+  top: calc(-6 * var(--r));
+  right: calc(-6 * var(--r));
+  background: red;
+  color: white;
+  font-size: calc(11 * var(--r));
+  padding: calc(2 * var(--r)) calc(5 * var(--r));
+  border-radius: 50%;
+  min-width: calc(16 * var(--r));
+  height: calc(16 * var(--r));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeSmall {
+  margin-left: calc(6 * var(--r));
+  background: red;
+  color: white;
+  font-size: calc(10 * var(--r));
+  padding: calc(2 * var(--r)) calc(5 * var(--r));
+  border-radius: 50%;
+}

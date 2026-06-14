@@ -1,0 +1,20 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+}
+
+.form input {
+  padding: calc(10 * var(--r));
+  border-radius: calc(8 * var(--r));
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-input);
+  color: var(--color-text);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: calc(16 * var(--r));
+}
+
+.form input::placeholder {
+  color: var(--color-text-muted);
+}
