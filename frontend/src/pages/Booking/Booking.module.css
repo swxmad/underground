@@ -324,22 +324,30 @@
     padding: 0 calc(16 * var(--r));
   }
 
-  .tableRow {
+  .hallMap {
     width: calc(1000 * var(--r));
     max-width: 100%;
-    justify-content: center;
-    gap: calc(12 * var(--r));
+    align-items: center;
+  }
+
+  .bar,
+  .pesokImg,
+  .chillImg {
+    width: calc(500 * var(--r));
+    height: calc(400 * var(--r));
+  }
+
+  .tableRow {
+    flex-direction: column;
+    align-items: center;
+    width: calc(1000 * var(--r));
+    max-width: 100%;
+    gap: calc(20 * var(--r));
   }
 
   .zone {
-    flex: 1 1 0;
-    min-width: 0;
-  }
-
-  .pesokImg,
-  .chillImg {
-    width: 100%;
-    height: calc(400 * var(--r));
+    width: auto;
+    align-items: center;
   }
 
   .tablePicker {
