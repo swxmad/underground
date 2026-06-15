@@ -1,6 +1,6 @@
 import { User } from "../models/User.js";
 import { Chat } from "../models/Chat.js";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 // регистрация

@@ -1,6 +1,6 @@
 import { User } from "../models/User.js";
 import { Booking } from "../models/Booking.js";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { Op } from "sequelize";
 
 // Получить всех пользователей + активные брони

@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import { sequelize } from "./config/db.js";
 import { User } from "./models/User.js";
 import authRoutes from "./routes/auth.router.js";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import eventRoutes from "./routes/event.router.js";
 import kitchenRoutes from "./routes/kitchenRoutes.js";
 import barRoutes from "./routes/barRoutes.js";
@@ -30,10 +30,17 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors());
+// -------------------- CORS --------------------
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true
+  })
+);
+
 app.use(express.json());
 
-// 🔥 ВАЖНО: authMiddleware должен быть ДО роутов, но НЕ глобально
+// -------------------- ROUTES --------------------
 app.use("/api/auth", authRoutes);
 app.use("/api/events", authMiddleware, eventRoutes);
 app.use("/uploads", express.static("uploads"));
@@ -47,7 +54,7 @@ app.use("/api/cart", authMiddleware, cartRoutes);
 app.use("/api/couriers", authMiddleware, courierRoutes);
 app.use("/api/courier/orders", authMiddleware, courierOrdersRoutes);
 
-// 🔥 Прокидываем io в req
+// Прокидываем io в req
 app.use(
   "/api/chats",
   authMiddleware,
@@ -58,18 +65,18 @@ app.use(
   chatRoutes
 );
 
-// 🔥 Получение чата с админом
+// Чат с админом
 app.get("/api/chats/admin", authMiddleware, getAdminChat);
 
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
 
-const PORT = process.env.PORT || 5000;
-
+// -------------------- SOCKET.IO --------------------
 const io = new Server(server, {
   cors: {
-    origin: "*"
+    origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST"]
   }
 });
 
@@ -79,10 +86,8 @@ io.on("connection", (socket) => {
   socket.on("joinChat", (chatId) => {
     if (!chatId) return;
     socket.join(`chat_${chatId}`);
-    console.log("JOINED ROOM:", `chat_${chatId}`);
   });
 
-  // прочитано
   socket.on("readMessages", async ({ chatId, readerId }) => {
     if (!chatId) return;
 
@@ -113,6 +118,9 @@ io.on("connection", (socket) => {
   });
 });
 
+// -------------------- START SERVER --------------------
+const PORT = process.env.PORT || 5000;
+
 const start = async () => {
   try {
     console.log("⏳ Подключение к базе данных...");
@@ -127,7 +135,7 @@ const start = async () => {
     await sequelize.sync();
     console.log("📦 Модели синхронизированы");
 
-    // Авто‑создание администратора
+    // Создание администратора
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminPassword = process.env.ADMIN_PASSWORD || "Admin123_";
 

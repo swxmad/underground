@@ -1,5 +1,5 @@
 import { User } from "../models/User.js";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { sendMail } from "../services/emailService.js";
 import crypto from "crypto";
 import jwt from "jsonwebtoken";
