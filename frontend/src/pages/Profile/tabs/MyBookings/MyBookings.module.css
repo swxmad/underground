@@ -52,11 +52,33 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .list {
-    flex-direction: column;
+  h2 {
+    font-size: 26px;
+  }
+
+  .empty {
+    font-size: 18px;
+    margin-top: 24px;
   }
 
   .card {
     width: 100%;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .status {
+    font-size: 18px;
+  }
+
+  .rejectReason {
+    font-size: 16px;
+  }
+
+  .list {
+    flex-direction: column;
+    gap: 16px;
   }
 }

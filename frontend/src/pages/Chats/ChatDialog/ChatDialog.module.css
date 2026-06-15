@@ -124,8 +124,30 @@
     border-left: none;
   }
 
+  .header h3 {
+    font-size: 20px;
+  }
+
   .myMessage,
   .theirMessage {
     max-width: 85%;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 12px 14px;
+  }
+
+  .checks {
+    font-size: 14px;
+  }
+
+  .inputArea input {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .inputArea button {
+    font-size: 16px;
+    padding: 12px 18px;
+    height: 44px;
   }
 }

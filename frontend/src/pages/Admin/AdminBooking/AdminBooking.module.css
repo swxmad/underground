@@ -83,12 +83,63 @@ h2 {
   margin-top: calc(5 * var(--r));
 }
 
+.pending h3 {
+  font-family: "Jomolhari";
+  font-size: calc(20 * var(--r));
+  margin-bottom: calc(10 * var(--r));
+}
+
+.date {
+  font-family: "Geologica";
+  font-size: calc(18 * var(--r));
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
+  h2 {
+    font-size: 26px;
+  }
+
+  .pending h3 {
+    font-size: 22px;
+  }
+
   .calendar {
-    gap: calc(15 * var(--r));
+    gap: 20px;
+  }
+
+  .arrow {
+    font-size: 24px;
+  }
+
+  .date {
+    font-size: 20px;
+  }
+
+  .stat p,
+  .card p,
+  .empty {
+    font-size: 18px;
+    line-height: 1.5;
   }
 
   .card {
     width: 100%;
+    font-size: 18px;
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .approve,
+  .reject {
+    font-size: 17px;
+    height: 44px;
+    padding: 10px 18px;
+    border-radius: 8px;
+  }
+
+  .buttons {
+    gap: 12px;
+    margin-top: 12px;
   }
 }

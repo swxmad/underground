@@ -3,213 +3,134 @@ h2 {
   font-size: calc(24 * var(--r));
 }
 
-.main {
+.mode {
+  margin-top: calc(15 * var(--r));
+  font-family: "Geologica";
+  font-size: calc(16 * var(--r));
+}
+
+.mode select {
+  display: block;
   width: 100%;
+  max-width: calc(500 * var(--r));
+  margin-top: calc(8 * var(--r));
+  padding: calc(10 * var(--r));
+  border-radius: calc(8 * var(--r));
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-surface-input);
+  color: var(--color-text);
+  font-size: calc(16 * var(--r));
+  font-family: "Geologica";
+  box-sizing: border-box;
 }
 
-.title {
-  font-family: "Jomolhari";
-  font-size: calc(24 * var(--r));
-  margin-bottom: calc(20 * var(--r));
+.addRow {
+  margin-top: calc(15 * var(--r));
 }
 
-.loading,
-.empty,
+.addBtn,
+.buttons button {
+  background-color: var(--color-primary);
+  font-family: "Geologica";
+  border: none;
+  padding: calc(6 * var(--r)) calc(12 * var(--r));
+  height: calc(40 * var(--r));
+  color: white;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--r));
+  margin-top: calc(15 * var(--r));
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: calc(15 * var(--r));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: calc(10 * var(--r));
+  border-radius: calc(8 * var(--r));
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--r));
+}
+
+.fio {
+  font-size: calc(14 * var(--r));
+  padding-top: calc(5 * var(--r));
+  margin: 0;
+}
+
+.fullname {
+  font-size: calc(18 * var(--r));
+  font-weight: bold;
+  margin: 0;
+}
+
 .notAuth {
   font-size: calc(20 * var(--r));
   text-align: center;
   margin-top: calc(40 * var(--r));
 }
 
-.ordersList {
-  display: flex;
-  flex-direction: column;
-  gap: calc(25 * var(--r));
-}
-
-.orderCard {
-  border: 1px solid var(--color-border-card);
-  background: var(--color-surface-card);
-  color: var(--color-text);
-  padding: calc(20 * var(--r));
-  border-radius: calc(15 * var(--r));
-}
-
-.orderHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: calc(10 * var(--r));
-  flex-wrap: wrap;
-}
-
-.orderHeader h3 {
-  font-size: calc(20 * var(--r));
-}
-
-.date {
-  font-size: calc(14 * var(--r));
-  opacity: 0.8;
-}
-
-.status {
-  padding: calc(6 * var(--r)) calc(15 * var(--r));
-  border-radius: calc(8 * var(--r));
-  font-size: calc(12 * var(--r));
-}
-
-.status.new {
-  border: 1px solid #840404;
-  color: #bd0101;
-}
-
-.status.accepted {
-  border: 1px solid #9c8d00;
-  color: #bdaa01;
-}
-
-.status.delivered {
-  border: 1px solid #007700;
-  color: #009400;
-}
-
-.status.on_way {
-  border: 1px solid rgb(1, 73, 168);
-  color: #0123b8;
-}
-
-.status.approved {
-  border: 1px solid #6d003c;
-  color: #86004a;
-}
-
-.status.ready_for_courier {
-  border: 1px solid var(--color-border-subtle);
-}
-
-.userInfo {
-  margin-top: calc(10 * var(--r));
-  opacity: 0.8;
-  font-size: calc(16 * var(--r));
-}
-
-.items {
-  margin-top: calc(15 * var(--r));
-}
-
-.itemRow {
-  display: flex;
-  align-items: center;
-  gap: calc(15 * var(--r));
-  margin-bottom: calc(12 * var(--r));
-}
-
-.itemRow img {
-  width: calc(70 * var(--r));
-  height: calc(55 * var(--r));
-  object-fit: cover;
-  border-radius: calc(10 * var(--r));
-}
-
-.itemInfo {
-  flex: 1;
-}
-
-.itemTitle {
-  font-size: calc(18 * var(--r));
-}
-
-.itemWeight {
-  font-size: calc(14 * var(--r));
-  opacity: 0.7;
-}
-
-.itemCount,
-.itemPrice {
-  font-size: calc(16 * var(--r));
-}
-
-.total {
-  margin-top: calc(15 * var(--r));
-  font-size: calc(20 * var(--r));
-  font-weight: bold;
-}
-
-.addressBlock {
-  margin-top: calc(15 * var(--r));
-  font-size: calc(16 * var(--r));
-}
-
-.addressBlock h4 {
-  font-size: calc(18 * var(--r));
-  margin-bottom: calc(6 * var(--r));
-}
-
-.utensils {
-  margin-top: calc(10 * var(--r));
-  font-size: calc(16 * var(--r));
-}
-
-.actions {
-  margin-top: calc(20 * var(--r));
-  display: flex;
-  flex-wrap: wrap;
-  gap: calc(15 * var(--r));
-}
-
-.acceptBtn,
-.deliverBtn {
-  padding: calc(10 * var(--r)) calc(20 * var(--r));
-  border: none;
-  border-radius: calc(10 * var(--r));
-  cursor: pointer;
-  font-size: calc(16 * var(--r));
-  font-family: "Geologica";
-  color: white;
-}
-
-.acceptBtn {
-  background: #c28a00;
-}
-
-.deliverBtn {
-  background: #0a8a0a;
-}
-
-.filterBlock {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: calc(12 * var(--r));
-  margin-bottom: calc(20 * var(--r));
-}
-
-.filterBlock input {
-  padding: calc(6 * var(--r)) calc(10 * var(--r));
-  border-radius: calc(6 * var(--r));
-  border: 1px solid var(--color-border-subtle);
-  background: var(--color-surface-input);
-  color: var(--color-text);
-  font-size: calc(14 * var(--r));
-}
-
-.actions button {
-  background: var(--color-primary);
-  border: none;
-  padding: calc(10 * var(--r)) calc(15 * var(--r));
-  border-radius: calc(6 * var(--r));
-  color: white;
-  cursor: pointer;
-  font-size: calc(16 * var(--r));
-}
-
 @media (max-width: 768px) {
-  .orderHeader {
-    flex-direction: column;
-    align-items: flex-start;
+  h2 {
+    font-size: 26px;
   }
 
-  .itemRow {
-    flex-wrap: wrap;
+  .mode {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .mode select {
+    font-size: 16px;
+    height: 44px;
+    max-width: 100%;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .fullname {
+    font-size: 20px;
+  }
+
+  .fio {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .buttons {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .addBtn,
+  .buttons button {
+    font-size: 17px;
+    height: 44px;
+    padding: 10px 18px;
+    border-radius: 8px;
+  }
+
+  .notAuth {
+    font-size: 18px;
+    margin-top: 32px;
   }
 }

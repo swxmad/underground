@@ -77,7 +77,7 @@
   .page {
     flex-direction: column;
     height: auto;
-    min-height: calc(500 * var(--r));
+    min-height: 420px;
   }
 
   .sidebar {
@@ -86,10 +86,29 @@
     border-right: none;
     border-bottom: 1px solid var(--color-chat-border);
     padding-right: 0;
-    max-height: calc(300 * var(--r));
+    max-height: 280px;
+  }
+
+  .sidebar h2 {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+
+  .search {
+    font-size: 16px;
+    height: 44px;
+    margin-bottom: 14px;
+  }
+
+  .empty {
+    font-size: 18px;
+  }
+
+  .placeholder {
+    font-size: 18px;
   }
 
   .dialog {
-    min-height: calc(350 * var(--r));
+    min-height: 320px;
   }
 }
