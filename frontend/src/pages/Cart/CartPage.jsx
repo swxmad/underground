@@ -7,7 +7,7 @@ import Footer from "../../components/Footer/Footer";
 import { useCart } from "../../context/CartContext";
 import { useNotification } from "../../components/Notifications/NotificationProvider";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const CartPage = () => {
   const { cart, addToCart, decrease, removeFromCart, clearCart, totalPrice } =

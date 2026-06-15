@@ -3,7 +3,7 @@ import { useNotification } from "../../../components/Notifications/NotificationP
 import ProfileInfo from "../../Profile/tabs/ProfileInfo/ProfileInfo";
 import profileStyles from "../../Profile/tabs/ProfileInfo/ProfileInfo.module.css";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://underground-server.onrender.com/api/auth";
 
 const AdminProfile = () => {
   const { showNotification } = useNotification();

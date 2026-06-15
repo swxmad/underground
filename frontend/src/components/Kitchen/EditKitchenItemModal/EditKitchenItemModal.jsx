@@ -24,7 +24,7 @@ const EditKitchenItemModal = ({ item, onClose, onSuccess }) => {
     formData.append("isActive", isActive);
     if (image) formData.append("image", image);
 
-    const res = await fetch(`http://localhost:5000/api/kitchen/${item.id}`, {
+    const res = await fetch(`https://underground-server.onrender.com/api/kitchen/${item.id}`, {
       method: "PUT",
       body: formData,
     });

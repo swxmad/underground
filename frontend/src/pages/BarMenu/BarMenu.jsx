@@ -13,7 +13,7 @@ import EditBarItemModal from "../../components/Bar/EditBarItemModal/EditBarItemM
 
 import { useCart } from "../../context/CartContext";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const BarMenu = ({ unreadChats }) => {
   const [search, setSearch] = useState("");

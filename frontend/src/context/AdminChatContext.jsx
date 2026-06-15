@@ -4,7 +4,7 @@ import { socket } from "../socket";
 const AdminChatContext = createContext();
 export const useAdminChat = () => useContext(AdminChatContext);
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 export const AdminChatProvider = ({ children }) => {
   const [unreadChats, setUnreadChats] = useState(0);

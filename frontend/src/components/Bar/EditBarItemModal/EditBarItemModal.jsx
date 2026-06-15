@@ -56,7 +56,7 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
       formData.append("price", drinkPrice);
     }
 
-    const res = await fetch(`http://localhost:5000/api/bar/${item.id}`, {
+    const res = await fetch(`https://underground-server.onrender.com/api/bar/${item.id}`, {
       method: "PUT",
       body: formData,
     });

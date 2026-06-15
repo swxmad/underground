@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./ChatDialog.module.css";
 import { socket } from "../../../socket";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const ChatDialog = ({ chat, user, onRead }) => {
   const token = localStorage.getItem("token");

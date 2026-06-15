@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./AddCardModal.module.css";
 import { useNotification } from "../../../../components/Notifications/NotificationProvider";
 
-const API_URL = "http://localhost:5000/api/cards";
+const API_URL = "https://underground-server.onrender.com/api/cards";
 
 const AddCardModal = ({ onClose, onAdd }) => {
   const { showNotification } = useNotification();

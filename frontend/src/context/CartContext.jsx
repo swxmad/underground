@@ -5,7 +5,7 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const API = "http://localhost:5000/api/cart";
+  const API = "https://underground-server.onrender.com/api/cart";
   const token = localStorage.getItem("token");
 
   const authHeaders = token

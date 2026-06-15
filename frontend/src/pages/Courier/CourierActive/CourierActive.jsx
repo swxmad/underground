@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "../../Admin/AdminOrders/AdminOrders.module.css";
 import { useNotification } from "../../../components/Notifications/NotificationProvider";
 
-const API_URL = "http://localhost:5000/api/courier/orders";
+const API_URL = "https://underground-server.onrender.com/api/courier/orders";
 
 const CourierActive = () => {
   const [orders, setOrders] = useState([]);

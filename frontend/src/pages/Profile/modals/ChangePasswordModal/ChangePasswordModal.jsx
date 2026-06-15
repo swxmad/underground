@@ -3,7 +3,7 @@ import styles from "./ChangePasswordModal.module.css";
 import { useNotification } from "../../../../components/Notifications/NotificationProvider";
 import PasswordInput from "../../../../components/Password/PasswordInput";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://underground-server.onrender.com/api/auth";
 
 const ChangePasswordModal = ({ onClose }) => {
   const { showNotification } = useNotification();

@@ -50,7 +50,7 @@ const AddEventModal = ({ onClose, onSuccess, onError }) => {
 
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:5000/api/events", {
+    const res = await fetch("https://underground-server.onrender.com/api/events", {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,

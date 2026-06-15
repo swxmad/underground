@@ -8,7 +8,7 @@ import CourierPassword from "./CourierPassword/CourierPassword";
 import CourierDelete from "./CourierDelete/CourierDelete";
 import CourierAdd from "./CourierAdd/CourierAdd";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const AdminCouriers = () => {
   const { showNotification } = useNotification();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./AdminOrders.module.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);

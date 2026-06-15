@@ -4,7 +4,7 @@ import ChatListItem from "./ChatListItem/ChatListItem";
 import ChatDialog from "./ChatDialog/ChatDialog";
 import { socket } from "../../socket";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const Chats = ({ onUnreadChange }) => {
   const token = localStorage.getItem("token");

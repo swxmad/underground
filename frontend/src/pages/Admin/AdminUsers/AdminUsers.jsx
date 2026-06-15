@@ -3,7 +3,7 @@ import styles from "./AdminUsers.module.css";
 import { useNotification } from "../../../components/Notifications/NotificationProvider";
 import PasswordInput from "../../../components/Password/PasswordInput";
 
-const API_URL = "http://localhost:5000/api/admin";
+const API_URL = "https://underground-server.onrender.com/api/admin";
 
 const AdminUsers = () => {
   const { showNotification } = useNotification();

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./EditProfileModal.module.css";
 import { useNotification } from "../../../../components/Notifications/NotificationProvider";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://underground-server.onrender.com/api/auth";
 
 const EditProfileModal = ({ user, onClose, onSave }) => {
   const { showNotification } = useNotification(); // ✔ Хук внутри компонента

@@ -9,7 +9,7 @@ import AdminOrders from "./AdminOrders/AdminOrders";
 import AdminCouriers from "./AdminCouriers/AdminCouriers";
 import Chats from "../Chats/Chats";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const AdminDashboard = () => {
   const [tab, setTab] = useState("profile");

@@ -5,7 +5,7 @@ const RejectModal = ({ bookingId, onClose, onSuccess }) => {
   const [reason, setReason] = useState("");
 
   const handleSubmit = async () => {
-    const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}/reject`, {
+    const res = await fetch(`https://underground-server.onrender.com/api/bookings/${bookingId}/reject`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ reason }),

@@ -3,7 +3,7 @@ import AddCardModal from "../../modals/AddCardModal/AddCardModal";
 import { useNotification } from "../../../../components/Notifications/NotificationProvider";
 import styles from "./Cards.module.css";
 
-const API_URL = "http://localhost:5000/api/cards";
+const API_URL = "https://underground-server.onrender.com/api/cards";
 
 const ConfirmDeleteCardModal = ({ onClose, onConfirm }) => {
   return (

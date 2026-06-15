@@ -5,7 +5,7 @@ import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 import PasswordInput from "../../../components/Password/PasswordInput";
 
-const API_URL = "http://localhost:5000/api/couriers";
+const API_URL = "https://underground-server.onrender.com/api/couriers";
 
 const CourierActivate = () => {
   const { token } = useParams();

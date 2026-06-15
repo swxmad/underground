@@ -5,7 +5,7 @@ import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 import PasswordInput from "../../../components/Password/PasswordInput";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://underground-server.onrender.com/api/auth";
 
 const Register = () => {
   const [form, setForm] = useState({

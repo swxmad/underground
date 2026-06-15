@@ -7,7 +7,7 @@ import EditEventModal from "../../components/Event/EditEventModal/EditEventModal
 import DeleteConfirm from "../../components/Event/DeleteConfirm/DeleteConfirm";
 
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://underground-server.onrender.com/api";
 
 const Home = ({ unreadChats }) => {
   const aboutImagesRef = useRef([]);

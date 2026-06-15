@@ -3,7 +3,7 @@ import styles from "./AdminBooking.module.css";
 import { useNotification } from "../../../components/Notifications/NotificationProvider";
 import RejectModal from "./RejectModal/RejectModal";
 
-const API_URL = "http://localhost:5000/api/admin";
+const API_URL = "https://underground-server.onrender.com/api/admin";
 
 const AdminBookings = () => {
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./MyBookings.module.css";
 import { useNotification } from "../../../../components/Notifications/NotificationProvider";
 
-const API_URL = "http://localhost:5000/api/bookings";
+const API_URL = "https://underground-server.onrender.com/api/bookings";
 
 const MyBookings = () => {
   const { showNotification } = useNotification();
