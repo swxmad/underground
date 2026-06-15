@@ -193,8 +193,6 @@ const Booking = ({ unreadChats }) => {
       <main className={styles.main}>
         <div className={styles.container}>
           <section className={styles.hallSection}>
-            <p className={styles.hallHint}>Схема зала — для ориентира</p>
-
             <div className={styles.hallMap}>
               <div className={styles.bar} aria-hidden="true" />
 
@@ -216,12 +214,6 @@ const Booking = ({ unreadChats }) => {
             <section className={styles.tablePicker}>
               <p className={styles.tablePickerTitle}>Выбор стола</p>
 
-              {!hasDateTime && (
-                <p className={styles.tablePickerHint}>
-                  Укажите дату и время в форме ниже — покажем, какие столы заняты
-                </p>
-              )}
-
               {hasDateTime && (
                 <div className={styles.availabilitySummary}>
                   <span className={styles.availabilityDate}>
@@ -236,21 +228,6 @@ const Booking = ({ unreadChats }) => {
                   )}
                 </div>
               )}
-
-              <div className={styles.tablePickerLegend}>
-                <span className={styles.legendItem}>
-                  <span className={`${styles.legendDot} ${styles.legendFree}`} />
-                  Свободен
-                </span>
-                <span className={styles.legendItem}>
-                  <span className={`${styles.legendDot} ${styles.legendBusy}`} />
-                  Занят
-                </span>
-                <span className={styles.legendItem}>
-                  <span className={`${styles.legendDot} ${styles.legendSelected}`} />
-                  Выбран
-                </span>
-              </div>
 
               {TABLE_ZONES.map((zone) => (
                 <div key={zone.id} className={styles.tableZone}>
