@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./MyBookings.module.css";
 import { useNotification } from "../../../../components/Notifications/NotificationProvider";
+import { useRealtime } from "../../../../hooks/useRealtime";
 
 const API_URL = "https://underground-server.onrender.com/api/bookings";
 
@@ -8,7 +9,7 @@ const MyBookings = () => {
   const { showNotification } = useNotification();
   const [bookings, setBookings] = useState([]);
 
-  useEffect(() => {
+  const loadBookings = useCallback(() => {
     const token = localStorage.getItem("token");
 
     fetch(`${API_URL}/my`, {
@@ -17,7 +18,13 @@ const MyBookings = () => {
       .then((res) => res.json())
       .then((data) => setBookings(data))
       .catch(() => showNotification("error", "Ошибка загрузки бронирований"));
-  }, []);
+  }, [showNotification]);
+
+  useEffect(() => {
+    loadBookings();
+  }, [loadBookings]);
+
+  useRealtime(["bookingCreated", "bookingUpdated"], loadBookings);
 
   const statusText = {
     pending: "На рассмотрении",

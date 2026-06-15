@@ -1,5 +1,6 @@
 import { Order } from "../models/Order.js";
 import { User } from "../models/User.js";
+import { emitOrderUpdated } from "../utils/realtime.js";
 
 // ------------------------------------------------------
 // 1. Доступные заказы (которые никто не взял)
@@ -52,9 +53,16 @@ export const takeOrder = async (req, res) => {
         {
           model: User,
           attributes: ["fullname"]
+        },
+        {
+          model: User,
+          as: "Courier",
+          attributes: ["fullname"],
         }
       ]
     });
+
+    emitOrderUpdated(req.io, fullOrder);
 
     res.json({
       message: "Заказ успешно взят",
@@ -122,7 +130,16 @@ export const updateOrderStatus = async (req, res) => {
     order.status = status;
     await order.save();
 
-    res.json({ message: "Статус обновлён", order });
+    const fullOrder = await Order.findByPk(orderId, {
+      include: [
+        { model: User, attributes: ["fullname"] },
+        { model: User, as: "Courier", attributes: ["fullname"] },
+      ],
+    });
+
+    emitOrderUpdated(req.io, fullOrder || order);
+
+    res.json({ message: "Статус обновлён", order: fullOrder || order });
   } catch (err) {
     res.status(500).json({ message: "Ошибка обновления статуса" });
   }

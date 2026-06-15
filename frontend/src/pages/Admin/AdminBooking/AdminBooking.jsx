@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./AdminBooking.module.css";
 import { useNotification } from "../../../components/Notifications/NotificationProvider";
 import RejectModal from "./RejectModal/RejectModal";
+import { useRealtime } from "../../../hooks/useRealtime";
 
 const API_URL = "https://underground-server.onrender.com/api/admin";
 
@@ -68,6 +69,11 @@ const AdminBookings = () => {
       .catch(() => showNotification("error", "Ошибка загрузки заявок"));
   };
 
+  const refreshBookings = useCallback(() => {
+    loadPending();
+    loadDayBookings();
+  }, [date]);
+
   useEffect(() => {
     loadDayBookings();
   }, [date]);
@@ -75,6 +81,8 @@ const AdminBookings = () => {
   useEffect(() => {
     loadPending();
   }, []);
+
+  useRealtime(["bookingCreated", "bookingUpdated"], refreshBookings);
 
   const updateStatus = async (id, status) => {
     const token = localStorage.getItem("token");

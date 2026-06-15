@@ -1,6 +1,10 @@
 import { Order } from "../models/Order.js";
 import { Op } from "sequelize";
 import { User } from "../models/User.js";
+import {
+  emitOrderCreated,
+  emitOrderUpdated,
+} from "../utils/realtime.js";
 
 export const createOrder = async (req, res) => {
   try {
@@ -35,6 +39,8 @@ export const createOrder = async (req, res) => {
       payment,
       status: "new",
     });
+
+    emitOrderCreated(req.io, order);
 
     res.json({ message: "Заказ создан", order });
   } catch (err) {
@@ -142,7 +148,16 @@ export const updateOrderStatus = async (req, res) => {
 
     await order.save();
 
-    res.json({ message: "Статус обновлён", order });
+    const fullOrder = await Order.findByPk(id, {
+      include: [
+        { model: User, attributes: ["fullname"] },
+        { model: User, as: "Courier", attributes: ["fullname"] },
+      ],
+    });
+
+    emitOrderUpdated(req.io, fullOrder || order);
+
+    res.json({ message: "Статус обновлён", order: fullOrder || order });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Ошибка обновления статуса" });

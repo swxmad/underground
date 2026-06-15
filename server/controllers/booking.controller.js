@@ -1,6 +1,10 @@
 import { Booking } from "../models/Booking.js";
 import { User } from "../models/User.js";
 import { sendMail } from "../services/emailService.js";
+import {
+  emitBookingCreated,
+  emitBookingUpdated,
+} from "../utils/realtime.js";
 
 export const createBooking = async (req, res) => {
   try {
@@ -47,6 +51,8 @@ export const createBooking = async (req, res) => {
       cardId,
       status: "pending"
     });
+
+    emitBookingCreated(req.io, booking);
 
     return res.json({ message: "Бронь создана", booking });
   } catch (e) {
@@ -121,6 +127,8 @@ export const rejectBooking = async (req, res) => {
       status: "rejected",
       rejectReason: reason || null,
     });
+
+    emitBookingUpdated(req.io, booking);
 
     const user = await User.findByPk(booking.userId);
 

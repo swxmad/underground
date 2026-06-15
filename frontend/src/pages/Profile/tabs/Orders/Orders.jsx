@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./Orders.module.css";
 import { getImageUrl } from "../../../../utils/imageUrl";
+import { useRealtime } from "../../../../hooks/useRealtime";
 
 const API_URL = "https://underground-server.onrender.com/api";
 
@@ -13,55 +14,47 @@ const Orders = () => {
 
   const isAuthorized = !!user;
 
-  // -----------------------------
-  //  АВТО-ОБНОВЛЕНИЕ ЗАКАЗОВ
-  // -----------------------------
+  const fetchOrders = useCallback(async () => {
+    try {
+      const res = await fetch(`${API_URL}/orders/my`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      const sorted = [...data].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+
+      setOrders((prev) => {
+        const prevJSON = JSON.stringify(prev);
+        const newJSON = JSON.stringify(sorted);
+
+        if (prevJSON !== newJSON) {
+          const marked = sorted.map((o, i) => ({
+            ...o,
+            _updated: prev[i] && prev[i].status !== o.status,
+          }));
+          return marked;
+        }
+
+        return prev;
+      });
+    } catch (err) {
+      console.error("Ошибка загрузки заказов", err);
+    } finally {
+      setLoading(false);
+    }
+  }, [token]);
+
   useEffect(() => {
     if (!isAuthorized) return;
-
-    let interval;
-
-    const fetchOrders = async () => {
-      try {
-        const res = await fetch(`${API_URL}/orders/my`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const data = await res.json();
-
-        // сортировка: новые сверху
-        const sorted = [...data].sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-
-        setOrders((prev) => {
-          const prevJSON = JSON.stringify(prev);
-          const newJSON = JSON.stringify(sorted);
-
-          if (prevJSON !== newJSON) {
-            const marked = sorted.map((o, i) => ({
-              ...o,
-              _updated: prev[i] && prev[i].status !== o.status,
-            }));
-            return marked;
-          }
-
-          return prev;
-        });
-      } catch (err) {
-        console.error("Ошибка автообновления заказов", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchOrders();
-    interval = setInterval(fetchOrders, 5000);
+  }, [isAuthorized, fetchOrders]);
 
-    return () => clearInterval(interval);
-  }, [isAuthorized, token]);
+  useRealtime(["orderUpdated", "orderCreated"], fetchOrders);
 
   // -----------------------------
   //  ЕСЛИ ПОЛЬЗОВАТЕЛЬ НЕ АВТОРИЗОВАН

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "../../Admin/AdminOrders/AdminOrders.module.css";
 import { useNotification } from "../../../components/Notifications/NotificationProvider";
 import { getImageUrl } from "../../../utils/imageUrl";
+import { useRealtime } from "../../../hooks/useRealtime";
 
 const API_URL = "https://underground-server.onrender.com/api/courier/orders";
 
@@ -11,7 +12,7 @@ const CourierAvailable = () => {
   const { showNotification } = useNotification();
   const token = localStorage.getItem("token");
 
-  const loadOrders = async () => {
+  const loadOrders = useCallback(async () => {
     try {
       const res = await fetch(`${API_URL}/available`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -24,14 +25,13 @@ const CourierAvailable = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
 
   useEffect(() => {
     loadOrders();
+  }, [loadOrders]);
 
-    const interval = setInterval(loadOrders, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  useRealtime(["orderUpdated"], loadOrders);
 
   const takeOrder = async (id) => {
     try {

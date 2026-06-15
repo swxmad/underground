@@ -27,6 +27,7 @@ import { Op } from "sequelize";
 import { getAdminChat } from "./routes/chatWidgetRoutes.js";
 import { isCloudinaryEnabled } from "./config/cloudinary.js";
 import { formatImagesDeep } from "./utils/formatImage.js";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -47,6 +48,18 @@ if (isCloudinaryEnabled) {
 
 const app = express();
 const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: CLIENT_URL,
+    methods: ["GET", "POST"],
+  },
+});
+
+const attachIo = (req, res, next) => {
+  req.io = io;
+  next();
+};
 
 // -------------------- CORS --------------------
 app.use(
@@ -94,21 +107,18 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/kitchen", authMiddleware, kitchenRoutes);
 app.use("/api/bar", authMiddleware, barRoutes);
 app.use("/api/cards", authMiddleware, cardRoutes);
-app.use("/api/bookings", authMiddleware, bookingRoutes);
-app.use("/api/admin", authMiddleware, adminRoutes);
-app.use("/api/orders", authMiddleware, orderRoutes);
+app.use("/api/bookings", authMiddleware, attachIo, bookingRoutes);
+app.use("/api/admin", authMiddleware, attachIo, adminRoutes);
+app.use("/api/orders", authMiddleware, attachIo, orderRoutes);
 app.use("/api/cart", authMiddleware, cartRoutes);
 app.use("/api/couriers", authMiddleware, courierRoutes);
-app.use("/api/courier/orders", authMiddleware, courierOrdersRoutes);
+app.use("/api/courier/orders", authMiddleware, attachIo, courierOrdersRoutes);
 
 // Прокидываем io в req
 app.use(
   "/api/chats",
   authMiddleware,
-  (req, res, next) => {
-    req.io = io;
-    next();
-  },
+  attachIo,
   chatRoutes
 );
 
@@ -126,16 +136,24 @@ app.use((err, req, res, next) => {
   });
 });
 
-// -------------------- SOCKET.IO --------------------
-const io = new Server(server, {
-  cors: {
-    origin: CLIENT_URL,
-    methods: ["GET", "POST"],
-  },
-});
-
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
+
+  socket.on("joinRooms", async (token) => {
+    if (!token) return;
+
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET || "secret");
+      const user = await User.findByPk(decoded.id);
+      if (!user) return;
+
+      socket.join(`user_${user.id}`);
+      if (user.role === "admin") socket.join("admin");
+      if (user.role === "courier") socket.join("couriers");
+    } catch {
+      // invalid token — ignore
+    }
+  });
 
   socket.on("joinChat", (chatId) => {
     if (!chatId) return;

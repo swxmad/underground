@@ -19,7 +19,7 @@ import { CartProvider } from "./context/CartContext";
 
 import ChatWidget from "./components/ChatWidget/ChatWidget";
 
-import { socket } from "./socket";
+import { socket, joinRealtimeRooms } from "./socket";
 
 const API_URL = "https://underground-server.onrender.com/api";
 
@@ -45,6 +45,12 @@ const App = () => {
   // Загружаем при входе
   useEffect(() => {
     loadUnreadChats();
+    joinRealtimeRooms();
+
+    const onAuthChange = () => joinRealtimeRooms();
+    window.addEventListener("auth-changed", onAuthChange);
+
+    return () => window.removeEventListener("auth-changed", onAuthChange);
   }, []);
 
   // Обновляем при новых сообщениях

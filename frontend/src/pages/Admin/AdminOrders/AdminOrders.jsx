@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./AdminOrders.module.css";
 import { getImageUrl } from "../../../utils/imageUrl";
+import { useRealtime } from "../../../hooks/useRealtime";
 
 const API_URL = "https://underground-server.onrender.com/api";
 
@@ -17,7 +18,7 @@ const AdminOrders = () => {
   // -----------------------------
   // Загрузка заказов
   // -----------------------------
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     if (!isAdmin) return;
 
     setLoading(true);
@@ -35,7 +36,6 @@ const AdminOrders = () => {
 
       const data = await res.json();
 
-      // сортировка по статусу
       const statusOrder = ["new", "approved", "accepted", "on_way", "delivered"];
 
       const sorted = [...data].sort((a, b) => {
@@ -53,11 +53,13 @@ const AdminOrders = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [isAdmin, token, selectedDate]);
 
   useEffect(() => {
     fetchOrders();
-  }, [isAdmin, token, selectedDate]);
+  }, [fetchOrders]);
+
+  useRealtime(["orderCreated", "orderUpdated"], fetchOrders);
 
   // -----------------------------
   // Обновление статуса

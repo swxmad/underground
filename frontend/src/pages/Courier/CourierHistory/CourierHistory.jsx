@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "../../Admin/AdminOrders/AdminOrders.module.css";
 import { useNotification } from "../../../components/Notifications/NotificationProvider";
 import { getImageUrl } from "../../../utils/imageUrl";
+import { useRealtime } from "../../../hooks/useRealtime";
 
 const API_URL = "https://underground-server.onrender.com/api/courier/orders";
 
@@ -11,7 +12,7 @@ const CourierHistory = () => {
   const token = localStorage.getItem("token");
   const { showNotification } = useNotification();
 
-  const loadHistory = async () => {
+  const loadHistory = useCallback(async () => {
     try {
       const res = await fetch(`${API_URL}/history`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -24,11 +25,13 @@ const CourierHistory = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token, showNotification]);
 
   useEffect(() => {
     loadHistory();
-  }, []);
+  }, [loadHistory]);
+
+  useRealtime(["orderUpdated"], loadHistory);
 
   return (
     <main className={styles.main}>

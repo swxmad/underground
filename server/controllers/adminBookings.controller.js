@@ -1,4 +1,5 @@
 import { Booking } from "../models/Booking.js";
+import { emitBookingUpdated } from "../utils/realtime.js";
 
 // Получить бронирования на конкретную дату
 export const getBookingsByDate = async (req, res) => {
@@ -43,9 +44,17 @@ export const updateStatus = async (req, res) => {
       return res.status(400).json({ message: "Некорректный статус" });
     }
 
-    await Booking.update({ status }, { where: { id } });
+    const booking = await Booking.findByPk(id);
 
-    return res.json({ message: "Статус обновлён" });
+    if (!booking) {
+      return res.status(404).json({ message: "Бронь не найдена" });
+    }
+
+    await booking.update({ status });
+
+    emitBookingUpdated(req.io, booking);
+
+    return res.json({ message: "Статус обновлён", booking });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ message: "Ошибка обновления статуса" });
