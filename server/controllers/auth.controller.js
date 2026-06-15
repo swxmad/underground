@@ -15,7 +15,7 @@ export const register = async (req, res) => {
     if (existing)
       return res.status(400).json({ message: "Пользователь уже существует" });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcryptjs.hash(password, 10);
 
     const user = await User.create({
       fullname,
@@ -60,7 +60,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Неверный логин или пароль" });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Неверный логин или пароль" });
     }
@@ -136,10 +136,10 @@ export const changePassword = async (req, res) => {
     const user = await User.findByPk(id);
     if (!user) return res.status(404).json({ message: "Пользователь не найден" });
 
-    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    const isMatch = await bcryptjs.compare(oldPassword, user.password);
     if (!isMatch) return res.status(400).json({ message: "Старый пароль неверный" });
 
-    const hashed = await bcrypt.hash(newPassword, 10);
+    const hashed = await bcryptjs.hash(newPassword, 10);
     user.password = hashed;
     await user.save();
 
@@ -165,7 +165,7 @@ export const deleteAccount = async (req, res) => {
       return res.status(404).json({ message: "Пользователь не найден" });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Неверный пароль" });
     }

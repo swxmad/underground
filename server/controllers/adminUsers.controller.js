@@ -42,7 +42,7 @@ export const deleteUser = async (req, res) => {
     }
 
     // 2. Проверяем пароль администратора
-    const isValid = await bcrypt.compare(adminPassword, admin.password);
+    const isValid = await bcryptjs.compare(adminPassword, admin.password);
     if (!isValid) {
       return res.status(403).json({ message: "Неверный пароль администратора" });
     }
@@ -70,13 +70,13 @@ export const changeUserPassword = async (req, res) => {
     // Проверяем пароль админа
     const admin = await User.findByPk(req.user.id);
 
-    const valid = await bcrypt.compare(adminPassword, admin.password);
+    const valid = await bcryptjs.compare(adminPassword, admin.password);
     if (!valid) {
       return res.status(403).json({ message: "Неверный пароль администратора" });
     }
 
     // Хешируем новый пароль пользователя
-    const hashed = await bcrypt.hash(newPassword, 10);
+    const hashed = await bcryptjs.hash(newPassword, 10);
 
     await User.update(
       { password: hashed },

@@ -143,7 +143,7 @@ const start = async () => {
       const existingAdmin = await User.findOne({ where: { email: adminEmail } });
 
       if (!existingAdmin) {
-        const hashedPassword = await bcrypt.hash(adminPassword, 10);
+        const hashedPassword = await bcryptjs.hash(adminPassword, 10);
 
         await User.create({
           fullname: "Администратор",

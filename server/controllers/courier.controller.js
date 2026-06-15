@@ -39,7 +39,7 @@ export const createCourierLocal = async (req, res) => {
     if (existing)
       return res.status(400).json({ message: "Курьер с таким email уже существует" });
 
-    const hashed = await bcrypt.hash(password, 10);
+    const hashed = await bcryptjs.hash(password, 10);
 
     const courier = await User.create({
       fullname,
@@ -98,7 +98,7 @@ export const inviteCourier = async (req, res) => {
       existing.activationToken = token;
       await existing.save();
     } else {
-      const hashedPlaceholder = await bcrypt.hash(
+      const hashedPlaceholder = await bcryptjs.hash(
         crypto.randomBytes(32).toString("hex"),
         10
       );
@@ -202,7 +202,7 @@ export const activateCourier = async (req, res) => {
       return res.status(404).json({ message: "Ссылка недействительна или уже использована" });
     }
 
-    const hashed = await bcrypt.hash(password, 10);
+    const hashed = await bcryptjs.hash(password, 10);
 
     await courier.update({
       fullname,
@@ -286,7 +286,7 @@ export const changeCourierPassword = async (req, res) => {
     if (!newPassword)
       return res.status(400).json({ message: "Введите пароль" });
 
-    const hashed = await bcrypt.hash(newPassword, 10);
+    const hashed = await bcryptjs.hash(newPassword, 10);
 
     await User.update(
       { password: hashed },
