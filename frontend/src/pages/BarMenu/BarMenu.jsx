@@ -40,9 +40,9 @@ const BarMenu = ({ unreadChats }) => {
     return item ? item.count : 0;
   };
 
-  const handleAddDrink = (item) => {
-    addToCart(item);
-    showBanner("Добавлено в корзину");
+  const handleAddDrink = async (item) => {
+    const ok = await addToCart(item);
+    showBanner(ok ? "Добавлено в корзину" : "Не удалось добавить в корзину");
   };
 
   const handleDecreaseDrink = (id) => {

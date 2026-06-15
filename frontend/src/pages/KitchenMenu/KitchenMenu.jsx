@@ -77,9 +77,9 @@ const KitchenMenu = ({ unreadChats }) => {
   };
 
   // ⭐ добавить в корзину
-  const handleAddToCart = (item) => {
-    addToCart({ ...item, type: "kitchen" });
-    showBanner("Добавлено в корзину");
+  const handleAddToCart = async (item) => {
+    const ok = await addToCart({ ...item, type: "kitchen" });
+    showBanner(ok ? "Добавлено в корзину" : "Не удалось добавить в корзину");
   };
 
   // ⭐ уменьшить количество

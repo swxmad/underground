@@ -4,6 +4,7 @@ import styles from "./Login.module.css";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 import PasswordInput from "../../../components/Password/PasswordInput";
+import { notifyAuthChange } from "../../../utils/authEvents";
 
 const API_URL = "https://underground-server.onrender.com/api/auth";
 
@@ -38,6 +39,7 @@ const Login = () => {
       // сохраняем токен и пользователя
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      notifyAuthChange();
 
       // перенаправление по роли
       if (data.user.role === "admin") {

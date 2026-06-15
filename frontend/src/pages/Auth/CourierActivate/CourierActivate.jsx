@@ -4,6 +4,7 @@ import styles from "../Register/Register.module.css";
 import Header from "../../../components/Header/Header";
 import Footer from "../../../components/Footer/Footer";
 import PasswordInput from "../../../components/Password/PasswordInput";
+import { notifyAuthChange } from "../../../utils/authEvents";
 
 const API_URL = "https://underground-server.onrender.com/api/couriers";
 
@@ -167,6 +168,7 @@ const CourierActivate = () => {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
+      notifyAuthChange();
       navigate("/courier");
     } catch {
       setMessage("Ошибка соединения с сервером");

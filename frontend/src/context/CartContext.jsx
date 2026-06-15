@@ -1,79 +1,136 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 
 const CartContext = createContext();
+
+const API = "https://underground-server.onrender.com/api/cart";
+
+const getToken = () => localStorage.getItem("token");
+
+const getAuthHeaders = () => {
+  const token = getToken();
+  return token
+    ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+    : { "Content-Type": "application/json" };
+};
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const API = "https://underground-server.onrender.com/api/cart";
-  const token = localStorage.getItem("token");
-
-  const authHeaders = token
-    ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
-    : { "Content-Type": "application/json" };
-  const loadCart = async () => {
+  const loadCart = useCallback(async () => {
+    const token = getToken();
     if (!token) {
       setCart([]);
       return;
     }
+
     try {
       const res = await fetch(API, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      const data = await res.json();
+      if (!res.ok) return;
 
+      const data = await res.json();
       if (Array.isArray(data)) setCart(data);
     } catch (e) {
       console.error("Ошибка загрузки корзины:", e);
     }
-  };
+  }, []);
+
   useEffect(() => {
     loadCart();
-  }, [token]);
+
+    const onAuthChange = () => loadCart();
+    window.addEventListener("auth-changed", onAuthChange);
+    window.addEventListener("storage", onAuthChange);
+
+    return () => {
+      window.removeEventListener("auth-changed", onAuthChange);
+      window.removeEventListener("storage", onAuthChange);
+    };
+  }, [loadCart]);
+
   const addToCart = async (item) => {
-    if (!token) return;
+    if (!getToken()) return false;
 
-    await fetch(`${API}/add`, {
-      method: "POST",
-      headers: authHeaders,
-      body: JSON.stringify({
-        itemId: item.id,
-      }),
-    });
+    try {
+      const res = await fetch(`${API}/add`, {
+        method: "POST",
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ itemId: item.id }),
+      });
+      if (!res.ok) return false;
 
-    await loadCart();
+      await loadCart();
+      return true;
+    } catch (e) {
+      console.error("Ошибка добавления в корзину:", e);
+      return false;
+    }
   };
+
   const decrease = async (itemId) => {
-    if (!token) return;
+    if (!getToken()) return false;
 
-    await fetch(`${API}/decrease`, {
-      method: "PUT",
-      headers: authHeaders,
-      body: JSON.stringify({ itemId }),
-    });
+    try {
+      const res = await fetch(`${API}/decrease`, {
+        method: "PUT",
+        headers: getAuthHeaders(),
+        body: JSON.stringify({ itemId }),
+      });
+      if (!res.ok) return false;
 
-    await loadCart();
+      await loadCart();
+      return true;
+    } catch (e) {
+      console.error("Ошибка уменьшения количества:", e);
+      return false;
+    }
   };
+
   const removeFromCart = async (itemId) => {
-    if (!token) return;
+    const token = getToken();
+    if (!token) return false;
 
-    await fetch(`${API}/remove/${itemId}`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    try {
+      const res = await fetch(`${API}/remove/${itemId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) return false;
 
-    await loadCart();
+      await loadCart();
+      return true;
+    } catch (e) {
+      console.error("Ошибка удаления из корзины:", e);
+      return false;
+    }
   };
+
   const clearCart = async () => {
-    if (!token) return;
+    const token = getToken();
+    if (!token) return false;
 
-    await fetch(`${API}/clear`, {
-      method: "DELETE",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    try {
+      const res = await fetch(`${API}/clear`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) return false;
 
-    await loadCart();
+      await loadCart();
+      return true;
+    } catch (e) {
+      console.error("Ошибка очистки корзины:", e);
+      return false;
+    }
   };
+
   const totalPrice = cart.reduce((sum, item) => {
     const data = item?.Item;
 
@@ -82,6 +139,7 @@ export const CartProvider = ({ children }) => {
     }
     return sum + data.price * item.count;
   }, 0);
+
   return (
     <CartContext.Provider
       value={{
@@ -97,4 +155,5 @@ export const CartProvider = ({ children }) => {
     </CartContext.Provider>
   );
 };
+
 export const useCart = () => useContext(CartContext);
