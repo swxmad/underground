@@ -1,5 +1,3 @@
-@import "../../../../styles/modal-mobile.css";
-
 h2 {
   font-family: "Jomolhari";
   font-size: calc(24 * var(--r));
@@ -61,6 +59,8 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .modal {
@@ -69,15 +69,17 @@ h2 {
   border: 1px solid var(--color-border-accent);
   padding: calc(24 * var(--r)) calc(20 * var(--r));
   border-radius: calc(12 * var(--r));
-  width: calc(320 * var(--r));
-  max-width: 90%;
+  width: min(calc(320 * var(--r)), calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
   text-align: center;
   box-shadow: var(--shadow-card);
+  box-sizing: border-box;
 }
 
 .modalText {
   font-size: calc(18 * var(--r));
   margin-bottom: calc(20 * var(--r));
+  line-height: 1.45;
 }
 
 .modalButtons {
@@ -94,6 +96,7 @@ h2 {
   border-radius: calc(8 * var(--r));
   cursor: pointer;
   font-size: calc(16 * var(--r));
+  flex: 1;
 }
 
 .modalNo {
@@ -104,6 +107,7 @@ h2 {
   border-radius: calc(8 * var(--r));
   cursor: pointer;
   font-size: calc(16 * var(--r));
+  flex: 1;
 }
 
 @media (max-width: 768px) {
@@ -138,5 +142,16 @@ h2 {
   .delete {
     font-size: 17px;
     margin-top: 20px;
+  }
+
+  .modalText {
+    font-size: 16px;
+  }
+
+  .modalYes,
+  .modalNo {
+    font-size: 15px;
+    min-height: 42px;
+    padding: 10px 14px;
   }
 }
