@@ -6,8 +6,6 @@
   justify-content: center;
   align-items: center;
   z-index: 99999;
-  padding: 16px;
-  box-sizing: border-box;
 }
 
 .modal {
@@ -15,18 +13,16 @@
   padding: calc(20 * var(--r)) calc(25 * var(--r));
   border-radius: calc(10 * var(--r));
   border: calc(2 * var(--r)) solid var(--color-border);
-  width: min(calc(300 * var(--r)), calc(100vw - 32px));
-  max-width: calc(100vw - 32px);
+  width: calc(300 * var(--r));
+  max-width: 95vw;
   text-align: center;
   color: var(--color-text);
   box-shadow: var(--shadow-card);
-  box-sizing: border-box;
 }
 
 .text {
   font-size: calc(18 * var(--r));
   margin-bottom: calc(20 * var(--r));
-  line-height: 1.45;
 }
 
 .buttons {
@@ -43,7 +39,6 @@
   color: #fff;
   cursor: pointer;
   font-size: calc(14 * var(--r));
-  flex: 1;
 }
 
 .cancel {
@@ -54,18 +49,4 @@
   color: #fff;
   cursor: pointer;
   font-size: calc(14 * var(--r));
-  flex: 1;
-}
-
-@media (max-width: 768px) {
-  .text {
-    font-size: 16px;
-  }
-
-  .confirm,
-  .cancel {
-    font-size: 15px;
-    min-height: 42px;
-    padding: 10px 14px;
-  }
 }

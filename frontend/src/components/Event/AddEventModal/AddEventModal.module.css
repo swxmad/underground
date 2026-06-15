@@ -6,22 +6,21 @@
   justify-content: center;
   align-items: center;
   z-index: 999999;
-  padding: 16px;
-  box-sizing: border-box;
+  pointer-events: auto;
 }
 
 .modal {
   background: var(--color-surface-modal);
   padding: calc(25 * var(--r));
   border-radius: calc(10 * var(--r));
-  width: min(calc(350 * var(--r)), calc(100vw - 32px));
-  max-width: calc(100vw - 32px);
-  max-height: calc(100dvh - 32px);
-  overflow-y: auto;
+  width: calc(350 * var(--r));
+  max-width: 95vw;
   color: var(--color-text);
   border: calc(2 * var(--r)) solid var(--color-border);
+  position: relative;
+  z-index: 1000000;
+  pointer-events: auto;
   box-shadow: var(--shadow-card);
-  box-sizing: border-box;
 }
 
 .form {
@@ -37,8 +36,6 @@
   background: var(--color-surface-input);
   color: var(--color-text);
   font-size: calc(14 * var(--r));
-  box-sizing: border-box;
-  width: 100%;
 }
 
 .form input::placeholder {
@@ -48,7 +45,6 @@
 .buttons {
   display: flex;
   justify-content: space-between;
-  gap: calc(10 * var(--r));
   margin-top: calc(10 * var(--r));
 }
 
@@ -60,7 +56,6 @@
   border-radius: calc(6 * var(--r));
   cursor: pointer;
   font-size: calc(14 * var(--r));
-  flex: 1;
 }
 
 .cancel {
@@ -71,21 +66,4 @@
   font-size: calc(22 * var(--r));
   margin-bottom: calc(10 * var(--r));
   text-align: center;
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 20px;
-  }
-
-  .form input {
-    font-size: 16px;
-    padding: 11px 12px;
-  }
-
-  .form button {
-    font-size: 15px;
-    min-height: 42px;
-    padding: 10px 14px;
-  }
 }
