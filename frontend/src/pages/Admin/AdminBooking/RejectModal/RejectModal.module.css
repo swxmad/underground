@@ -1,3 +1,5 @@
+@import "../../../../styles/modal-mobile.css";
+
 .modal {
   position: fixed;
   top: 0;
@@ -88,22 +90,4 @@ textarea {
 @keyframes scaleIn {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
-}
-
-@media (max-width: 768px) {
-  .window h3 {
-    font-size: 22px;
-  }
-
-  textarea {
-    font-size: 16px;
-    height: 120px;
-    padding: 12px;
-  }
-
-  .buttons button {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 0;
-  }
 }

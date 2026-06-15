@@ -1,3 +1,5 @@
+@import "../../../styles/modal-mobile.css";
+
 h2 {
   font-family: "Jomolhari";
   font-size: calc(24 * var(--r));
@@ -174,40 +176,5 @@ h3 {
   .fio {
     font-size: 18px;
     line-height: 1.5;
-  }
-
-  .buttons {
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  .buttons button,
-  .save,
-  .cancel,
-  .delete {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 18px;
-    border-radius: 8px;
-  }
-
-  h3 {
-    font-size: 22px;
-  }
-
-  .strength {
-    font-size: 16px;
-  }
-
-  .modal input {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .modalButtons button {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 18px;
-    border-radius: 8px;
   }
 }

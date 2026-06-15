@@ -1,3 +1,5 @@
+@import "../../../../styles/modal-mobile.css";
+
 h2 {
   font-family: "Jomolhari";
   font-size: calc(24 * var(--r));
@@ -136,17 +138,5 @@ h2 {
   .delete {
     font-size: 17px;
     margin-top: 20px;
-  }
-
-  .modalText {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .modalYes,
-  .modalNo {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 18px;
   }
 }

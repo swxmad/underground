@@ -166,15 +166,19 @@
 
 @media (max-width: 768px) {
   .modal {
-    right: calc(16 * var(--r));
-    bottom: calc(95 * var(--r));
-    width: 85vw;
-    height: 35dvh;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    bottom: max(80px, calc(95 * var(--r)));
+    height: min(55dvh, calc(100dvh - 120px));
     min-height: 25dvh;
-    max-height: 55dvh;
+    max-height: calc(100dvh - 120px);
     font-size: clamp(15px, 3.6vmin, 18px);
     border-width: 0.2em;
     border-radius: 1.25em;
+    box-sizing: border-box;
   }
 
   .header {
