@@ -33,7 +33,7 @@ const server = http.createServer(app);
 // -------------------- CORS --------------------
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "https://underground-4fpj.onrender.com",
     credentials: true
   })
 );
@@ -75,7 +75,7 @@ app.get("/", (req, res) => {
 // -------------------- SOCKET.IO --------------------
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: "https://underground-4fpj.onrender.com",
     methods: ["GET", "POST"]
   }
 });
