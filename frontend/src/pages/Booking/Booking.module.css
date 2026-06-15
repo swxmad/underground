@@ -1,579 +1,312 @@
 .page {
-
   background-image: var(--bg-page);
-
   background-size: cover;
-
   background-attachment: fixed;
-
   min-height: 100vh;
-
   color: var(--color-text);
-
 }
-
-
 
 .main {
-
   padding-bottom: calc(60 * var(--r));
-
 }
-
-
 
 .container {
-
   width: calc(1000 * var(--r));
-
   max-width: 100%;
-
   margin: 0 auto;
-
 }
-
-
 
 .tables {
-
   margin-top: calc(50 * var(--r));
-
   text-align: center;
-
 }
-
-
 
 .bar {
-
   position: relative;
-
   background-image: url("/images/бар.png");
-
   background-size: cover;
-
   background-repeat: no-repeat;
-
   width: calc(500 * var(--r));
-
   height: calc(400 * var(--r));
-
   margin: 0 auto;
-
 }
-
-
 
 .tableRow {
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: flex-start;
-
   margin-top: calc(20 * var(--r));
-
   gap: calc(20 * var(--r));
-
   width: calc(1000 * var(--r));
-
   max-width: 100%;
-
   margin-left: auto;
-
   margin-right: auto;
-
 }
-
-
 
 .zone {
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
 }
-
-
 
 .zoneTitle {
-
   font-family: "Geologica";
-
   font-size: calc(30 * var(--r));
-
   font-weight: bold;
-
   margin-bottom: calc(10 * var(--r));
-
 }
-
-
 
 .pesokImg {
-
   position: relative;
-
   background-image: url("/images/песок.png");
-
   width: calc(600 * var(--r));
-
   height: calc(500 * var(--r));
-
   background-size: cover;
-
   background-repeat: no-repeat;
-
 }
-
-
 
 .chillImg {
-
   position: relative;
-
   background-image: url("/images/чилл.png");
-
   width: calc(380 * var(--r));
-
   height: calc(400 * var(--r));
-
   background-size: cover;
-
   background-repeat: no-repeat;
-
 }
-
-
 
 .warning {
-
   font-family: "Geologica";
-
   font-size: calc(25 * var(--r));
-
   margin-top: calc(20 * var(--r));
-
 }
-
-
 
 .warningAccent {
-
   color: #840E0E;
-
   font-weight: 700;
-
 }
-
-
 
 .form {
-
   margin-top: calc(30 * var(--r));
-
   display: flex;
-
   flex-direction: column;
-
   gap: calc(20 * var(--r));
-
 }
-
-
 
 .block {
-
   background-color: var(--color-panel);
-
   border-radius: calc(20 * var(--r));
-
   padding-bottom: calc(20 * var(--r));
-
 }
-
-
 
 .blockTitle {
-
   font-family: "Geologica";
-
   font-size: calc(20 * var(--r));
-
   color: var(--color-text);
-
   padding: calc(15 * var(--r)) calc(20 * var(--r));
-
   font-weight: bold;
-
 }
-
-
 
 .inputs {
-
   padding: 0 calc(20 * var(--r));
-
   display: flex;
-
   flex-direction: column;
-
   gap: calc(15 * var(--r));
-
 }
-
-
 
 .inputs input {
-
   background: none;
-
   border: none;
-
   border-bottom: calc(2 * var(--r)) solid #310c0c;
-
   padding: calc(8 * var(--r));
-
   font-size: calc(16 * var(--r));
-
   color: var(--color-text);
-
 }
-
-
 
 .inputs select {
-
   background-color: var(--color-surface-input);
-
   border: 1px solid var(--color-border-subtle);
-
   border-radius: calc(6 * var(--r));
-
   padding: calc(8 * var(--r));
-
   font-size: calc(16 * var(--r));
-
   color: var(--color-text);
-
   cursor: pointer;
-
 }
-
-
 
 .inputs select option {
-
   background-color: var(--color-surface-input);
-
   color: var(--color-text);
-
 }
-
-
 
 .sum {
-
   font-family: "Geologica";
-
   font-size: calc(18 * var(--r));
-
   color: var(--color-text);
-
   padding-left: calc(20 * var(--r));
-
   margin-bottom: calc(10 * var(--r));
-
 }
-
-
 
 .submit {
-
   background-color: var(--color-primary);
-
   color: #fff;
-
   padding: calc(12 * var(--r));
-
   border: none;
-
   border-radius: calc(30 * var(--r));
-
   font-size: calc(20 * var(--r));
-
   width: calc(400 * var(--r));
-
   max-width: 100%;
-
   margin: calc(20 * var(--r)) auto 0;
-
   display: block;
-
   cursor: pointer;
-
   font-family: "Geologica";
-
 }
-
-
 
 .submit:hover {
-
   background-color: var(--color-primary-hover);
-
   transform: scale(1.03);
-
 }
-
-
 
 .authMessage {
-
   font-family: "Geologica";
-
   font-size: calc(20 * var(--r));
-
   margin-top: calc(40 * var(--r));
-
   text-align: center;
-
 }
-
-
 
 .noCards {
-
   font-size: calc(16 * var(--r));
-
   color: var(--color-text-secondary);
-
 }
-
-
 
 .table {
-
   position: absolute;
-
   width: calc(60 * var(--r));
-
   height: calc(60 * var(--r));
-
   color: rgba(255, 255, 255, 0);
-
   font-size: calc(14 * var(--r));
-
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   cursor: pointer;
-
   font-weight: bold;
-
   transition: 0.2s ease;
-
   box-sizing: border-box;
-
   z-index: 2;
-
 }
-
-
 
 .free {
-
   border: calc(2 * var(--r)) solid #0f7a2f;
-
 }
-
-
 
 .busy {
-
   border: calc(2 * var(--r)) solid #8b0000;
-
   cursor: not-allowed;
-
 }
-
-
 
 @media (max-width: 768px) {
-
-  .tableRow {
-
-    flex-direction: column;
-
-    align-items: center;
-
+  .container {
+    width: 100% !important;
+    padding: 0 16px !important;
   }
 
+  .tableRow {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .form {
+    width: 100% !important;
+  }
+
+  .submit {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 18px !important;
+    padding: 12px !important;
+    border-radius: 30px !important;
+  }
+
+  .warning {
+    text-align: center !important;
+    font-size: 16px !important;
+  }
 }
-
-
-
-/* Layout гость/админ: футер внизу, карта масштабируется по высоте */
 
 .pageFill {
-
   min-height: 100dvh;
-
   display: flex;
-
   flex-direction: column;
-
 }
 
-
-
-.pageFill > header {
-
+.pageFill>header {
   flex-shrink: 0;
-
 }
 
-
-
-.pageFill > :last-child {
-
+.pageFill> :last-child {
   margin-top: 0;
-
   flex-shrink: 0;
-
 }
-
-
 
 .mainFill {
-
   flex: 1;
-
   display: flex;
-
   flex-direction: column;
-
   min-height: 0;
-
   padding-bottom: 0;
-
 }
-
-
 
 .containerFill {
-
   flex: 1;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
   gap: calc(12 * var(--r));
-
   min-height: 0;
-
   padding: calc(12 * var(--r)) calc(16 * var(--r));
-
 }
-
-
 
 .tablesFill {
-
   flex: 1;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   min-height: 0;
-
   margin-top: 0;
-
   width: 100%;
-
   overflow: hidden;
-
 }
-
-
 
 .tablesScaleBox {
-
   display: flex;
-
   justify-content: center;
-
   width: 100%;
-
 }
-
-
 
 .tablesScaler {
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   gap: calc(16 * var(--r));
-
   transform-origin: center center;
-
 }
-
-
 
 .pageFill .tableRow {
-
   flex-direction: column;
-
   align-items: center;
-
   margin-top: 0;
-
   gap: calc(16 * var(--r));
-
   width: 100%;
-
 }
-
-
 
 .warningFill {
-
   margin-top: 0;
-
   flex-shrink: 0;
-
   text-align: center;
-
 }
-
-
 
 .authMessageFill {
-
   margin-top: 0;
-
   flex-shrink: 0;
-
   text-align: center;
-
 }
-
-

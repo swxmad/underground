@@ -123,104 +123,43 @@
 
 
 @media (max-width: 768px) {
-
   .page {
-
     min-height: 100dvh;
-
     display: flex;
-
     flex-direction: column;
-
   }
-
-
-
-  .page > header {
-
-    flex-shrink: 0;
-
-  }
-
-
-
-  .page > :last-child {
-
-    flex-shrink: 0;
-
-    margin-top: 0;
-
-  }
-
-
 
   .main {
-
-    flex: 1 1 auto;
-
+    flex: 1;
     display: flex;
-
     flex-direction: column;
-
-    justify-content: flex-start;
-
-    gap: calc(16 * var(--r));
-
-    min-height: 0;
-
+    gap: 16px;
     width: 100%;
-
-    max-width: calc(1000 * var(--r));
-
-    margin: 0 auto;
-
-    padding: calc(16 * var(--r));
-
+    max-width: 100%;
+    margin: 16px 0 12px;
+    padding: 16px;
     box-sizing: border-box;
-
   }
-
-
 
   .title {
-
     flex-shrink: 0;
-
     margin: 0;
-
-    font-size: calc(26 * var(--r));
-
+    font-size: 24px;
   }
-
-
 
   .tabs {
-
     flex-shrink: 0;
-
     margin: 0;
-
-    gap: calc(8 * var(--r));
-
+    gap: 8px;
   }
-
-
 
   .tabs button {
-
-    font-size: calc(13 * var(--r));
-
-    padding: calc(8 * var(--r)) calc(10 * var(--r));
-
+    font-size: 13px;
+    padding: 8px 10px;
   }
 
-
-
   .content {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 0;
   }
 }
 
