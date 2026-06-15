@@ -3,6 +3,8 @@
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   color: var(--color-text);
 }
 
@@ -12,6 +14,7 @@
   margin: 0 auto;
   padding: calc(50 * var(--r)) calc(20 * var(--r)) calc(60 * var(--r));
   box-sizing: border-box;
+  flex: 1 0 auto;
 }
 
 .checkoutContainer {
@@ -256,6 +259,18 @@
 }
 
 @media (max-width: 768px) {
+  .page {
+    min-height: 100dvh;
+  }
+
+  .page > header {
+    flex-shrink: 0;
+  }
+
+  .page > :last-child {
+    flex-shrink: 0;
+  }
+
   .checkoutContainer {
     flex-direction: column;
     align-items: stretch;
