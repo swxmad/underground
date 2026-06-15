@@ -13,85 +13,88 @@
 
 .modal {
   background: var(--color-surface-modal);
-  padding: calc(25 * var(--r));
-  border-radius: calc(12 * var(--r));
-  width: calc(380 * var(--r));
-  max-width: 95vw;
+  padding: clamp(25px, calc(25 * var(--r)), 25px);
+  border-radius: clamp(12px, calc(12 * var(--r)), 12px);
+  width: clamp(380px, calc(380 * var(--r)), 380px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
   color: var(--color-text);
-  border: calc(2 * var(--r)) solid var(--color-border);
+  border: clamp(2px, calc(2 * var(--r)), 2px) solid var(--color-border);
   box-shadow: var(--shadow-card);
 }
 
 .title {
   font-family: "Geologica";
-  font-size: calc(24 * var(--r));
+  font-size: clamp(24px, calc(24 * var(--r)), 24px);
   text-align: center;
-  margin-bottom: calc(15 * var(--r));
+  margin-bottom: clamp(15px, calc(15 * var(--r)), 15px);
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: calc(12 * var(--r));
+  gap: clamp(12px, calc(12 * var(--r)), 12px);
 }
 
 .form input,
 .form textarea,
 .form select {
-  padding: calc(10 * var(--r));
-  border-radius: calc(6 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px);
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   border: 1px solid var(--color-border-subtle);
   background: var(--color-surface-input);
   color: var(--color-text);
   font-family: "Geologica";
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
 
 textarea {
   resize: none;
-  height: calc(70 * var(--r));
+  height: clamp(70px, calc(70 * var(--r)), 70px);
 }
 
 .checkboxLabel {
   display: flex;
   align-items: center;
-  gap: calc(8 * var(--r));
+  gap: clamp(8px, calc(8 * var(--r)), 8px);
   font-family: "Geologica";
-  font-size: calc(16 * var(--r));
+  font-size: clamp(16px, calc(16 * var(--r)), 16px);
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: calc(10 * var(--r));
+  margin-top: clamp(10px, calc(10 * var(--r)), 10px);
 }
 
 .saveBtn {
   background: var(--color-primary);
-  padding: calc(10 * var(--r)) calc(15 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px) clamp(15px, calc(15 * var(--r)), 15px);
   border: none;
   color: #fff;
-  border-radius: calc(6 * var(--r));
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   cursor: pointer;
   font-family: "Geologica";
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
 
 .cancelBtn {
   background: var(--color-cancel);
-  padding: calc(10 * var(--r)) calc(15 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px) clamp(15px, calc(15 * var(--r)), 15px);
   border: none;
   color: #fff;
-  border-radius: calc(6 * var(--r));
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   cursor: pointer;
   font-family: "Geologica";
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
 
 .form input[type="file"] {
   width: 100%;
   display: block;
-  margin-top: calc(5 * var(--r));
-  margin-bottom: calc(10 * var(--r));
-  font-size: calc(13 * var(--r));
+  margin-top: clamp(5px, calc(5 * var(--r)), 5px);
+  margin-bottom: clamp(10px, calc(10 * var(--r)), 10px);
+  font-size: clamp(13px, calc(13 * var(--r)), 13px);
 }

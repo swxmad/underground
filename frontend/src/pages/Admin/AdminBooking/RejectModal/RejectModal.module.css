@@ -15,49 +15,52 @@
 .window {
   background: var(--color-surface-modal);
   border: 1px solid var(--color-border);
-  padding: calc(25 * var(--r));
-  border-radius: calc(12 * var(--r));
-  width: calc(380 * var(--r));
-  max-width: 90%;
+  padding: clamp(25px, calc(25 * var(--r)), 25px);
+  border-radius: clamp(12px, calc(12 * var(--r)), 12px);
+  width: clamp(380px, calc(380 * var(--r)), 380px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
   box-shadow: var(--shadow-card);
   animation: scaleIn 0.2s ease;
 }
 
 .window h3 {
-  margin: 0 0 calc(15 * var(--r)) 0;
+  margin: 0 0 clamp(15px, calc(15 * var(--r)), 15px) 0;
   color: var(--color-text);
-  font-size: calc(20 * var(--r));
+  font-size: clamp(20px, calc(20 * var(--r)), 20px);
   text-align: center;
 }
 
 textarea {
   width: 100%;
-  height: calc(110 * var(--r));
+  height: clamp(110px, calc(110 * var(--r)), 110px);
   resize: none;
-  padding: calc(12 * var(--r));
-  border-radius: calc(8 * var(--r));
+  padding: clamp(12px, calc(12 * var(--r)), 12px);
+  border-radius: clamp(8px, calc(8 * var(--r)), 8px);
   border: 1px solid var(--color-border-subtle);
   background: var(--color-surface-input);
   color: var(--color-text);
-  font-size: calc(15 * var(--r));
+  font-size: clamp(15px, calc(15 * var(--r)), 15px);
   outline: none;
   transition: border 0.2s ease;
   box-sizing: border-box;
 }
 
 .buttons {
-  margin-top: calc(18 * var(--r));
+  margin-top: clamp(18px, calc(18 * var(--r)), 18px);
   display: flex;
   justify-content: space-between;
-  gap: calc(10 * var(--r));
+  gap: clamp(10px, calc(10 * var(--r)), 10px);
 }
 
 .buttons button {
   flex: 1;
-  padding: calc(10 * var(--r)) 0;
-  border-radius: calc(8 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px) 0;
+  border-radius: clamp(8px, calc(8 * var(--r)), 8px);
   border: none;
-  font-size: calc(15 * var(--r));
+  font-size: clamp(15px, calc(15 * var(--r)), 15px);
   cursor: pointer;
   transition: 0.2s ease;
 }
@@ -88,22 +91,4 @@ textarea {
 @keyframes scaleIn {
   from { transform: scale(0.9); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
-}
-
-@media (max-width: 768px) {
-  .window h3 {
-    font-size: 22px;
-  }
-
-  textarea {
-    font-size: 16px;
-    height: 120px;
-    padding: 12px;
-  }
-
-  .buttons button {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 0;
-  }
 }

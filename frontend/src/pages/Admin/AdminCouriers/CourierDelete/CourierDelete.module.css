@@ -13,12 +13,15 @@
 
 .modalWindow {
   background: var(--color-surface-modal);
-  padding: calc(25 * var(--r));
-  border-radius: calc(10 * var(--r));
-  width: calc(350 * var(--r));
-  max-width: 90%;
+  padding: clamp(25px, calc(25 * var(--r)), 25px);
+  border-radius: clamp(10px, calc(10 * var(--r)), 10px);
+  width: clamp(350px, calc(350 * var(--r)), 350px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
   color: var(--color-text);
-  border: calc(2 * var(--r)) solid var(--color-border);
+  border: clamp(2px, calc(2 * var(--r)), 2px) solid var(--color-border);
   position: relative;
   z-index: 10000;
   box-shadow: var(--shadow-card);
@@ -26,34 +29,34 @@
 
 h3 {
   font-family: "Geologica";
-  font-size: calc(20 * var(--r));
+  font-size: clamp(20px, calc(20 * var(--r)), 20px);
   text-align: center;
-  margin-bottom: calc(15 * var(--r));
+  margin-bottom: clamp(15px, calc(15 * var(--r)), 15px);
 }
 
 .warning {
   font-family: "Geologica";
-  font-size: calc(15 * var(--r));
-  margin-bottom: calc(15 * var(--r));
+  font-size: clamp(15px, calc(15 * var(--r)), 15px);
+  margin-bottom: clamp(15px, calc(15 * var(--r)), 15px);
 }
 
 .modalWindow input {
   width: 100%;
-  padding: calc(10 * var(--r));
-  border-radius: calc(8 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px);
+  border-radius: clamp(8px, calc(8 * var(--r)), 8px);
   border: 1px solid var(--color-border-subtle);
   background: var(--color-surface-input);
   color: var(--color-text);
   box-sizing: border-box;
-  font-size: calc(16 * var(--r));
+  font-size: clamp(16px, calc(16 * var(--r)), 16px);
 }
 
 .buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: calc(10 * var(--r));
-  margin-top: calc(10 * var(--r));
+  gap: clamp(10px, calc(10 * var(--r)), 10px);
+  margin-top: clamp(10px, calc(10 * var(--r)), 10px);
 }
 
 .cancel,
@@ -61,38 +64,14 @@ h3 {
   background-color: var(--color-primary);
   font-family: "Geologica";
   border: none;
-  padding: calc(6 * var(--r)) calc(12 * var(--r));
-  height: calc(40 * var(--r));
+  padding: clamp(6px, calc(6 * var(--r)), 6px) clamp(12px, calc(12 * var(--r)), 12px);
+  height: clamp(40px, calc(40 * var(--r)), 40px);
   color: #fff;
-  border-radius: calc(6 * var(--r));
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   cursor: pointer;
-  font-size: calc(16 * var(--r));
+  font-size: clamp(16px, calc(16 * var(--r)), 16px);
 }
 
 .cancel {
   background-color: var(--color-cancel);
-}
-
-@media (max-width: 768px) {
-  h3 {
-    font-size: 22px;
-  }
-
-  .warning {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .modalWindow input {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .cancel,
-  .delete {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 18px;
-    border-radius: 8px;
-  }
 }

@@ -65,43 +65,46 @@ h2 {
   background: var(--color-surface-modal);
   color: var(--color-text);
   border: 1px solid var(--color-border-accent);
-  padding: calc(24 * var(--r)) calc(20 * var(--r));
-  border-radius: calc(12 * var(--r));
-  width: calc(320 * var(--r));
-  max-width: 90%;
+  padding: clamp(24px, calc(24 * var(--r)), 24px) clamp(20px, calc(20 * var(--r)), 20px);
+  border-radius: clamp(12px, calc(12 * var(--r)), 12px);
+  width: clamp(320px, calc(320 * var(--r)), 320px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
   text-align: center;
   box-shadow: var(--shadow-card);
+  box-sizing: border-box;
 }
 
 .modalText {
-  font-size: calc(18 * var(--r));
-  margin-bottom: calc(20 * var(--r));
+  font-size: clamp(18px, calc(18 * var(--r)), 18px);
+  margin-bottom: clamp(20px, calc(20 * var(--r)), 20px);
 }
 
 .modalButtons {
   display: flex;
   justify-content: space-between;
-  gap: calc(10 * var(--r));
+  gap: clamp(10px, calc(10 * var(--r)), 10px);
 }
 
 .modalYes {
   background: #840404;
   color: #fff;
   border: none;
-  padding: calc(8 * var(--r)) calc(18 * var(--r));
-  border-radius: calc(8 * var(--r));
+  padding: clamp(8px, calc(8 * var(--r)), 8px) clamp(18px, calc(18 * var(--r)), 18px);
+  border-radius: clamp(8px, calc(8 * var(--r)), 8px);
   cursor: pointer;
-  font-size: calc(16 * var(--r));
+  font-size: clamp(16px, calc(16 * var(--r)), 16px);
 }
 
 .modalNo {
   background: #aaaaaa;
   color: #fff;
   border: none;
-  padding: calc(8 * var(--r)) calc(18 * var(--r));
-  border-radius: calc(8 * var(--r));
+  padding: clamp(8px, calc(8 * var(--r)), 8px) clamp(18px, calc(18 * var(--r)), 18px);
+  border-radius: clamp(8px, calc(8 * var(--r)), 8px);
   cursor: pointer;
-  font-size: calc(16 * var(--r));
+  font-size: clamp(16px, calc(16 * var(--r)), 16px);
 }
 
 @media (max-width: 768px) {
@@ -136,17 +139,5 @@ h2 {
   .delete {
     font-size: 17px;
     margin-top: 20px;
-  }
-
-  .modalText {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .modalYes,
-  .modalNo {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 18px;
   }
 }

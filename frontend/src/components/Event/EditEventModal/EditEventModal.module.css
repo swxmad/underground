@@ -13,12 +13,15 @@
 
 .modal {
   background: var(--color-surface-modal);
-  padding: calc(25 * var(--r));
-  border-radius: calc(10 * var(--r));
-  width: calc(350 * var(--r));
-  max-width: 95vw;
+  padding: clamp(25px, calc(25 * var(--r)), 25px);
+  border-radius: clamp(10px, calc(10 * var(--r)), 10px);
+  width: clamp(350px, calc(350 * var(--r)), 350px);
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  box-sizing: border-box;
   color: var(--color-text);
-  border: calc(2 * var(--r)) solid var(--color-border);
+  border: clamp(2px, calc(2 * var(--r)), 2px) solid var(--color-border);
   position: relative;
   z-index: 10000;
   box-shadow: var(--shadow-card);
@@ -27,16 +30,16 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: calc(12 * var(--r));
+  gap: clamp(12px, calc(12 * var(--r)), 12px);
 }
 
 .form input {
-  padding: calc(10 * var(--r));
-  border-radius: calc(6 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px);
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   border: 1px solid var(--color-border-subtle);
   background: var(--color-surface-input);
   color: var(--color-text);
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
 
 .form input::placeholder {
@@ -46,17 +49,17 @@
 .buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: calc(10 * var(--r));
+  margin-top: clamp(10px, calc(10 * var(--r)), 10px);
 }
 
 .form button {
-  padding: calc(10 * var(--r)) calc(15 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px) clamp(15px, calc(15 * var(--r)), 15px);
   background: var(--color-primary);
   border: none;
   color: #fff;
-  border-radius: calc(6 * var(--r));
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   cursor: pointer;
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
 
 .cancel {
@@ -64,12 +67,12 @@
 }
 
 .title {
-  font-size: calc(22 * var(--r));
-  margin-bottom: calc(10 * var(--r));
+  font-size: clamp(22px, calc(22 * var(--r)), 22px);
+  margin-bottom: clamp(10px, calc(10 * var(--r)), 10px);
   text-align: center;
 }
 
 .label {
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
   opacity: 0.8;
 }

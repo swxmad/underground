@@ -10,43 +10,44 @@
 
 .modal {
   background: var(--color-surface-modal);
-  padding: calc(20 * var(--r)) calc(25 * var(--r));
-  border-radius: calc(10 * var(--r));
-  border: calc(2 * var(--r)) solid var(--color-border);
-  width: calc(300 * var(--r));
-  max-width: 95vw;
+  padding: clamp(20px, calc(20 * var(--r)), 20px) clamp(25px, calc(25 * var(--r)), 25px);
+  border-radius: clamp(10px, calc(10 * var(--r)), 10px);
+  border: clamp(2px, calc(2 * var(--r)), 2px) solid var(--color-border);
+  width: clamp(300px, calc(300 * var(--r)), 300px);
+  max-width: calc(100vw - 24px);
+  box-sizing: border-box;
   text-align: center;
   color: var(--color-text);
   box-shadow: var(--shadow-card);
 }
 
 .text {
-  font-size: calc(18 * var(--r));
-  margin-bottom: calc(20 * var(--r));
+  font-size: clamp(18px, calc(18 * var(--r)), 18px);
+  margin-bottom: clamp(20px, calc(20 * var(--r)), 20px);
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
-  gap: calc(10 * var(--r));
+  gap: clamp(10px, calc(10 * var(--r)), 10px);
 }
 
 .confirm {
   background: var(--color-primary);
   border: none;
-  padding: calc(10 * var(--r)) calc(15 * var(--r));
-  border-radius: calc(6 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px) clamp(15px, calc(15 * var(--r)), 15px);
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   color: #fff;
   cursor: pointer;
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
 
 .cancel {
   background: var(--color-cancel);
   border: none;
-  padding: calc(10 * var(--r)) calc(15 * var(--r));
-  border-radius: calc(6 * var(--r));
+  padding: clamp(10px, calc(10 * var(--r)), 10px) clamp(15px, calc(15 * var(--r)), 15px);
+  border-radius: clamp(6px, calc(6 * var(--r)), 6px);
   color: #fff;
   cursor: pointer;
-  font-size: calc(14 * var(--r));
+  font-size: clamp(14px, calc(14 * var(--r)), 14px);
 }
