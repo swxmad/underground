@@ -1,85 +1,75 @@
-.buttons button {
-
-  background-color: var(--color-primary);
-
-  font-family: "Geologica";
-
-  border: none;
-
-  padding: calc(6 * var(--r)) calc(12 * var(--r));
-
-  height: calc(40 * var(--r));
-
-  color: white;
-
-  border-radius: calc(6 * var(--r));
-
-  cursor: pointer;
-
-  font-size: calc(16 * var(--r));
-
-}
-
-
-
 h2 {
-
   font-family: "Jomolhari";
-
   font-size: calc(24 * var(--r));
-
 }
-
-
 
 .userInfo p {
-
   font-family: "Geologica";
-
   font-size: calc(16 * var(--r));
-
 }
-
-
 
 .userInfo {
-
   display: flex;
-
   flex-direction: column;
-
   gap: calc(10 * var(--r));
-
   margin-top: calc(20 * var(--r));
-
 }
-
-
 
 .buttons {
-
   display: flex;
-
   flex-direction: row;
-
   flex-wrap: wrap;
-
   gap: calc(10 * var(--r));
-
   margin-top: calc(20 * var(--r));
-
 }
 
-
+.buttons button {
+  background-color: var(--color-primary);
+  font-family: "Geologica";
+  border: none;
+  padding: calc(6 * var(--r)) calc(12 * var(--r));
+  height: calc(40 * var(--r));
+  color: white;
+  border-radius: calc(6 * var(--r));
+  cursor: pointer;
+  font-size: calc(16 * var(--r));
+}
 
 .loading {
-
   font-size: calc(20 * var(--r));
-
   text-align: center;
-
   margin-top: calc(40 * var(--r));
-
 }
 
+@media (max-width: 768px) {
+  h2 {
+    font-size: 26px;
+  }
 
+  .userInfo {
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .userInfo p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .buttons {
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .buttons button {
+    font-size: 17px;
+    height: 44px;
+    padding: 10px 18px;
+    border-radius: 8px;
+  }
+
+  .loading {
+    font-size: 18px;
+    margin-top: 32px;
+  }
+}
