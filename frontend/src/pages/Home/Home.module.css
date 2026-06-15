@@ -89,6 +89,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -107,13 +108,33 @@
 .cardText {
   width: calc(235 * var(--r));
   font-family: 'JonoIhari';
-  font-size: clamp(17px, calc(25 * var(--r)), 25px);
+  font-size: calc(25 * var(--r));
   color: var(--color-text);
   font-weight: lighter;
   text-align: center;
   margin-top: calc(5 * var(--r));
   text-shadow: var(--text-shadow-home);
-  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .waitingCards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(16 * var(--r)) calc(12 * var(--r));
+    justify-items: center;
+  }
+
+  .cardImg {
+    width: 100%;
+    max-width: calc(180 * var(--r));
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+
+  .cardText {
+    width: 100%;
+    max-width: calc(180 * var(--r));
+  }
 }
 
 .sliderContainer {

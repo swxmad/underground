@@ -29,14 +29,13 @@
 
 .dan {
   font-family: 'Geologica';
-  font-size: clamp(15px, calc(15 * var(--r)), 15px);
+  font-size: calc(15 * var(--r));
   color: var(--color-text);
   font-weight: 600;
-  line-height: 1.45;
 }
 
 .hoursLabel {
-  font-size: clamp(13px, calc(13 * var(--r)), 13px);
+  font-size: calc(13 * var(--r));
 }
 
 .seti {
@@ -73,7 +72,7 @@
 
 .mapLink {
   font-family: "Geologica";
-  font-size: clamp(13px, calc(13 * var(--r)), 13px);
+  font-size: calc(13 * var(--r));
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.2s ease;
