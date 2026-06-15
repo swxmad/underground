@@ -34,7 +34,6 @@ const BarMenu = ({ unreadChats }) => {
     setTimeout(() => setMessage(""), 2000);
   };
 
-  // ⭐ ПРАВИЛЬНЫЙ ПОИСК В КОРЗИНЕ (itemId, а не id)
   const getCountInCart = (id) => {
     const item = cart.find((i) => i.itemId === id);
     return item ? item.count : 0;
@@ -54,7 +53,6 @@ const BarMenu = ({ unreadChats }) => {
     }
   };
 
-  // загрузка напитков
   const fetchItems = async () => {
     try {
       const res = await fetch(`${API_URL}/bar`);
@@ -70,7 +68,6 @@ const BarMenu = ({ unreadChats }) => {
     fetchItems();
   }, []);
 
-  // остановить напиток
   const handleStop = async (id) => {
     try {
       await fetch(`${API_URL}/bar/${id}/stop`, { method: "PUT" });
@@ -82,7 +79,6 @@ const BarMenu = ({ unreadChats }) => {
     }
   };
 
-  // вернуть напиток
   const handleReturn = async (id) => {
     try {
       await fetch(`${API_URL}/bar/${id}/return`, { method: "PUT" });
@@ -94,7 +90,6 @@ const BarMenu = ({ unreadChats }) => {
     }
   };
 
-  // группы категорий
   const groups = [
     {
       title: "Алкоголь",

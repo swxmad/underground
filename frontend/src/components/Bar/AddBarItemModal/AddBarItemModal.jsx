@@ -3,20 +3,17 @@ import styles from "./AddBarItemModal.module.css";
 
 const AddBarItemModal = ({ onClose, onSuccess }) => {
   const [title, setTitle] = useState("");
-  const [type, setType] = useState("wine"); // wine | cocktail | drink
+  const [type, setType] = useState("wine");
 
-  // поля вина
   const [country, setCountry] = useState("");
   const [strength, setStrength] = useState("");
   const [price50, setPrice50] = useState("");
   const [priceBottle, setPriceBottle] = useState("");
 
-  // поля коктейлей
   const [ingredients, setIngredients] = useState("");
   const [weight, setWeight] = useState("");
   const [price, setPrice] = useState("");
 
-  // поля напитков
   const [drinkWeight, setDrinkWeight] = useState("");
   const [drinkPrice, setDrinkPrice] = useState("");
 
@@ -73,15 +70,15 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
         <h2 className={styles.title}>Добавить напиток</h2>
 
         <form className={styles.form} onSubmit={handleSubmit}>
-          
-          {/* тип напитка */}
+
+          {}
           <select value={type} onChange={(e) => setType(e.target.value)}>
             <option value="wine">Вино</option>
             <option value="cocktail">Коктейль</option>
             <option value="drink">Напиток</option>
           </select>
 
-          {/* общее поле */}
+          {}
           <input
             type="text"
             placeholder="Название"
@@ -90,7 +87,7 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
             required
           />
 
-          {/* поля вина */}
+          {}
           {type === "wine" && (
             <>
               <input
@@ -127,7 +124,7 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
             </>
           )}
 
-          {/* поля коктейлей */}
+          {}
           {type === "cocktail" && (
             <>
               <textarea
@@ -155,7 +152,7 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
             </>
           )}
 
-          {/* поля напитков */}
+          {}
           {type === "drink" && (
             <>
               <input
@@ -176,7 +173,7 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
             </>
           )}
 
-          {/* категория */}
+          {}
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -184,18 +181,14 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
           >
             <option value="">Выберите категорию</option>
 
-            {/* вино */}
             <option value="Вино">Вино</option>
 
-            {/* коктейли */}
             <option value="Горячие коктейли">Горячие коктейли</option>
             <option value="Безалкогольные коктейли">Безалкогольные коктейли</option>
 
-            {/* напитки */}
             <option value="Напитки">Напитки</option>
           </select>
 
-          {/* галочка isActive */}
           <label className={styles.checkboxLabel}>
             <input
               type="checkbox"
@@ -205,7 +198,6 @@ const AddBarItemModal = ({ onClose, onSuccess }) => {
             Доступен для заказа
           </label>
 
-          {/* фото */}
           <input
             type="file"
             accept="image/*"

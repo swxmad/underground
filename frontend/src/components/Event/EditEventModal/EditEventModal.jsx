@@ -100,7 +100,6 @@ const EditEventModal = ({ event, onClose, onSuccess, onError }) => {
             required
           />
 
-          {/* ⭐ УБРАНА встроенная блокировка даты */}
           <input
             type="date"
             value={date}

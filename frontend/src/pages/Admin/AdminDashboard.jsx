@@ -3,7 +3,7 @@ import styles from "./AdminDashboard.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import AdminProfile from "./AdminProfile/AdminProfile";
-import AdminUsers from "./AdminUsers/AdminUsers"; 
+import AdminUsers from "./AdminUsers/AdminUsers";
 import AdminBooking from "./AdminBooking/AdminBooking";
 import AdminOrders from "./AdminOrders/AdminOrders";
 import AdminCouriers from "./AdminCouriers/AdminCouriers";
@@ -17,7 +17,6 @@ const AdminDashboard = () => {
 
   const token = localStorage.getItem("token");
 
-  // Загружаем количество чатов с непрочитанными при входе в ЛК
   const loadUnreadChats = async () => {
     try {
       const res = await fetch(`${API_URL}/chats`, {
@@ -35,15 +34,12 @@ const AdminDashboard = () => {
     loadUnreadChats();
   }, []);
 
-  // Эта функция будет вызываться из Chats.jsx,
-  // когда список чатов обновляется (новые сообщения / прочитано)
   const handleUnreadChange = (count) => {
     setUnreadChats(count);
   };
 
   return (
     <div className={styles.page}>
-      {/* Передаём unreadChats в Header */}
       <Header unreadChats={unreadChats} />
       <main className={styles.main}>
         <h1 className={styles.title}>Личный кабинет</h1>

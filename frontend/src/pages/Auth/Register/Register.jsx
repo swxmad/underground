@@ -20,16 +20,12 @@ const Register = () => {
   const [message, setMessage] = useState("");
   const [passwordStrength, setPasswordStrength] = useState("");
 
-  // -----------------------------
-  // Маски и обработка ввода
-  // -----------------------------
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Маска телефона
     if (name === "phone") {
       let cleaned = value.replace(/\D/g, "");
-      if (!cleaned.startsWith("7")) cleaned = "7" + cleaned; // всегда +7
+      if (!cleaned.startsWith("7")) cleaned = "7" + cleaned;
       if (cleaned.length > 11) cleaned = cleaned.slice(0, 11);
 
       let formatted = "+7";
@@ -42,7 +38,6 @@ const Register = () => {
       return;
     }
 
-    // Маска даты рождения
     if (name === "birthdate") {
       let cleaned = value.replace(/\D/g, "");
       if (cleaned.length > 8) cleaned = cleaned.slice(0, 8);
@@ -56,7 +51,6 @@ const Register = () => {
       return;
     }
 
-    // Проверка силы пароля
     if (name === "password") {
       setPasswordStrength(checkPasswordStrength(value));
     }
@@ -64,9 +58,6 @@ const Register = () => {
     setForm({ ...form, [name]: value });
   };
 
-  // -----------------------------
-  // Проверка силы пароля
-  // -----------------------------
   const checkPasswordStrength = (password) => {
     let score = 0;
 
@@ -81,9 +72,6 @@ const Register = () => {
     return "Сильный";
   };
 
-  // -----------------------------
-  // Проверка возраста
-  // -----------------------------
   const validateAge = (birthdate) => {
     const [day, month, year] = birthdate.split(".").map(Number);
     const birth = new Date(year, month - 1, day);
@@ -97,9 +85,6 @@ const Register = () => {
     return age >= 18 && age <= 100;
   };
 
-  // -----------------------------
-  // Полная валидация формы
-  // -----------------------------
   const validateForm = () => {
     if (!/^[А-Яа-яЁё\s]{1,100}$/.test(form.fullname))
       return "ФИО должно содержать только русские буквы и быть не длиннее 100 символов";
@@ -131,9 +116,6 @@ const Register = () => {
     return null;
   };
 
-  // -----------------------------
-  // Отправка формы
-  // -----------------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -171,9 +153,6 @@ const Register = () => {
     }
   };
 
-  // -----------------------------
-  // Рендер
-  // -----------------------------
   return (
     <div className={styles.page}>
       <Header />

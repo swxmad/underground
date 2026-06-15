@@ -5,12 +5,10 @@ export const addCard = async (req, res) => {
     const { id } = req.user;
     const { cardNumber, expiry, holder, cvv } = req.body;
 
-    // Проверка CVV
     if (!/^\d{3}$/.test(cvv)) {
       return res.status(400).json({ message: "Некорректный CVV" });
     }
 
-    // CVV НЕ сохраняем!
     const card = await Card.create({
       userId: id,
       cardNumber,

@@ -3,7 +3,6 @@ import styles from "./WineCard.module.css";
 import { getImageUrl } from "../../../utils/imageUrl";
 
 const WineCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
-  // ⭐ Достаём данные товара из item.Item (CartItem) или item (Item)
   const data = item.Item || item;
 
   return (
@@ -28,14 +27,12 @@ const WineCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
       <p className={styles.price}>50 мл — {data.price50} ₽</p>
       <p className={styles.price}>Бутылка — {data.priceBottle} ₽</p>
 
-      {/* пользователь */}
       {role !== "admin" && data.isActive && data.available && (
         <button className={styles.addBtn} onClick={() => onAdd(data)}>
           Добавить в корзину
         </button>
       )}
 
-      {/* админ */}
       {role === "admin" && (
         <div className={styles.adminControls}>
           <button className={styles.adminBtn} onClick={() => onEdit(data)}>

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { 
-  register, 
-  login, 
-  updateProfile, 
+import {
+  register,
+  login,
+  updateProfile,
   changePassword,
   deleteAccount,
   getMe
@@ -19,6 +19,5 @@ router.post("/login", login);
 router.put("/update", authMiddleware, updateProfile);
 router.put("/change-password", authMiddleware, changePassword);
 router.delete("/account", authMiddleware, deleteAccount);
-
 
 export default router;

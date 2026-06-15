@@ -20,7 +20,7 @@ const AdminBookings = () => {
 
   const [date, setDate] = useState(() => {
     const now = new Date();
-    return now.toLocaleDateString("ru-RU"); // ДД.ММ.ГГГГ
+    return now.toLocaleDateString("ru-RU");
   });
 
   const [dayBookings, setDayBookings] = useState([]);
@@ -105,7 +105,6 @@ const AdminBookings = () => {
 
     showNotification("success", "Статус обновлён");
 
-    // обновляем списки
     loadPending();
     loadDayBookings();
   };
@@ -114,7 +113,6 @@ const AdminBookings = () => {
     <div className={styles.page}>
       <h2>Бронирования</h2>
 
-      {/* КАЛЕНДАРЬ */}
       <div className={styles.calendar}>
         <button onClick={() => changeDate("prev")} className={styles.arrow}>
           ←
@@ -127,7 +125,6 @@ const AdminBookings = () => {
         </button>
       </div>
 
-      {/* БРОНИ НА ДАТУ */}
       <div className={styles.dayBookings}>
 
         {dayBookings.length === 0 && (
@@ -149,7 +146,6 @@ const AdminBookings = () => {
         </div>
       </div>
 
-      {/* ЗАЯВКИ НА ПОДТВЕРЖДЕНИЕ */}
       <div className={styles.pending}>
         <h3>Заявки на подтверждение</h3>
 

@@ -8,10 +8,8 @@ router.post("/", authMiddleware, createBooking);
 router.get("/my", authMiddleware, getMyBookings);
 router.get("/occupied", authMiddleware, getOccupiedTables);
 
-// admin
 router.get("/all", authMiddleware, getAllBookings);
 router.put("/:id/status", authMiddleware, updateStatus);
 router.put("/:id/reject", authMiddleware, rejectBooking);
-
 
 export default router;

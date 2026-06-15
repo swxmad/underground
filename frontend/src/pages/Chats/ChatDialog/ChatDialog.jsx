@@ -37,17 +37,14 @@ const ChatDialog = ({ chat, user, onRead }) => {
     loadMessages();
   };
 
-  // 🔵 СРАБАТЫВАЕТ ПРИ ОТКРЫТИИ ЧАТА
   useEffect(() => {
-    if (onRead) onRead(); // локально убираем unread
+    if (onRead) onRead();
 
-    // помечаем на сервере как прочитанные
     fetch(`${API_URL}/chats/${chat.id}/read`, {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}` }
     });
 
-    // уведомляем собеседника
     socket.emit("readMessages", {
       chatId: chat.id,
       readerId: user.id
@@ -56,7 +53,6 @@ const ChatDialog = ({ chat, user, onRead }) => {
     loadMessages();
   }, [chat.id]);
 
-  // 🔵 СЛУШАЕМ СОБЫТИЕ "messagesRead"
   useEffect(() => {
     const handler = ({ chatId, readerId }) => {
       if (chatId === chat.id && readerId !== user.id) {

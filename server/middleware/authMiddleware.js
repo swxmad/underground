@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 export const authMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
-  // если токена нет → гость
   if (!authHeader) {
     req.user = { role: "guest" };
     return next();
@@ -13,7 +12,7 @@ export const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || "secret");
-    req.user = decoded; // { id, role }
+    req.user = decoded;
     next();
   } catch (e) {
     req.user = { role: "guest" };

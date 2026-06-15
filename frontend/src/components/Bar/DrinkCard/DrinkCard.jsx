@@ -3,7 +3,7 @@ import styles from "./DrinkCard.module.css";
 import { getImageUrl } from "../../../utils/imageUrl";
 
 const DrinkCard = ({
-  item,              // теперь item = CartItem
+  item,
   role,
   isAuthorized,
   countInCart,
@@ -14,8 +14,7 @@ const DrinkCard = ({
   onReturn
 }) => {
 
-  // ⭐ Достаём данные товара из item.Item
-  const data = item.Item || item; // fallback, если придёт чистый Item
+  const data = item.Item || item;
 
   const canAddToCart = isAuthorized && data.isActive && data.available;
 
@@ -44,7 +43,7 @@ const DrinkCard = ({
             <div className={styles.counter}>
               <button
                 className={styles.counterBtn}
-                onClick={() => onDecrease(data.id)} 
+                onClick={() => onDecrease(data.id)}
               >
                 −
               </button>
@@ -60,7 +59,6 @@ const DrinkCard = ({
         </>
       )}
 
-      {/* --- АДМИН --- */}
       {role === "admin" && (
         <div className={styles.adminControls}>
           <button className={styles.adminBtn} onClick={() => onEdit(data)}>

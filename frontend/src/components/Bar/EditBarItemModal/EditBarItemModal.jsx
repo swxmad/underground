@@ -3,20 +3,17 @@ import styles from "./EditBarItemModal.module.css";
 
 const EditBarItemModal = ({ item, onClose, onSuccess }) => {
   const [title, setTitle] = useState(item.title);
-  const [type, setType] = useState(item.type); // wine / cocktail / drink
+  const [type, setType] = useState(item.type);
 
-  // поля вина
   const [country, setCountry] = useState(item.country || "");
   const [strength, setStrength] = useState(item.strength || "");
   const [price50, setPrice50] = useState(item.price50 || "");
   const [priceBottle, setPriceBottle] = useState(item.priceBottle || "");
 
-  // поля коктейлей
   const [ingredients, setIngredients] = useState(item.ingredients || "");
   const [weight, setWeight] = useState(item.weight || "");
   const [price, setPrice] = useState(item.price || "");
 
-  // поля напитков
   const [drinkWeight, setDrinkWeight] = useState(item.weight || "");
   const [drinkPrice, setDrinkPrice] = useState(item.price || "");
 
@@ -77,14 +74,12 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
 
         <form className={styles.form} onSubmit={handleSubmit}>
 
-          {/* тип напитка */}
           <select value={type} onChange={(e) => setType(e.target.value)}>
             <option value="wine">Вино</option>
             <option value="cocktail">Коктейль</option>
             <option value="drink">Напиток</option>
           </select>
 
-          {/* общее поле */}
           <input
             type="text"
             placeholder="Название"
@@ -93,7 +88,6 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
             required
           />
 
-          {/* поля вина */}
           {type === "wine" && (
             <>
               <input
@@ -130,7 +124,6 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
             </>
           )}
 
-          {/* поля коктейлей */}
           {type === "cocktail" && (
             <>
               <textarea
@@ -158,7 +151,6 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
             </>
           )}
 
-          {/* поля напитков */}
           {type === "drink" && (
             <>
               <input
@@ -179,7 +171,6 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
             </>
           )}
 
-          {/* категория */}
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -191,7 +182,6 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
             <option value="Напитки">Напитки</option>
           </select>
 
-          {/* галочка isActive */}
           <label className={styles.checkboxLabel}>
             <input
               type="checkbox"
@@ -201,7 +191,6 @@ const EditBarItemModal = ({ item, onClose, onSuccess }) => {
             Доступен для заказа
           </label>
 
-          {/* фото */}
           <input
             type="file"
             accept="image/*"

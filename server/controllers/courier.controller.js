@@ -7,9 +7,6 @@ import { Chat } from "../models/Chat.js";
 
 const FRONTEND_URL = process.env.FRONTEND_URL || "https://underground-server.onrender.com";
 
-// -----------------------------
-// Получить всех курьеров
-// -----------------------------
 export const getCouriers = async (req, res) => {
   try {
     const couriers = await User.findAll({
@@ -23,9 +20,6 @@ export const getCouriers = async (req, res) => {
   }
 };
 
-// -----------------------------
-// Локальная регистрация курьера
-// -----------------------------
 export const createCourierLocal = async (req, res) => {
   try {
     const { fullname, phone, birthdate, email, password } = req.body;
@@ -71,9 +65,6 @@ export const createCourierLocal = async (req, res) => {
   }
 };
 
-// -----------------------------
-// Продакшен — приглашение курьера
-// -----------------------------
 export const inviteCourier = async (req, res) => {
   try {
     const { email } = req.body;
@@ -152,9 +143,6 @@ export const inviteCourier = async (req, res) => {
   }
 };
 
-// -----------------------------
-// Данные приглашения (публично)
-// -----------------------------
 export const getInviteInfo = async (req, res) => {
   try {
     const { token } = req.params;
@@ -178,9 +166,6 @@ export const getInviteInfo = async (req, res) => {
   }
 };
 
-// -----------------------------
-// Завершение регистрации курьера (публично)
-// -----------------------------
 export const activateCourier = async (req, res) => {
   try {
     const { token } = req.params;
@@ -259,9 +244,6 @@ export const activateCourier = async (req, res) => {
   }
 };
 
-// -----------------------------
-// Удаление курьера
-// -----------------------------
 export const deleteCourier = async (req, res) => {
   try {
     const { id } = req.params;
@@ -275,9 +257,6 @@ export const deleteCourier = async (req, res) => {
   }
 };
 
-// -----------------------------
-// Смена пароля курьера
-// -----------------------------
 export const changeCourierPassword = async (req, res) => {
   try {
     const { id } = req.params;

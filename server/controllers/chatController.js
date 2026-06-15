@@ -3,7 +3,6 @@ import { Message } from "../models/Message.js";
 import { User } from "../models/User.js";
 import { Op } from "sequelize";
 
-//список чатов
 export const getChats = async (req, res) => {
   const userId = req.user.id;
   const role = req.user.role;
@@ -15,7 +14,6 @@ export const getChats = async (req, res) => {
     ]
   };
 
-  // ❌ Запрещаем чаты user–courier
   if (role === "user") {
     where = {
       [Op.or]: [
@@ -64,11 +62,9 @@ export const getChats = async (req, res) => {
   res.json(result);
 };
 
-//открыть чат
 export const openChat = async (req, res) => {
   const { participant1Id, participant1Role, participant2Id, participant2Role } = req.body;
 
-  // ❌ Запрещаем чаты user–courier
   if (
     (participant1Role === "user" && participant2Role === "courier") ||
     (participant1Role === "courier" && participant2Role === "user")
@@ -99,7 +95,6 @@ export const openChat = async (req, res) => {
   res.json(chat);
 };
 
-//сообщения
 export const getChatMessages = async (req, res) => {
   const chatId = req.params.id;
 
@@ -111,7 +106,6 @@ export const getChatMessages = async (req, res) => {
   res.json(messages);
 };
 
-//отправить сообщение
 export const sendMessage = async (req, res) => {
   const chatId = req.params.id;
   const senderId = req.user.id;
@@ -137,7 +131,6 @@ export const sendMessage = async (req, res) => {
     unreadForP2: isP1 ? chat.unreadForP2 + 1 : chat.unreadForP2
   });
 
-  // 🔥 ВОТ ЭТО — ОБЯЗАТЕЛЬНО
   req.io.to(`chat_${chatId}`).emit("newMessage", {
     chatId,
     message
@@ -146,7 +139,6 @@ export const sendMessage = async (req, res) => {
   res.json(message);
 };
 
-//прочитано
 export const markAsRead = async (req, res) => {
   const chatId = req.params.id;
   const userId = req.user.id;
@@ -154,7 +146,6 @@ export const markAsRead = async (req, res) => {
   const chat = await Chat.findByPk(chatId);
   if (!chat) return res.status(404).json({ message: "Чат не найден" });
 
-  // ❌ Блокируем чаты user–courier
   const roles = [chat.participant1Role, chat.participant2Role];
   if (roles.includes("user") && roles.includes("courier")) {
     return res.status(400).json({ message: "Чат между пользователем и курьером запрещён" });

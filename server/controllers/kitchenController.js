@@ -1,7 +1,6 @@
 import { Item } from "../models/Items.js";
 import { saveImage } from "../services/imageStorage.js";
 
-// получить все блюда кухни
 export const getKitchenItems = async (req, res) => {
   const items = await Item.findAll({
     where: { type: "kitchen" }
@@ -9,7 +8,6 @@ export const getKitchenItems = async (req, res) => {
   res.json(items);
 };
 
-// добавить блюдо кухни
 export const addKitchenItem = async (req, res) => {
   try {
     const { title, ingredients, price, weight, category, isActive } = req.body;
@@ -42,7 +40,6 @@ export const addKitchenItem = async (req, res) => {
   }
 };
 
-// остановить блюдо
 export const stopKitchenItem = async (req, res) => {
   const { id } = req.params;
 
@@ -54,7 +51,6 @@ export const stopKitchenItem = async (req, res) => {
   res.json({ message: "Позиция остановлена" });
 };
 
-// вернуть блюдо
 export const returnKitchenItem = async (req, res) => {
   const { id } = req.params;
 
@@ -66,7 +62,6 @@ export const returnKitchenItem = async (req, res) => {
   res.json({ message: "Позиция возвращена" });
 };
 
-// редактировать блюдо
 export const updateKitchenItem = async (req, res) => {
   const { id } = req.params;
   const { title, ingredients, price, weight, category, isActive } = req.body;

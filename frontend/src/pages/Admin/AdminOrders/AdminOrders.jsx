@@ -15,9 +15,6 @@ const AdminOrders = () => {
 
   const isAdmin = user?.role === "admin";
 
-  // -----------------------------
-  // Загрузка заказов
-  // -----------------------------
   const fetchOrders = useCallback(async () => {
     if (!isAdmin) return;
 
@@ -61,9 +58,6 @@ const AdminOrders = () => {
 
   useRealtime(["orderCreated", "orderUpdated"], fetchOrders);
 
-  // -----------------------------
-  // Обновление статуса
-  // -----------------------------
   const updateStatus = async (id, status) => {
     try {
       await fetch(`${API_URL}/orders/${id}/status`, {
@@ -75,7 +69,6 @@ const AdminOrders = () => {
         body: JSON.stringify({ status }),
       });
 
-      // локально обновляем
       setOrders((prev) =>
         prev.map((o) => (o.id === id ? { ...o, status } : o))
       );
@@ -96,7 +89,6 @@ const AdminOrders = () => {
     <main className={styles.main}>
       <h2 className={styles.title}>Заказы</h2>
 
-      {/* ФИЛЬТР ПО ДАТЕ */}
       <div className={styles.filterBlock}>
         <label>Показать заказы за дату:</label>
 
@@ -150,7 +142,6 @@ const AdminOrders = () => {
               Пользователь: <b>{order.User?.fullname || "Не найден"}</b>
             </p>
 
-            {/* ПОЗИЦИИ */}
             <div className={styles.items}>
               {order.items.map((item) => (
                 <div key={item.id} className={styles.itemRow}>
@@ -174,7 +165,6 @@ const AdminOrders = () => {
               </p>
             </div>
 
-            {/* АДРЕС */}
             <div className={styles.addressBlock}>
               <h4>Адрес доставки</h4>
               <p>
@@ -197,7 +187,6 @@ const AdminOrders = () => {
               </p>
             )}
 
-            {/* КНОПКИ ДЛЯ АДМИНА */}
             <div className={styles.actions}>
               {order.status === "new" && (
                 <button onClick={() => updateStatus(order.id, "approved")}>

@@ -1,7 +1,6 @@
 import { Item } from "../models/Items.js";
 import { saveImage } from "../services/imageStorage.js";
 
-// получить все напитки
 export const getBarItems = async (req, res) => {
   const items = await Item.findAll({
     where: { type: "bar" },
@@ -9,12 +8,11 @@ export const getBarItems = async (req, res) => {
   res.json(items);
 };
 
-// добавить напиток
 export const addBarItem = async (req, res) => {
   try {
     const {
       title,
-      type, // wine | cocktail | drink
+      type,
       country,
       strength,
       price50,
@@ -79,14 +77,13 @@ export const addBarItem = async (req, res) => {
   }
 };
 
-// редактировать напиток
 export const updateBarItem = async (req, res) => {
   try {
     const { id } = req.params;
 
     const {
       title,
-      type, // wine | cocktail | drink
+      type,
       country,
       strength,
       price50,
@@ -165,7 +162,6 @@ export const updateBarItem = async (req, res) => {
   }
 };
 
-// остановить напиток
 export const stopBarItem = async (req, res) => {
   const { id } = req.params;
 
@@ -177,7 +173,6 @@ export const stopBarItem = async (req, res) => {
   res.json({ message: "Позиция остановлена" });
 };
 
-// вернуть напиток
 export const returnBarItem = async (req, res) => {
   const { id } = req.params;
 

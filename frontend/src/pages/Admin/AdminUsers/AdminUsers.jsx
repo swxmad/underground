@@ -16,11 +16,9 @@ const AdminUsers = () => {
       !searchLower || u.fullname.toLowerCase().includes(searchLower)
   );
 
-  // Модалки
-  const [passwordModal, setPasswordModal] = useState(null); // {id, fullname}
-  const [deleteModal, setDeleteModal] = useState(null); // {id, fullname}
+  const [passwordModal, setPasswordModal] = useState(null);
+  const [deleteModal, setDeleteModal] = useState(null);
 
-  // Поля смены пароля
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
@@ -40,18 +38,12 @@ const AdminUsers = () => {
     load();
   }, []);
 
-  // -----------------------------
-  // Индикатор надёжности пароля
-  // -----------------------------
   const passwordStrength = () => {
     if (newPassword.length < 4) return "Слабый";
     if (newPassword.length < 8) return "Средний";
     return "Сильный";
   };
 
-  // -----------------------------
-  // Смена пароля пользователю
-  // -----------------------------
   const submitPasswordChange = async () => {
     if (newPassword !== confirmPassword) {
       showNotification("error", "Пароли не совпадают");
@@ -87,9 +79,6 @@ const AdminUsers = () => {
     setAdminPassword("");
   };
 
-  // -----------------------------
-  // Удаление пользователя
-  // -----------------------------
   const submitDelete = async () => {
     const token = localStorage.getItem("token");
 
@@ -152,7 +141,6 @@ const AdminUsers = () => {
         ))}
       </div>
 
-      {/* МОДАЛКА СМЕНЫ ПАРОЛЯ */}
       {passwordModal && (
         <div className={styles.overlay}>
           <div className={styles.modal}>
@@ -194,7 +182,6 @@ const AdminUsers = () => {
         </div>
       )}
 
-      {/* МОДАЛКА УДАЛЕНИЯ */}
       {deleteModal && (
         <div className={styles.overlay}>
           <div className={styles.modal}>

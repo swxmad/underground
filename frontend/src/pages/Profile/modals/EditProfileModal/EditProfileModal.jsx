@@ -5,7 +5,7 @@ import { useNotification } from "../../../../components/Notifications/Notificati
 const API_URL = "https://underground-server.onrender.com/api/auth";
 
 const EditProfileModal = ({ user, onClose, onSave }) => {
-  const { showNotification } = useNotification(); // ✔ Хук внутри компонента
+  const { showNotification } = useNotification();
 
   const [form, setForm] = useState({
     fullname: user.fullname,
@@ -14,9 +14,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     birthdate: user.birthdate
   });
 
-  // -----------------------------
-  // Маска телефона
-  // -----------------------------
   const formatPhone = (value) => {
     let cleaned = value.replace(/\D/g, "");
     if (!cleaned.startsWith("7")) cleaned = "7" + cleaned;
@@ -31,9 +28,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     return formatted;
   };
 
-  // -----------------------------
-  // Маска даты рождения
-  // -----------------------------
   const formatBirthdate = (value) => {
     let cleaned = value.replace(/\D/g, "");
     if (cleaned.length > 8) cleaned = cleaned.slice(0, 8);
@@ -46,9 +40,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     return formatted;
   };
 
-  // -----------------------------
-  // Проверка существования даты
-  // -----------------------------
   const isValidDate = (dateStr) => {
     const [day, month, year] = dateStr.split(".").map(Number);
     const date = new Date(year, month - 1, day);
@@ -60,9 +51,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     );
   };
 
-  // -----------------------------
-  // Проверка возраста
-  // -----------------------------
   const validateAge = (birthdate) => {
     const [day, month, year] = birthdate.split(".").map(Number);
     const birth = new Date(year, month - 1, day);
@@ -76,9 +64,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     return age >= 18 && age <= 100;
   };
 
-  // -----------------------------
-  // Полная валидация формы
-  // -----------------------------
   const validateForm = () => {
     if (!/^[А-Яа-яЁё\s]{1,100}$/.test(form.fullname))
       return "ФИО должно содержать только русские буквы";
@@ -101,9 +86,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     return null;
   };
 
-  // -----------------------------
-  // Обработка ввода
-  // -----------------------------
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -120,9 +102,6 @@ const EditProfileModal = ({ user, onClose, onSave }) => {
     setForm({ ...form, [name]: value });
   };
 
-  // -----------------------------
-  // Отправка формы
-  // -----------------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
 

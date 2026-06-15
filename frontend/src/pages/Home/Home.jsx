@@ -7,7 +7,6 @@ import EditEventModal from "../../components/Event/EditEventModal/EditEventModal
 import DeleteConfirm from "../../components/Event/DeleteConfirm/DeleteConfirm";
 import { getImageUrl } from "../../utils/imageUrl";
 
-
 const API_URL = "https://underground-server.onrender.com/api";
 
 const Home = ({ unreadChats }) => {
@@ -15,7 +14,6 @@ const Home = ({ unreadChats }) => {
   const [aboutIndex, setAboutIndex] = useState(0);
   const fadeRefs = useRef([]);
 
-  // СОБЫТИЯ
   const [events, setEvents] = useState([]);
   const [message, setMessage] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
@@ -25,7 +23,6 @@ const Home = ({ unreadChats }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const role = user?.role;
 
-  // загрузка событий
   const fetchEvents = async () => {
     const res = await fetch(`${API_URL}/events`);
     const data = await res.json();
@@ -36,7 +33,6 @@ const Home = ({ unreadChats }) => {
     fetchEvents();
   }, []);
 
-  // удаление события
   const handleDelete = async () => {
     const token = localStorage.getItem("token");
 
@@ -52,7 +48,6 @@ const Home = ({ unreadChats }) => {
     setTimeout(() => setMessage(""), 2000);
   };
 
-  // ТВОИ АНИМАЦИИ
   useEffect(() => {
     const interval = setInterval(() => {
       setAboutIndex((prev) => (prev + 1) % 3);
@@ -85,9 +80,6 @@ const Home = ({ unreadChats }) => {
     };
   }, []);
 
-  // -----------------------------
-  // СЛАЙДЕР (оставляю как есть)
-  // -----------------------------
   const mainSlideRef = useRef(null);
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
@@ -193,10 +185,10 @@ const Home = ({ unreadChats }) => {
 
       <div className={styles.home}>
 
-        {/* уведомление */}
+        {}
         {message && <div className={styles.notification}>{message}</div>}
 
-        {/* о кафе */}
+        {}
         <section className={styles.aboutSection}>
           <div className={styles.container}>
             <div className={styles.about}>
@@ -226,7 +218,7 @@ const Home = ({ unreadChats }) => {
           </div>
         </section>
 
-        {/* вас ждут */}
+        {}
         <section className={styles.waitingSection}>
           <div className={styles.container}>
             <p className={styles.barTitle}>Вас ждут...</p>
@@ -247,7 +239,7 @@ const Home = ({ unreadChats }) => {
           </div>
         </section>
 
-        {/* слайдер */}
+        {}
         <div className={styles.container}>
           <section className={styles.sliderContainer}>
             <div className={styles.mainSlide} ref={mainSlideRef}></div>
@@ -263,12 +255,12 @@ const Home = ({ unreadChats }) => {
           </section>
         </div>
 
-        {/* на неделе */}
+        {}
         <section className={styles.weekSection}>
           <div className={styles.container}>
             <p className={styles.barTitleNew}>На этой неделе</p>
 
-            {/* кнопка только для админа */}
+            {}
             {role === "admin" && (
               <button
                 className={styles.addBtn}

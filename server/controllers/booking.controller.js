@@ -11,7 +11,6 @@ export const createBooking = async (req, res) => {
     const { id } = req.user;
     const { name, date, table, guests, time, cardId } = req.body;
 
-    // Проверка занятых столов
     const existing = await Booking.findAll({
       where: {
         date,
@@ -40,7 +39,6 @@ export const createBooking = async (req, res) => {
       });
     }
 
-    // Создание брони
     const booking = await Booking.create({
       userId: id,
       name,
@@ -60,7 +58,6 @@ export const createBooking = async (req, res) => {
     return res.status(500).json({ message: "Ошибка сервера" });
   }
 };
-
 
 export const getMyBookings = async (req, res) => {
   try {

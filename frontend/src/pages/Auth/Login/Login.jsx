@@ -12,7 +12,7 @@ const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
-  const navigate = useNavigate(); // ← добавлено
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,12 +36,10 @@ const Login = () => {
         return;
       }
 
-      // сохраняем токен и пользователя
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       notifyAuthChange();
 
-      // перенаправление по роли
       if (data.user.role === "admin") {
         navigate("/admin");
       } else if (data.user.role === "courier") {
@@ -78,7 +76,6 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Пароль"
             />
-
 
             <button type="submit" className={styles.submit}>
               Войти

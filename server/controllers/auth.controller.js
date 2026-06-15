@@ -3,7 +3,6 @@ import { Chat } from "../models/Chat.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// регистрация
 export const register = async (req, res) => {
   try {
     const { fullname, phone, birthdate, email, password } = req.body;
@@ -44,7 +43,6 @@ export const register = async (req, res) => {
   }
 };
 
-//вход
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -93,8 +91,6 @@ export const login = async (req, res) => {
   }
 };
 
-
-//редактировать профиль
 export const updateProfile = async (req, res) => {
   try {
     const { id } = req.user;
@@ -127,7 +123,6 @@ export const updateProfile = async (req, res) => {
   }
 };
 
-//сменить пароль
 export const changePassword = async (req, res) => {
   try {
     const { id } = req.user;
@@ -150,7 +145,6 @@ export const changePassword = async (req, res) => {
   }
 };
 
-// удалить собственный аккаунт
 export const deleteAccount = async (req, res) => {
   try {
     const { id } = req.user;
@@ -179,7 +173,6 @@ export const deleteAccount = async (req, res) => {
   }
 };
 
-//хз для профиля админа
 export const getMe = async (req, res) => {
   try {
     const user = await User.findByPk(req.user.id, {

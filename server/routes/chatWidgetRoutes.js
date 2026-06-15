@@ -5,11 +5,9 @@ import { Op } from "sequelize";
 export const getAdminChat = async (req, res) => {
   const userId = req.user.id;
 
-  // ищем админа
   const admin = await User.findOne({ where: { role: "admin" } });
   if (!admin) return res.status(500).json({ message: "Админ не найден" });
 
-  // ищем чат user–admin или courier–admin
   let chat = await Chat.findOne({
     where: {
       [Op.or]: [
@@ -19,7 +17,6 @@ export const getAdminChat = async (req, res) => {
     }
   });
 
-  // если нет — создаём
   if (!chat) {
     chat = await Chat.create({
       participant1Id: userId,

@@ -20,14 +20,12 @@ const AdminCouriers = () => {
   const [couriers, setCouriers] = useState([]);
   const [mode, setMode] = useState("local");
 
-  // модалки
   const [showAddModal, setShowAddModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [selectedCourier, setSelectedCourier] = useState(null);
 
-  // поля для модалки смены пароля
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
@@ -40,9 +38,6 @@ const AdminCouriers = () => {
     password: ""
   });
 
-  // -----------------------------
-  // Загрузка курьеров
-  // -----------------------------
   const loadCouriers = () => {
     fetch(`${API_URL}/couriers`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -56,9 +51,6 @@ const AdminCouriers = () => {
     if (isAdmin) loadCouriers();
   }, [isAdmin]);
 
-  // -----------------------------
-  // Добавление курьера
-  // -----------------------------
   const handleAddCourier = async (e) => {
     e.preventDefault();
 
@@ -114,9 +106,6 @@ const AdminCouriers = () => {
     }
   };
 
-  // -----------------------------
-  // Маски
-  // -----------------------------
   const handlePhoneMask = (value) => {
     let cleaned = value.replace(/\D/g, "");
     if (!cleaned.startsWith("7")) cleaned = "7" + cleaned;
@@ -175,7 +164,6 @@ const AdminCouriers = () => {
 
     showNotification("success", "Пароль изменён");
 
-    // очищаем поля
     setNewPassword("");
     setConfirmPassword("");
     setAdminPassword("");
@@ -183,9 +171,6 @@ const AdminCouriers = () => {
     setShowPassModal(false);
   };
 
-  // -----------------------------
-  // Удаление курьера
-  // -----------------------------
   const deleteCourier = async (id) => {
     const res = await fetch(`${API_URL}/couriers/${id}`, {
       method: "DELETE",
@@ -258,7 +243,6 @@ const AdminCouriers = () => {
         ))}
       </div>
 
-      {/* Модалка добавления */}
       {showAddModal && (
         <CourierAdd
           mode={mode}
@@ -271,7 +255,6 @@ const AdminCouriers = () => {
         />
       )}
 
-      {/* Модалка смены пароля */}
       {showPassModal && selectedCourier && (
         <CourierPassword
           courier={selectedCourier}
@@ -286,7 +269,6 @@ const AdminCouriers = () => {
         />
       )}
 
-      {/* Модалка удаления */}
       {showDeleteModal && selectedCourier && (
         <CourierDelete
           courier={selectedCourier}

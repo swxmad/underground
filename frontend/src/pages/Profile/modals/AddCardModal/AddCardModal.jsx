@@ -46,7 +46,7 @@ const AddCardModal = ({ onClose, onAdd }) => {
 
   const now = new Date();
   const currentMonth = now.getMonth() + 1;
-  const currentYear = now.getFullYear() % 100; 
+  const currentYear = now.getFullYear() % 100;
 
   if (yy < currentYear || (yy === currentYear && mm < currentMonth)) {
     return "Срок действия карты истёк";

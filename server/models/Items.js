@@ -14,11 +14,11 @@ export const Item = sequelize.define(
       allowNull: false,
     },
     type: {
-      // "kitchen" | "bar"
+
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // общие поля
+
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -43,7 +43,7 @@ export const Item = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-    // опциональные поля для бара
+
     country: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -61,10 +61,10 @@ export const Item = sequelize.define(
       allowNull: true,
     },
     drinkType: {
-  type: DataTypes.STRING, // wine | cocktail | drink
+  type: DataTypes.STRING,
   allowNull: true,
 },
-    // опциональные поля для кухни / коктейлей
+
     ingredients: {
       type: DataTypes.TEXT,
       allowNull: true,

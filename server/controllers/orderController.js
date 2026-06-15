@@ -54,7 +54,7 @@ export const getMyOrders = async (req, res) => {
     const userId = req.user.id;
     const orders = await Order.findAll({
       where: { userId },
-      order: [["createdAt", "DESC"]], // ← НОВЕЙШИЕ ВВЕРХУ
+      order: [["createdAt", "DESC"]],
       attributes: [
         "id",
         "items",
@@ -78,7 +78,6 @@ export const getMyOrders = async (req, res) => {
     res.status(500).json({ message: "Ошибка загрузки заказов" });
   }
 };
-
 
 export const getAllOrders = async (req, res) => {
   try {
@@ -126,9 +125,6 @@ export const updateOrderStatus = async (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
 
-    // админ может:
-    // new → approved
-    // approved → ready_for_courier
     const allowed = ["approved", "ready_for_courier"];
 
     if (!allowed.includes(status)) {
@@ -138,10 +134,8 @@ export const updateOrderStatus = async (req, res) => {
     const order = await Order.findByPk(id);
     if (!order) return res.status(404).json({ message: "Заказ не найден" });
 
-    // обновляем статус
     order.status = status;
 
-    // если передаём курьеру — делаем заказ доступным
     if (status === "ready_for_courier") {
       order.courierId = null;
     }

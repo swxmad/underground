@@ -89,7 +89,6 @@
 [data-theme="light"] {
   color-scheme: light;
 
-  /* frontend/public/images/фонСветлый.png */
   --bg-page: url("/images/фонСетлый.png");
   --bg-home: url("/images/фонСетлый.png");
 

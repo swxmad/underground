@@ -3,7 +3,6 @@ import styles from "./CocktailCard.module.css";
 import { getImageUrl } from "../../../utils/imageUrl";
 
 const CocktailCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
-  // ⭐ Достаём данные товара из item.Item (CartItem) или item (Item)
   const data = item.Item || item;
 
   return (
@@ -31,7 +30,6 @@ const CocktailCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
         </button>
       )}
 
-      {/* админ */}
       {role === "admin" && (
         <div className={styles.adminControls}>
           <button className={styles.adminBtn} onClick={() => onEdit(data)}>

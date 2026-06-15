@@ -7,7 +7,7 @@ const Header = ({ unreadChats = 0 }) => {
   const [open, setOpen] = useState(false);
   const toggleMenu = () => setOpen(!open);
   const user = JSON.parse(localStorage.getItem("user"));
-  const role = user?.role; // "admin" | "user" | undefined
+  const role = user?.role;
 
   return (
     <header className={styles.header}>

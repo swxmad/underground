@@ -17,7 +17,6 @@ const CourierPassword = ({
   const { showNotification } = useNotification();
   const [strength, setStrength] = useState("");
 
-  // Проверка силы пароля
   const checkStrength = (password) => {
     let score = 0;
 
@@ -32,7 +31,6 @@ const CourierPassword = ({
     return "Сильный";
   };
 
-  // Обработка ввода нового пароля
   const handleNewPassword = (value) => {
     setNewPassword(value);
     if (value.length > 0) {

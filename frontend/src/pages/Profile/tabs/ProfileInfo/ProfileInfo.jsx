@@ -4,13 +4,11 @@ import EditProfileModal from "../../modals/EditProfileModal/EditProfileModal";
 import ChangePasswordModal from "../../modals/ChangePasswordModal/ChangePasswordModal";
 import DeleteAccountModal from "../../modals/DeleteAccountModal/DeleteAccountModal";
 
-
 const ProfileInfo = ({ user }) => {
   const [showEdit, setShowEdit] = useState(false);
   const [currentUser, setCurrentUser] = useState(user);
   const [showPassword, setShowPassword] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-
 
   const handleLogout = () => {
     localStorage.removeItem("token");

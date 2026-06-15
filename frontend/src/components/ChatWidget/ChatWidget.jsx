@@ -15,7 +15,6 @@ const ChatWidget = ({ user }) => {
 
   const bottomRef = useRef(null);
 
-  // 1. Получаем chatId с админом
   const loadAdminChat = async () => {
     const res = await fetch(`${API_URL}/chats/admin`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -27,7 +26,6 @@ const ChatWidget = ({ user }) => {
     return id;
   };
 
-  // 2. Загружаем сообщения и считаем непрочитанные
   const loadMessages = async (id) => {
     const res = await fetch(`${API_URL}/chats/${id}/messages`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -43,7 +41,6 @@ const ChatWidget = ({ user }) => {
     setUnread(unreadCount);
   };
 
-  // 3. Отправка сообщения
   const sendMessage = async () => {
     if (!text.trim() || !chatId) return;
 
@@ -59,7 +56,6 @@ const ChatWidget = ({ user }) => {
     setText("");
   };
 
-  // 4. Помечаем как прочитанные (только сервер + сокет)
   const markRead = async (id) => {
     if (!id) return;
 
@@ -74,12 +70,10 @@ const ChatWidget = ({ user }) => {
     });
   };
 
-  // 5. Автоскролл
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // 6. Первичная загрузка при заходе на страницу — чтобы был бейдж
   useEffect(() => {
     (async () => {
       try {
@@ -91,17 +85,14 @@ const ChatWidget = ({ user }) => {
         console.error("Ошибка первичной загрузки чата:", e);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 7. Слушаем новые сообщения
   useEffect(() => {
     const handler = ({ chatId: incomingId, message }) => {
       if (Number(incomingId) !== Number(chatId)) return;
 
       setMessages(prev => [...prev, message]);
 
-      // если чат закрыт — увеличиваем счётчик
       if (!open) {
         setUnread(prev => prev + 1);
       }
@@ -111,7 +102,6 @@ const ChatWidget = ({ user }) => {
     return () => socket.off("newMessage", handler);
   }, [chatId, open]);
 
-  // 8. Слушаем прочтение админом
   useEffect(() => {
     const handler = ({ chatId: incomingId, readerId }) => {
       if (Number(incomingId) === Number(chatId) && readerId !== user.id) {
@@ -125,23 +115,18 @@ const ChatWidget = ({ user }) => {
     return () => socket.off("messagesRead", handler);
   }, [chatId, user.id]);
 
-  // 9. Открытие чата
   const openChat = async () => {
     let id = chatId;
 
-    // если по какой-то причине ещё не загружали — подстрахуемся
     if (!id) {
       id = await loadAdminChat();
       await loadMessages(id);
     }
 
-    // подключаемся к комнате
     socket.emit("joinChat", id);
 
-    // помечаем прочитанными на сервере
     await markRead(id);
 
-    // локально обнуляем счётчик
     setUnread(0);
 
     setOpen(true);
@@ -149,13 +134,11 @@ const ChatWidget = ({ user }) => {
 
   return (
     <>
-      {/* Кнопка чата с бейджем */}
       <div className={styles.button} onClick={openChat}>
         <img src="/images/mage_message-round.png" alt="" />
         {unread > 0 && <span className={styles.badge}>{unread}</span>}
       </div>
 
-      {/* Модалка */}
       {open && (
         <div className={styles.modal}>
           <div className={styles.window}>

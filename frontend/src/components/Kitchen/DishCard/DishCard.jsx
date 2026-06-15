@@ -53,7 +53,7 @@ const DishCard = ({
             <div className={styles.counter}>
               <button
                 className={styles.counterBtn}
-                onClick={() => onDecrease(item.id)} // ВАЖНО: item.id
+                onClick={() => onDecrease(item.id)}
               >
                 −
               </button>

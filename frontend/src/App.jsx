@@ -29,7 +29,6 @@ const App = () => {
 
   const [unreadChats, setUnreadChats] = useState(0);
 
-  // Загружаем количество непрочитанных чатов
   const loadUnreadChats = async () => {
     if (!user || user.role !== "admin") return;
 
@@ -42,7 +41,6 @@ const App = () => {
     setUnreadChats(count);
   };
 
-  // Загружаем при входе
   useEffect(() => {
     loadUnreadChats();
     joinRealtimeRooms();
@@ -53,7 +51,6 @@ const App = () => {
     return () => window.removeEventListener("auth-changed", onAuthChange);
   }, []);
 
-  // Обновляем при новых сообщениях
   useEffect(() => {
     if (!user || user.role !== "admin") return;
 
@@ -73,16 +70,16 @@ const App = () => {
       <CartProvider>
         <Router>
 
-          {/* Чат-виджет для пользователя и курьера */}
+          {}
           {user && (user.role === "user" || user.role === "courier") && (
             <ChatWidget user={user} />
           )}
 
           <Routes>
-            {/* Главная страница сама рендерит HomeHeader */}
+            {}
             <Route path="/" element={<Home unreadChats={unreadChats}/>} />
 
-            {/* Все остальные страницы сами рендерят Header внутри себя */}
+            {}
             <Route path="/bar" element={<BarMenu unreadChats={unreadChats} />} />
             <Route path="/kitchen" element={<KitchenMenu unreadChats={unreadChats} />} />
             <Route path="/booking" element={<Booking unreadChats={unreadChats} />} />

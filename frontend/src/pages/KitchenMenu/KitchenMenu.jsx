@@ -22,7 +22,6 @@ const KitchenMenu = ({ unreadChats }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const role = user?.role;
 
-  // ⭐ корзина
   const { cart, addToCart, decrease } = useCart();
 
   const showBanner = (msg) => {
@@ -30,13 +29,11 @@ const KitchenMenu = ({ unreadChats }) => {
     setTimeout(() => setMessage(""), 2000);
   };
 
-  // ⭐ правильный подсчёт количества в корзине
   const getCountInCart = (id) => {
     const item = cart.find((i) => i.itemId === id);
     return item ? item.count : 0;
   };
 
-  // загрузка блюд
   const fetchItems = async () => {
     try {
       const res = await fetch(`${API_URL}/kitchen`);
@@ -52,7 +49,6 @@ const KitchenMenu = ({ unreadChats }) => {
     fetchItems();
   }, []);
 
-  // остановить позицию
   const handleStop = async (id) => {
     try {
       await fetch(`${API_URL}/kitchen/${id}/stop`, { method: "PUT" });
@@ -64,7 +60,6 @@ const KitchenMenu = ({ unreadChats }) => {
     }
   };
 
-  // вернуть позицию
   const handleReturn = async (id) => {
     try {
       await fetch(`${API_URL}/kitchen/${id}/return`, { method: "PUT" });
@@ -76,13 +71,11 @@ const KitchenMenu = ({ unreadChats }) => {
     }
   };
 
-  // ⭐ добавить в корзину
   const handleAddToCart = async (item) => {
     const ok = await addToCart({ ...item, type: "kitchen" });
     showBanner(ok ? "Добавлено в корзину" : "Не удалось добавить в корзину");
   };
 
-  // ⭐ уменьшить количество
   const handleDecrease = (id) => {
     const before = getCountInCart(id);
     decrease(id);
@@ -92,7 +85,6 @@ const KitchenMenu = ({ unreadChats }) => {
     }
   };
 
-  // группы категорий
   const groups = [
     { title: "Закуски", categories: ["Закуски", "Холодные закуски"] },
     {

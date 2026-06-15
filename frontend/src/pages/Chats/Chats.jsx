@@ -20,14 +20,12 @@ const Chats = ({ onUnreadChange }) => {
       !searchLower || chat.otherName.toLowerCase().includes(searchLower)
   );
 
-  // пересчёт количества чатов с непрочитанными
   const recalcUnreadChats = (list) => {
     if (!onUnreadChange) return;
     const count = list.filter(c => c.unread > 0).length;
     onUnreadChange(count);
   };
 
-  // загрузка чатов
   const loadChats = async () => {
     const res = await fetch(`${API_URL}/chats`, {
       headers: { Authorization: `Bearer ${token}` }

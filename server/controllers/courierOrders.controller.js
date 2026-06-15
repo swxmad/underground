@@ -2,9 +2,6 @@ import { Order } from "../models/Order.js";
 import { User } from "../models/User.js";
 import { emitOrderUpdated } from "../utils/realtime.js";
 
-// ------------------------------------------------------
-// 1. Доступные заказы (которые никто не взял)
-// ------------------------------------------------------
 export const getAvailableOrders = async (req, res) => {
   try {
     const orders = await Order.findAll({
@@ -19,15 +16,11 @@ export const getAvailableOrders = async (req, res) => {
   }
 };
 
-// ------------------------------------------------------
-// 2. Курьер берет заказ
-// ------------------------------------------------------
 export const takeOrder = async (req, res) => {
   try {
     const courierId = req.user.id;
     const orderId = req.params.id;
 
-    // 1. Находим заказ
     const order = await Order.findByPk(orderId);
 
     if (!order) {
@@ -42,12 +35,10 @@ export const takeOrder = async (req, res) => {
       return res.status(400).json({ message: "Этот заказ недоступен" });
     }
 
-    // 2. Курьер берет заказ
     order.courierId = courierId;
     order.status = "accepted";
     await order.save();
 
-    // 3. Получаем заказ с пользователем
     const fullOrder = await Order.findByPk(orderId, {
       include: [
         {
@@ -75,9 +66,6 @@ export const takeOrder = async (req, res) => {
   }
 };
 
-// ------------------------------------------------------
-// 3. Активные заказы курьера
-// ------------------------------------------------------
 export const getActiveOrders = async (req, res) => {
   try {
     const courierId = req.user.id;
@@ -102,9 +90,6 @@ export const getActiveOrders = async (req, res) => {
   }
 };
 
-// ------------------------------------------------------
-// 4. Курьер обновляет статус заказа
-// ------------------------------------------------------
 export const updateOrderStatus = async (req, res) => {
   try {
     const courierId = req.user.id;
@@ -145,9 +130,6 @@ export const updateOrderStatus = async (req, res) => {
   }
 };
 
-// ------------------------------------------------------
-// 5. История заказов курьера
-// ------------------------------------------------------
 export const getHistory = async (req, res) => {
   try {
     const courierId = req.user.id;

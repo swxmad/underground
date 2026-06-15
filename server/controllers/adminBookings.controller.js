@@ -1,15 +1,14 @@
 import { Booking } from "../models/Booking.js";
 import { emitBookingUpdated } from "../utils/realtime.js";
 
-// Получить бронирования на конкретную дату
 export const getBookingsByDate = async (req, res) => {
   try {
-    const { date } = req.params; // формат ДД.ММ.ГГГГ
+    const { date } = req.params;
 
     const bookings = await Booking.findAll({
       where: {
         date,
-        status: "approved"   // ⭐ фильтруем только подтверждённые
+        status: "approved"
       }
     });
 
@@ -20,7 +19,6 @@ export const getBookingsByDate = async (req, res) => {
   }
 };
 
-// Получить заявки на подтверждение
 export const getPendingBookings = async (req, res) => {
   try {
     const bookings = await Booking.findAll({
@@ -34,11 +32,10 @@ export const getPendingBookings = async (req, res) => {
   }
 };
 
-// Обновить статус брони (подтвердить / отклонить)
 export const updateStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body; // approved | rejected
+    const { status } = req.body;
 
     if (!["approved", "rejected"].includes(status)) {
       return res.status(400).json({ message: "Некорректный статус" });

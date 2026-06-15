@@ -16,9 +16,6 @@ const ChangePasswordModal = ({ onClose }) => {
 
   const [strength, setStrength] = useState("");
 
-  // -----------------------------
-  // Проверка силы пароля
-  // -----------------------------
   const checkStrength = (password) => {
     let score = 0;
 
@@ -33,9 +30,6 @@ const ChangePasswordModal = ({ onClose }) => {
     return "Сильный";
   };
 
-  // -----------------------------
-  // Валидация
-  // -----------------------------
   const validateForm = () => {
     if (!form.oldPassword) return "Введите старый пароль";
 
@@ -51,9 +45,6 @@ const ChangePasswordModal = ({ onClose }) => {
     return null;
   };
 
-  // -----------------------------
-  // Обработка ввода
-  // -----------------------------
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -64,9 +55,6 @@ const ChangePasswordModal = ({ onClose }) => {
     setForm({ ...form, [name]: value });
   };
 
-  // -----------------------------
-  // Отправка формы
-  // -----------------------------
   const handleSubmit = async (e) => {
     e.preventDefault();
 

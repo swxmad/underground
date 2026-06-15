@@ -35,10 +35,10 @@ const CLIENT_URL =
   process.env.FRONTEND_URL || "https://underground-4fpj.onrender.com";
 
 if (isCloudinaryEnabled) {
-  console.log("☁️ Cloudinary: постоянное хранение изображений включено");
+  console.log("Cloudinary: постоянное хранение изображений включено");
 } else {
   console.warn(
-    "⚠️ Cloudinary не настроен — изображения сохраняются локально и пропадут после перезапуска"
+    "Cloudinary не настроен — изображения сохраняются локально и пропадут после перезапуска"
   );
 }
 
@@ -61,7 +61,6 @@ const attachIo = (req, res, next) => {
   next();
 };
 
-// -------------------- CORS --------------------
 app.use(
   cors({
     origin: CLIENT_URL,
@@ -71,7 +70,6 @@ app.use(
 
 app.use(express.json());
 
-// Прокси для внешних изображений (Cloudinary) — совместимость со старым фронтендом
 app.get("/api/media", (req, res) => {
   const { src } = req.query;
 
@@ -93,14 +91,12 @@ app.get("/api/media", (req, res) => {
   }
 });
 
-// Все внешние image-URL в API отдаём как /api/media?... для старого фронтенда
 app.use((req, res, next) => {
   const originalJson = res.json.bind(res);
   res.json = (body) => originalJson(formatImagesDeep(body));
   next();
 });
 
-// -------------------- ROUTES --------------------
 app.use("/api/auth", authRoutes);
 app.use("/api/events", authMiddleware, eventRoutes);
 app.use("/uploads", express.static("uploads"));
@@ -114,7 +110,6 @@ app.use("/api/cart", authMiddleware, cartRoutes);
 app.use("/api/couriers", authMiddleware, courierRoutes);
 app.use("/api/courier/orders", authMiddleware, attachIo, courierOrdersRoutes);
 
-// Прокидываем io в req
 app.use(
   "/api/chats",
   authMiddleware,
@@ -122,7 +117,6 @@ app.use(
   chatRoutes
 );
 
-// Чат с админом
 app.get("/api/chats/admin", authMiddleware, getAdminChat);
 
 app.get("/", (req, res) => {
@@ -151,7 +145,7 @@ io.on("connection", (socket) => {
       if (user.role === "admin") socket.join("admin");
       if (user.role === "courier") socket.join("couriers");
     } catch {
-      // invalid token — ignore
+
     }
   });
 
@@ -190,24 +184,22 @@ io.on("connection", (socket) => {
   });
 });
 
-// -------------------- START SERVER --------------------
 const PORT = process.env.PORT || 5000;
 
 const start = async () => {
   try {
-    console.log("⏳ Подключение к базе данных...");
+    console.log("Подключение к базе данных...");
 
     await sequelize.authenticate();
-    console.log("✅ Подключение к PostgreSQL установлено");
+    console.log("Подключение к PostgreSQL установлено");
 
     const queryInterface = sequelize.getQueryInterface();
     await queryInterface.dropTable("typing").catch(() => {});
     await queryInterface.dropTable("presence").catch(() => {});
 
     await sequelize.sync();
-    console.log("📦 Модели синхронизированы");
+    console.log("Модели синхронизированы");
 
-    // Создание администратора
     const adminEmail = process.env.ADMIN_EMAIL;
     const adminPassword = process.env.ADMIN_PASSWORD || "Admin123_";
 
@@ -226,17 +218,17 @@ const start = async () => {
           role: "admin"
         });
 
-        console.log(`👑 Администратор создан: ${adminEmail}`);
+        console.log(`Администратор создан: ${adminEmail}`);
       } else {
-        console.log(`ℹ️ Администратор уже существует: ${adminEmail}`);
+        console.log(`ℹАдминистратор уже существует: ${adminEmail}`);
       }
     }
 
     server.listen(PORT, () =>
-      console.log(`🚀 Сервер + Socket.IO запущены на порту ${PORT}`)
+      console.log(`Сервер + Socket.IO запущены на порту ${PORT}`)
     );
   } catch (e) {
-    console.error("❌ Ошибка запуска сервера:", e.message);
+    console.error("Ошибка запуска сервера:", e.message);
   }
 };
 

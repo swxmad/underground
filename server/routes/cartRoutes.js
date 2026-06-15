@@ -3,10 +3,8 @@ import { CartItem } from "../models/CartItem.js";
 import { authMiddleware as auth } from "../middleware/authMiddleware.js";
 import { Item } from "../models/Items.js";
 
-
 const router = express.Router();
 
-// получить корзину
 router.get("/", auth, async (req, res) => {
   if (!req.user.id) {
     return res.json([]);
@@ -20,8 +18,6 @@ router.get("/", auth, async (req, res) => {
   res.json(items);
 });
 
-
-// добавить в корзину
 router.post("/add", auth, async (req, res) => {
   if (!req.user.id) {
     return res.status(401).json({ message: "Требуется авторизация" });
@@ -48,7 +44,6 @@ router.post("/add", auth, async (req, res) => {
   res.json(item);
 });
 
-// уменьшить количество
 router.put("/decrease", auth, async (req, res) => {
   if (!req.user.id) {
     return res.status(401).json({ message: "Требуется авторизация" });
@@ -72,7 +67,6 @@ router.put("/decrease", auth, async (req, res) => {
   res.json(item);
 });
 
-// удалить полностью
 router.delete("/remove/:itemId", auth, async (req, res) => {
   if (!req.user.id) {
     return res.status(401).json({ message: "Требуется авторизация" });
@@ -85,7 +79,6 @@ router.delete("/remove/:itemId", auth, async (req, res) => {
   res.json({ success: true });
 });
 
-// очистить корзину
 router.delete("/clear", auth, async (req, res) => {
   if (!req.user.id) {
     return res.status(401).json({ message: "Требуется авторизация" });

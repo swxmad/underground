@@ -24,7 +24,7 @@ const CourierDashboard = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>Личный кабинет</h1>
 
-        {/* Вкладки */}
+        {}
         <div className={styles.tabs}>
           <button
             className={tab === "profile" ? styles.active : ""}
@@ -55,7 +55,7 @@ const CourierDashboard = () => {
           </button>
         </div>
 
-        {/* Контент вкладок */}
+        {}
         <div className={styles.content}>
           {tab === "profile" && <CourierProfile courier={courier} />}
           {tab === "available" && <CourierAvailable courierId={courier.id} />}

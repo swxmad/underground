@@ -32,9 +32,6 @@ const CartPage = () => {
   const [utensils, setUtensils] = useState(1);
   const [selectedCard, setSelectedCard] = useState("");
 
-  // -----------------------------
-  // Загрузка карт пользователя
-  // -----------------------------
   useEffect(() => {
     if (!user) return;
 
@@ -46,9 +43,6 @@ const CartPage = () => {
       .catch(() => { });
   }, [user, token]);
 
-  // -----------------------------
-  // Валидация
-  // -----------------------------
   const validate = () => {
     if (!address.street.trim()) return "Введите улицу";
     if (!address.house.trim()) return "Введите дом";
@@ -62,9 +56,6 @@ const CartPage = () => {
     setAddress((prev) => ({ ...prev, [field]: value }));
   };
 
-  // -----------------------------
-  // Отправка заказа
-  // -----------------------------
   const handleConfirmOrder = async () => {
     if (!cart.length) return;
 
@@ -113,11 +104,10 @@ const CartPage = () => {
       <Header />
 
       <main className={`${styles.container} ${styles.checkoutContainer}`}>
-        {/* ЛЕВАЯ ЧАСТЬ — ТОВАРЫ */}
         <div className={styles.orderSummary}>
           <div id="order-items">
             {cart.map((item) => {
-              const data = item.Item || item; // ⭐ универсально
+              const data = item.Item || item;
 
               return (
                 <div key={item.id} className={styles.card}>
@@ -182,7 +172,6 @@ const CartPage = () => {
           </div>
         </div>
 
-        {/* ПРАВАЯ ЧАСТЬ — ФОРМА */}
         <div className={styles.deliveryForm}>
           <div className={styles.formBlock}>
             <h3>Адрес доставки</h3>

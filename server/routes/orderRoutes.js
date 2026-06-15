@@ -11,11 +11,9 @@ import { adminMiddleware } from "../middleware/adminMiddleware.js";
 
 const router = express.Router();
 
-// пользователь
 router.post("/", authMiddleware, createOrder);
 router.get("/my", authMiddleware, getMyOrders);
 
-// админ
 router.get("/", adminMiddleware, getAllOrders);
 router.put("/:id/status", adminMiddleware, updateOrderStatus);
 

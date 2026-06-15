@@ -23,7 +23,7 @@ const Profile = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>Личный кабинет</h1>
 
-        {/* Вкладки */}
+        {}
         <div className={styles.tabs}>
           <button
             className={tab === "profile" ? styles.active : ""}
@@ -54,7 +54,7 @@ const Profile = () => {
           </button>
         </div>
 
-        {/* Контент вкладок */}
+        {}
         <div className={styles.content}>
           {tab === "profile" && <ProfileInfo user={user} />}
           {tab === "reservations" && <MyBookings userId={user.id} />}

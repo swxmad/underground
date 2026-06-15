@@ -56,9 +56,6 @@ const Orders = () => {
 
   useRealtime(["orderUpdated", "orderCreated"], fetchOrders);
 
-  // -----------------------------
-  //  ЕСЛИ ПОЛЬЗОВАТЕЛЬ НЕ АВТОРИЗОВАН
-  // -----------------------------
   if (!isAuthorized) {
     return (
       <main className={styles.main}>
@@ -67,9 +64,6 @@ const Orders = () => {
     );
   }
 
-  // -----------------------------
-  //  РЕНДЕР
-  // -----------------------------
   return (
     <main className={styles.main}>
       <h2>Мои заказы</h2>
@@ -87,7 +81,7 @@ const Orders = () => {
             className={`${styles.orderCard} ${order._updated ? styles.updated : ""
               }`}
           >
-            {/* Заголовок */}
+            {}
             <div className={styles.orderHeader}>
               <h3>Заказ №{order.id}</h3>
 
@@ -109,7 +103,7 @@ const Orders = () => {
               </p>
             </div>
 
-            {/* Позиции */}
+            {}
             <div className={styles.items}>
               {order.items.map((item) => (
                 <div key={item.id} className={styles.itemRow}>
@@ -127,14 +121,14 @@ const Orders = () => {
               ))}
             </div>
 
-            {/* Итог */}
+            {}
             <div className={styles.total}>
               <p>
                 Итого: <span>{order.totalPrice}</span> ₽
               </p>
             </div>
 
-            {/* Адрес */}
+            {}
             <div className={styles.addressBlock}>
               <h4>Адрес доставки</h4>
               <p>
@@ -147,7 +141,7 @@ const Orders = () => {
               <p>Домофон: {order.address.intercom}</p>
             </div>
 
-            {/* Приборы */}
+            {}
             <div className={styles.utensils}>
               Приборы: {order.utensils}
             </div>
