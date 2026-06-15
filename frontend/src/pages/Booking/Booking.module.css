@@ -35,6 +35,7 @@
   flex-direction: column;
   align-items: center;
   gap: calc(20 * var(--r));
+  width: 100%;
 }
 
 .bar {
@@ -49,9 +50,9 @@
 
 .tableRow {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  justify-content: stretch;
+  align-items: stretch;
+  align-self: stretch;
   gap: calc(20 * var(--r));
   width: 100%;
 }
@@ -60,6 +61,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.tableRow .zone:first-child {
+  flex: 3 1 0;
+}
+
+.tableRow .zone:last-child {
+  flex: 2 1 0;
 }
 
 .zoneTitle {
@@ -74,7 +85,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: min(100%, calc(600 * var(--r)));
+  width: 100%;
   aspect-ratio: 6 / 5;
   border-radius: calc(12 * var(--r));
 }
@@ -84,7 +95,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: min(100%, calc(380 * var(--r)));
+  width: 100%;
   aspect-ratio: 19 / 20;
   border-radius: calc(12 * var(--r));
 }
@@ -375,7 +386,13 @@
 
   .tableRow {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+  }
+
+  .tableRow .zone:first-child,
+  .tableRow .zone:last-child {
+    flex: 1 1 auto;
+    width: 100%;
   }
 
   .zoneTitle {
