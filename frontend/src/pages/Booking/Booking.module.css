@@ -14,33 +14,46 @@
   width: calc(1000 * var(--r));
   max-width: 100%;
   margin: 0 auto;
+  padding: 0 calc(16 * var(--r));
+  box-sizing: border-box;
 }
 
-.tables {
-  margin-top: calc(50 * var(--r));
+.hallSection {
+  margin-top: calc(40 * var(--r));
+}
+
+.hallHint {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(14 * var(--r));
   text-align: center;
+  opacity: 0.7;
+  margin: 0 0 calc(12 * var(--r));
+}
+
+.hallMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(20 * var(--r));
 }
 
 .bar {
-  position: relative;
   background-image: url("/images/бар.png");
   background-size: cover;
   background-repeat: no-repeat;
-  width: calc(500 * var(--r));
-  height: calc(400 * var(--r));
-  margin: 0 auto;
+  background-position: center;
+  width: min(100%, calc(500 * var(--r)));
+  aspect-ratio: 5 / 4;
+  border-radius: calc(12 * var(--r));
 }
 
 .tableRow {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  margin-top: calc(20 * var(--r));
+  flex-wrap: wrap;
   gap: calc(20 * var(--r));
-  width: calc(1000 * var(--r));
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .zone {
@@ -50,38 +63,215 @@
 }
 
 .zoneTitle {
-  font-family: "Geologica";
-  font-size: calc(30 * var(--r));
+  font-family: "Geologica", sans-serif;
+  font-size: calc(24 * var(--r));
   font-weight: bold;
-  margin-bottom: calc(10 * var(--r));
+  margin: 0 0 calc(10 * var(--r));
 }
 
 .pesokImg {
-  position: relative;
   background-image: url("/images/песок.png");
-  width: calc(600 * var(--r));
-  height: calc(500 * var(--r));
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  width: min(100%, calc(600 * var(--r)));
+  aspect-ratio: 6 / 5;
+  border-radius: calc(12 * var(--r));
 }
 
 .chillImg {
-  position: relative;
   background-image: url("/images/чилл.png");
-  width: calc(380 * var(--r));
-  height: calc(400 * var(--r));
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  width: min(100%, calc(380 * var(--r)));
+  aspect-ratio: 19 / 20;
+  border-radius: calc(12 * var(--r));
+}
+
+.tablePicker {
+  margin-top: calc(32 * var(--r));
+  padding: calc(20 * var(--r));
+  background: var(--color-panel);
+  border-radius: calc(16 * var(--r));
+  border: 1px solid var(--color-border-subtle);
+}
+
+.tablePickerTitle {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(22 * var(--r));
+  font-weight: 700;
+  margin: 0 0 calc(12 * var(--r));
+}
+
+.tablePickerHint {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(15 * var(--r));
+  opacity: 0.8;
+  margin: 0 0 calc(16 * var(--r));
+}
+
+.availabilitySummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(10 * var(--r));
+  margin-bottom: calc(16 * var(--r));
+}
+
+.availabilityDate {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(15 * var(--r));
+  font-weight: 600;
+}
+
+.occupiedBadge {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(14 * var(--r));
+  color: #ff8a8a;
+  background: rgba(139, 0, 0, 0.25);
+  padding: calc(4 * var(--r)) calc(10 * var(--r));
+  border-radius: calc(20 * var(--r));
+}
+
+.freeBadge {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(14 * var(--r));
+  color: #8dffb0;
+  background: rgba(15, 122, 47, 0.25);
+  padding: calc(4 * var(--r)) calc(10 * var(--r));
+  border-radius: calc(20 * var(--r));
+}
+
+.tablePickerLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(16 * var(--r));
+  margin-bottom: calc(20 * var(--r));
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--r));
+  font-family: "Geologica", sans-serif;
+  font-size: calc(13 * var(--r));
+  opacity: 0.9;
+}
+
+.legendDot {
+  width: calc(12 * var(--r));
+  height: calc(12 * var(--r));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendFree {
+  background: #0f7a2f;
+}
+
+.legendBusy {
+  background: #8b0000;
+}
+
+.legendSelected {
+  background: #c9a227;
+  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.4);
+}
+
+.tableZone {
+  margin-bottom: calc(18 * var(--r));
+}
+
+.tableZone:last-of-type {
+  margin-bottom: 0;
+}
+
+.tableZoneTitle {
+  font-family: "Geologica", sans-serif;
+  font-size: calc(16 * var(--r));
+  font-weight: 600;
+  margin: 0 0 calc(10 * var(--r));
+  opacity: 0.85;
+}
+
+.tableChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(10 * var(--r));
+}
+
+.tableChip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: calc(56 * var(--r));
+  min-height: calc(52 * var(--r));
+  padding: calc(8 * var(--r)) calc(12 * var(--r));
+  border-radius: calc(10 * var(--r));
+  border: 2px solid transparent;
+  font-family: "Geologica", sans-serif;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.tableChipNumber {
+  font-size: calc(18 * var(--r));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tableChipStatus {
+  font-size: calc(10 * var(--r));
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.85;
+  margin-top: calc(2 * var(--r));
+}
+
+.tableChipFree {
+  background: rgba(15, 122, 47, 0.15);
+  border-color: #0f7a2f;
+  color: var(--color-text);
+}
+
+.tableChipFree:hover {
+  transform: translateY(-2px);
+  background: rgba(15, 122, 47, 0.28);
+}
+
+.tableChipSelected {
+  background: rgba(201, 162, 39, 0.2);
+  border-color: #c9a227;
+  color: var(--color-text);
+  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.25);
+}
+
+.tableChipBusy {
+  background: rgba(139, 0, 0, 0.2);
+  border-color: #8b0000;
+  color: #ffaaaa;
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.tablePickerFooter {
+  margin: calc(16 * var(--r)) 0 0;
+  font-family: "Geologica", sans-serif;
+  font-size: calc(14 * var(--r));
+  opacity: 0.75;
 }
 
 .warning {
-  font-family: "Geologica";
-  font-size: calc(25 * var(--r));
-  margin-top: calc(20 * var(--r));
+  font-family: "Geologica", sans-serif;
+  font-size: calc(22 * var(--r));
+  margin-top: calc(24 * var(--r));
+  text-align: center;
 }
 
 .warningAccent {
-  color: #840E0E;
+  color: #840e0e;
   font-weight: 700;
 }
 
@@ -99,7 +289,7 @@
 }
 
 .blockTitle {
-  font-family: "Geologica";
+  font-family: "Geologica", sans-serif;
   font-size: calc(20 * var(--r));
   color: var(--color-text);
   padding: calc(15 * var(--r)) calc(20 * var(--r));
@@ -138,7 +328,7 @@
 }
 
 .sum {
-  font-family: "Geologica";
+  font-family: "Geologica", sans-serif;
   font-size: calc(18 * var(--r));
   color: var(--color-text);
   padding-left: calc(20 * var(--r));
@@ -157,7 +347,7 @@
   margin: calc(20 * var(--r)) auto 0;
   display: block;
   cursor: pointer;
-  font-family: "Geologica";
+  font-family: "Geologica", sans-serif;
 }
 
 .submit:hover {
@@ -166,7 +356,7 @@
 }
 
 .authMessage {
-  font-family: "Geologica";
+  font-family: "Geologica", sans-serif;
   font-size: calc(20 * var(--r));
   margin-top: calc(40 * var(--r));
   text-align: center;
@@ -177,136 +367,50 @@
   color: var(--color-text-secondary);
 }
 
-.table {
-  position: absolute;
-  width: calc(60 * var(--r));
-  height: calc(60 * var(--r));
-  color: rgba(255, 255, 255, 0);
-  font-size: calc(14 * var(--r));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.2s ease;
-  box-sizing: border-box;
-  z-index: 2;
-}
-
-.free {
-  border: calc(2 * var(--r)) solid #0f7a2f;
-}
-
-.busy {
-  border: calc(2 * var(--r)) solid #8b0000;
-  cursor: not-allowed;
-}
-
 @media (max-width: 768px) {
   .container {
-    width: 100% !important;
-    padding: 0 16px !important;
+    width: 100%;
+    padding: 0 16px;
   }
 
   .tableRow {
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    gap: 16px !important;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .form {
-    width: 100% !important;
+  .zoneTitle {
+    font-size: 20px;
   }
 
-  .submit {
-    width: 100% !important;
-    max-width: 100% !important;
-    font-size: 18px !important;
-    padding: 12px !important;
-    border-radius: 30px !important;
+  .tablePicker {
+    padding: 16px;
+  }
+
+  .tablePickerTitle {
+    font-size: 18px;
+  }
+
+  .tableChip {
+    min-width: 48px;
+    min-height: 44px;
+    padding: 6px 10px;
+  }
+
+  .tableChipNumber {
+    font-size: 16px;
   }
 
   .warning {
-    text-align: center !important;
-    font-size: 16px !important;
+    font-size: 16px;
   }
-}
 
-.pageFill {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
+  .form {
+    width: 100%;
+  }
 
-.pageFill>header {
-  flex-shrink: 0;
-}
-
-.pageFill> :last-child {
-  margin-top: 0;
-  flex-shrink: 0;
-}
-
-.mainFill {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  padding-bottom: 0;
-}
-
-.containerFill {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: calc(12 * var(--r));
-  min-height: 0;
-  padding: calc(12 * var(--r)) calc(16 * var(--r));
-}
-
-.tablesFill {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
-  margin-top: 0;
-  width: 100%;
-  overflow: hidden;
-}
-
-.tablesScaleBox {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.tablesScaler {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: calc(16 * var(--r));
-  transform-origin: center center;
-}
-
-.pageFill .tableRow {
-  flex-direction: column;
-  align-items: center;
-  margin-top: 0;
-  gap: calc(16 * var(--r));
-  width: 100%;
-}
-
-.warningFill {
-  margin-top: 0;
-  flex-shrink: 0;
-  text-align: center;
-}
-
-.authMessageFill {
-  margin-top: 0;
-  flex-shrink: 0;
-  text-align: center;
+  .submit {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px;
+  }
 }
