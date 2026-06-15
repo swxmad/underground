@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import fs from "fs";
 import { sequelize } from "./config/db.js";
 import { User } from "./models/User.js";
 import authRoutes from "./routes/auth.router.js";
@@ -27,14 +28,21 @@ import { getAdminChat } from "./routes/chatWidgetRoutes.js";
 
 dotenv.config();
 
+const CLIENT_URL =
+  process.env.FRONTEND_URL || "https://underground-4fpj.onrender.com";
+
+["uploads", "uploads/bar", "uploads/kitchen"].forEach((dir) => {
+  fs.mkdirSync(dir, { recursive: true });
+});
+
 const app = express();
 const server = http.createServer(app);
 
 // -------------------- CORS --------------------
 app.use(
   cors({
-    origin: "https://underground-4fpj.onrender.com",
-    credentials: true
+    origin: CLIENT_URL,
+    credentials: true,
   })
 );
 
@@ -72,12 +80,19 @@ app.get("/", (req, res) => {
   res.send("Server is running");
 });
 
+app.use((err, req, res, next) => {
+  console.error("Ошибка сервера:", err);
+  res.status(err.status || 500).json({
+    message: err.message || "Внутренняя ошибка сервера",
+  });
+});
+
 // -------------------- SOCKET.IO --------------------
 const io = new Server(server, {
   cors: {
-    origin: "https://underground-4fpj.onrender.com",
-    methods: ["GET", "POST"]
-  }
+    origin: CLIENT_URL,
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {

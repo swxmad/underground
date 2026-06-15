@@ -19,10 +19,20 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+const handleUpload = (req, res, next) => {
+  upload.single("image")(req, res, (err) => {
+    if (err) {
+      console.error("Ошибка загрузки изображения кухни:", err);
+      return res.status(400).json({ message: "Ошибка загрузки изображения" });
+    }
+    next();
+  });
+};
+
 router.get("/", getKitchenItems);
-router.post("/", upload.single("image"), addKitchenItem);
+router.post("/", handleUpload, addKitchenItem);
 router.put("/:id/stop", stopKitchenItem);
 router.put("/:id/return", returnKitchenItem);
-router.put("/:id", upload.single("image"), updateKitchenItem);
+router.put("/:id", handleUpload, updateKitchenItem);
 
 export default router;

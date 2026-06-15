@@ -10,26 +10,35 @@ export const getKitchenItems = async (req, res) => {
 
 // добавить блюдо кухни
 export const addKitchenItem = async (req, res) => {
-  const { title, ingredients, price, weight, category, isActive } = req.body;
+  try {
+    const { title, ingredients, price, weight, category, isActive } = req.body;
 
-  let image = null;
-  if (req.file) {
-    image = `/uploads/kitchen/${req.file.filename}`;
+    let image = null;
+    if (req.file) {
+      image = `/uploads/kitchen/${req.file.filename}`;
+    }
+
+    if (!image) {
+      return res.status(400).json({ message: "Изображение обязательно" });
+    }
+
+    const item = await Item.create({
+      title,
+      ingredients,
+      price: Number(price) || 0,
+      weight,
+      category,
+      type: "kitchen",
+      isActive: isActive === "true" || isActive === true,
+      available: true,
+      image,
+    });
+
+    res.json(item);
+  } catch (err) {
+    console.error("Ошибка добавления блюда:", err);
+    res.status(500).json({ message: "Ошибка при добавлении блюда" });
   }
-
-  const item = await Item.create({
-    title,
-    ingredients,
-    price,
-    weight,
-    category,
-    type: "kitchen",
-    isActive: isActive === "true",
-    available: true,
-    image,
-  });
-
-  res.json(item);
 };
 
 // остановить блюдо
