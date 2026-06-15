@@ -5,7 +5,7 @@ import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { Chat } from "../models/Chat.js";
 
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://underground-server.onrender.com";
 
 // -----------------------------
 // Получить всех курьеров

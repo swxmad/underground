@@ -71,7 +71,7 @@ const EditEventModal = ({ event, onClose, onSuccess, onError }) => {
 
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:5000/api/events/${event.id}`, {
+    const res = await fetch(`https://underground-server.onrender.com/api/events/${event.id}`, {
       method: "PUT",
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
