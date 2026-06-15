@@ -154,67 +154,6 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  h2 {
-    font-size: 26px;
-  }
-
-  .loading,
-  .notAuth,
-  .empty {
-    font-size: 18px;
-    margin-top: 32px;
-  }
-
-  .orderHeader h3 {
-    font-size: 20px;
-  }
-
-  .date {
-    font-size: 16px;
-  }
-
-  .status {
-    font-size: 15px;
-    padding: 8px 14px;
-  }
-
-  .userInfo,
-  .itemCount,
-  .itemPrice,
-  .addressBlock,
-  .utensils {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .itemTitle {
-    font-size: 18px;
-  }
-
-  .itemWeight {
-    font-size: 16px;
-  }
-
-  .total {
-    font-size: 20px;
-  }
-
-  .addressBlock h4 {
-    font-size: 20px;
-  }
-
-  .actions button {
-    font-size: 17px;
-    height: 44px;
-    padding: 10px 18px;
-    border-radius: 8px;
-  }
-
-  .itemRow img {
-    width: 70px;
-    height: 55px;
-  }
-
   .orderHeader {
     flex-direction: column;
     align-items: flex-start;
