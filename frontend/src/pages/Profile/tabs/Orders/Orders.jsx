@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
-import { getImageUrl } from "../../../utils/imageUrl";
+import { getImageUrl } from "../../../../utils/imageUrl";
 
 const API_URL = "https://underground-server.onrender.com/api";
 
