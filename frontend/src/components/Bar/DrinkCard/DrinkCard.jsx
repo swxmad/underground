@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./DrinkCard.module.css";
+import { getImageUrl } from "../../../utils/imageUrl";
 
 const DrinkCard = ({
   item,              // теперь item = CartItem
@@ -22,7 +23,7 @@ const DrinkCard = ({
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <img
-          src={`https://underground-server.onrender.com${data.image}`}
+          src={getImageUrl(data.image)}
           className={styles.image}
           alt={data.title}
         />

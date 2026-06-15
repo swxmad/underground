@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./CocktailCard.module.css";
+import { getImageUrl } from "../../../utils/imageUrl";
 
 const CocktailCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
   // ⭐ Достаём данные товара из item.Item (CartItem) или item (Item)
@@ -9,7 +10,7 @@ const CocktailCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <img
-          src={`https://underground-server.onrender.com${data.image}`}
+          src={getImageUrl(data.image)}
           className={styles.image}
           alt={data.title}
         />

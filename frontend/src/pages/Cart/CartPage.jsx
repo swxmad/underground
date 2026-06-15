@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 
 import { useCart } from "../../context/CartContext";
 import { useNotification } from "../../components/Notifications/NotificationProvider";
+import { getImageUrl } from "../../utils/imageUrl";
 
 const API_URL = "https://underground-server.onrender.com/api";
 
@@ -131,7 +132,7 @@ const CartPage = () => {
                   </button>
 
                   <img
-                    src={`https://underground-server.onrender.com${data.image}`}
+                    src={getImageUrl(data.image)}
                     alt={data.title}
                   />
 

@@ -1,4 +1,5 @@
 import { Item } from "../models/Items.js";
+import { saveImage } from "../services/imageStorage.js";
 
 // получить все напитки
 export const getBarItems = async (req, res) => {
@@ -27,7 +28,7 @@ export const addBarItem = async (req, res) => {
 
     let image = null;
     if (req.file) {
-      image = `/uploads/bar/${req.file.filename}`;
+      image = await saveImage(req.file, "bar");
     }
 
     if (!image) {
@@ -107,7 +108,7 @@ export const updateBarItem = async (req, res) => {
 
     let image = item.image;
     if (req.file) {
-      image = `/uploads/bar/${req.file.filename}`;
+      image = await saveImage(req.file, "bar");
     }
 
     const common = {

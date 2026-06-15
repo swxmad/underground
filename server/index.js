@@ -25,13 +25,22 @@ import { Message } from "./models/Message.js";
 import { Chat } from "./models/Chat.js";
 import { Op } from "sequelize";
 import { getAdminChat } from "./routes/chatWidgetRoutes.js";
+import { isCloudinaryEnabled } from "./config/cloudinary.js";
 
 dotenv.config();
 
 const CLIENT_URL =
   process.env.FRONTEND_URL || "https://underground-4fpj.onrender.com";
 
-["uploads", "uploads/bar", "uploads/kitchen"].forEach((dir) => {
+if (isCloudinaryEnabled) {
+  console.log("☁️ Cloudinary: постоянное хранение изображений включено");
+} else {
+  console.warn(
+    "⚠️ Cloudinary не настроен — изображения сохраняются локально и пропадут после перезапуска"
+  );
+}
+
+["uploads", "uploads/bar", "uploads/kitchen", "uploads/events"].forEach((dir) => {
   fs.mkdirSync(dir, { recursive: true });
 });
 

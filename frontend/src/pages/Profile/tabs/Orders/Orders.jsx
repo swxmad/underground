@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Orders.module.css";
+import { getImageUrl } from "../../../utils/imageUrl";
 
 const API_URL = "https://underground-server.onrender.com/api";
 
@@ -120,7 +121,7 @@ const Orders = () => {
               {order.items.map((item) => (
                 <div key={item.id} className={styles.itemRow}>
                   <img
-                    src={`https://underground-server.onrender.com${item.image}`}
+                    src={getImageUrl(item.image)}
                     alt={item.title}
                   />
                   <div className={styles.itemInfo}>

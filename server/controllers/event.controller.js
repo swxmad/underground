@@ -1,4 +1,5 @@
 import { Event } from "../models/Event.js";
+import { saveImage } from "../services/imageStorage.js";
 
 export const getEvents = async (req, res) => {
   const events = await Event.findAll({ order: [["date", "ASC"]] });
@@ -17,7 +18,7 @@ export const createEvent = async (req, res) => {
       title,
       date,
       time,
-      image: "/uploads/" + req.file.filename,
+      image: await saveImage(req.file, "events"),
     });
 
     res.json(event);
@@ -39,7 +40,7 @@ export const updateEvent = async (req, res) => {
     event.time = time;
 
     if (req.file) {
-      event.image = "/uploads/" + req.file.filename;
+      event.image = await saveImage(req.file, "events");
     }
 
     await event.save();

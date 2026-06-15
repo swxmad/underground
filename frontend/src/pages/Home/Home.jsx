@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer";
 import AddEventModal from "../../components/Event/AddEventModal/AddEventModal";
 import EditEventModal from "../../components/Event/EditEventModal/EditEventModal";
 import DeleteConfirm from "../../components/Event/DeleteConfirm/DeleteConfirm";
+import { getImageUrl } from "../../utils/imageUrl";
 
 
 const API_URL = "https://underground-server.onrender.com/api";
@@ -285,7 +286,7 @@ const Home = ({ unreadChats }) => {
                 <div key={ev.id} className={styles.eventItem}>
                   <div className={styles.INfo}>
                     <img
-                      src={`https://underground-server.onrender.com${ev.image}`}
+                      src={getImageUrl(ev.image)}
                       className={styles.eventImg}
                     />
                     <p>{ev.date}<br />{ev.time}</p>

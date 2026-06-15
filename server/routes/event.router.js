@@ -1,5 +1,5 @@
 import express from "express";
-import { upload } from "../middleware/upload.js";
+import { handleUpload } from "../middleware/uploadMemory.js";
 import {
   getEvents,
   createEvent,
@@ -10,8 +10,8 @@ import {
 const router = express.Router();
 
 router.get("/", getEvents);
-router.post("/", upload.single("image"), createEvent);
-router.put("/:id", upload.single("image"), updateEvent);
+router.post("/", handleUpload("image"), createEvent);
+router.put("/:id", handleUpload("image"), updateEvent);
 router.delete("/:id", deleteEvent);
 
 export default router;

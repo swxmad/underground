@@ -1,4 +1,5 @@
 import { Item } from "../models/Items.js";
+import { saveImage } from "../services/imageStorage.js";
 
 // получить все блюда кухни
 export const getKitchenItems = async (req, res) => {
@@ -15,7 +16,7 @@ export const addKitchenItem = async (req, res) => {
 
     let image = null;
     if (req.file) {
-      image = `/uploads/kitchen/${req.file.filename}`;
+      image = await saveImage(req.file, "kitchen");
     }
 
     if (!image) {
@@ -81,7 +82,7 @@ export const updateKitchenItem = async (req, res) => {
 
     let image = item.image;
     if (req.file) {
-      image = `/uploads/kitchen/${req.file.filename}`;
+      image = await saveImage(req.file, "kitchen");
     }
 
     await item.update({
