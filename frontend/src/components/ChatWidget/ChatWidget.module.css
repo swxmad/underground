@@ -163,3 +163,14 @@
 .messages::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-subtle);
 }
+
+@media (max-width: 768px) {
+  .modal {
+    right: calc(16 * var(--r));
+    bottom: calc(95 * var(--r));
+    width: 85vw;
+    height: 35dvh;
+    min-height: 25dvh;
+    max-height: 55dvh;
+  }
+}
