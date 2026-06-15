@@ -152,7 +152,7 @@ const AdminOrders = () => {
               {order.items.map((item) => (
                 <div key={item.id} className={styles.itemRow}>
                   <img
-                    src={`http://localhost:5000${item.image}`}
+                    src={`https://underground-server.onrender.com${item.image}`}
                     alt={item.title}
                   />
                   <div className={styles.itemInfo}>

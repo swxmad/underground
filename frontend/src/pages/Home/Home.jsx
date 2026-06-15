@@ -285,7 +285,7 @@ const Home = ({ unreadChats }) => {
                 <div key={ev.id} className={styles.eventItem}>
                   <div className={styles.INfo}>
                     <img
-                      src={`http://localhost:5000${ev.image}`}
+                      src={`https://underground-server.onrender.com${ev.image}`}
                       className={styles.eventImg}
                     />
                     <p>{ev.date}<br />{ev.time}</p>

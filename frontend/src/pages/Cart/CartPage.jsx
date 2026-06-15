@@ -131,7 +131,7 @@ const CartPage = () => {
                   </button>
 
                   <img
-                    src={`http://localhost:5000${data.image}`}
+                    src={`https://underground-server.onrender.com${data.image}`}
                     alt={data.title}
                   />
 

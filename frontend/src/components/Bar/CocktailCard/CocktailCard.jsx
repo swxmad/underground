@@ -9,7 +9,7 @@ const CocktailCard = ({ item, role, onAdd, onEdit, onStop, onReturn }) => {
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <img
-          src={`http://localhost:5000${data.image}`}
+          src={`https://underground-server.onrender.com${data.image}`}
           className={styles.image}
           alt={data.title}
         />

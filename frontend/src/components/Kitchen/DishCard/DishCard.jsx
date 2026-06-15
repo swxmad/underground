@@ -21,7 +21,7 @@ const DishCard = ({
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
         <img
-          src={`http://localhost:5000${item.image}`}
+          src={`https://underground-server.onrender.com${item.image}`}
           className={styles.image}
           alt={item.title}
         />
