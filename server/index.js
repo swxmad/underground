@@ -26,6 +26,7 @@ import { Chat } from "./models/Chat.js";
 import { Op } from "sequelize";
 import { getAdminChat } from "./routes/chatWidgetRoutes.js";
 import { isCloudinaryEnabled } from "./config/cloudinary.js";
+import { formatImagesDeep } from "./utils/formatImage.js";
 
 dotenv.config();
 
@@ -56,6 +57,35 @@ app.use(
 );
 
 app.use(express.json());
+
+// Прокси для внешних изображений (Cloudinary) — совместимость со старым фронтендом
+app.get("/api/media", (req, res) => {
+  const { src } = req.query;
+
+  if (!src || typeof src !== "string") {
+    return res.status(400).json({ message: "Не указан URL изображения" });
+  }
+
+  try {
+    const url = new URL(src);
+    const allowedHosts = ["res.cloudinary.com"];
+
+    if (!allowedHosts.includes(url.hostname)) {
+      return res.status(403).json({ message: "Источник изображения не разрешён" });
+    }
+
+    res.redirect(302, src);
+  } catch {
+    res.status(400).json({ message: "Некорректный URL изображения" });
+  }
+});
+
+// Все внешние image-URL в API отдаём как /api/media?... для старого фронтенда
+app.use((req, res, next) => {
+  const originalJson = res.json.bind(res);
+  res.json = (body) => originalJson(formatImagesDeep(body));
+  next();
+});
 
 // -------------------- ROUTES --------------------
 app.use("/api/auth", authRoutes);
